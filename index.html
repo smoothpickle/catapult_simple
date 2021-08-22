@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="full-height">
+
+<head>
+
+    <title>Demain j'étais ici - Théâtre Catapulte</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="author" content="Théâtre Catapulte">
+    <!--meta name="keywords" content=""-->
+    <meta name="description" content="">
+    
+    <meta itemprop="name" content="Project">
+    <meta itemprop="description" content="Content description less than 200 characters">
+    <meta itemprop="image" content="http://yourawesomeproject.com/image.jpg">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Project">
+    
+    <meta property="og:url" content="http://yourawesomeproject.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Your Next Awesome Project">
+    <meta property="og:image" content="http://yourawesomeproject.com/image.jpg">
+    <meta property="og:description" content="Description Here">
+    <meta property="og:site_name" content="Site Name">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@site_account">
+    <meta name="twitter:creator" content="@individual_account">
+    <meta name="twitter:url" content="http://yourawesomeproject.com">
+    <meta name="twitter:title" content="Project">
+    <meta name="twitter:description" content="Content description less than 200 characters">
+    <meta name="twitter:image" content="http://yourawesomeproject.com/image.jpg">
+    
+    <link href="https://plus.google.com/+YourPage" rel="publisher">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="alternate" hreflang="en" href="http://yourawesomeproject.com/en">
+    <link type="text/plain" rel="author" href="humans.txt">
+    
+    <!-- Normalise.css -->
+    <link rel="stylesheet" href="./assets/scss/app.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./assets/scss/theme.css">
+
+</head>
+
+<body class="index-page full-height">
+
+    <div id="top-menu">
+        <button class="hamburger" id="hamburger-1" aria-label="Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </div> <!-- end .top-menu -->
+
+    <div class="container full-height" id="intro-video">
+        <div class="text-anim-wrapper">
+            <h1>Demain, j'étais ici</h1>
+        </div>
+        <span class="scroll-indicator" aria-hidden="true">
+            <span class="scroll-indicator__line"></span>
+            Défilez vers le bas
+        </span>
+        <video muted loop playsinline id="video">
+            <source src="./assets/videos/video-intro3.mp4" type="video/mp4">
+        </video>
+    </div> <!-- end #intro-video -->
+
+    <main class="container full-height" id="intro-text">
+
+        <div class="inner">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque neque nec nibh pellentesque, vitae volutpat odio suscipit. In consectetur in lacus vel auctor. Proin quis leo libero. Quisque vitae elit sem. Proin at justo id augue malesuada rutrum. Quisque vel imperdiet tortor. Mauris sit amet dictum nulla.</p>
+        </div>
+
+    </main> <!-- end #intro-text -->
+
+    <div id="zones">
+        <div class="wrap-inner">
+            
+            <div class="inner">
+                <ul class="zone-list">
+                    <li>
+                        <a href="./zone-rouge.html">Zone rouge</a>
+                        <div class="curved-line"></div>
+                    </li>
+                    <li class="zone-locked">
+                        <a href="./zone-orange.html">Zone orange</a>
+                        <div class="curved-line"></div>
+                    </li>
+                    <li class="zone-locked">
+                        <a href="./zone-verte.html">Zone verte</a>
+                        <div class="curved-line"></div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sigContain">
+                <div class="signal s1"></div>
+                <div class="signal s2"></div>
+                <div class="signal s3"></div>
+                <div class="signal s4"></div>
+            </div>
+            
+        </div>
+    </div> <!-- end #zone -->
+
+    <nav id="side-menu">
+        <ul>
+            <li><a href="./a-propos.html">À propos</a></li>
+            <li><a href="./participants.html">Participants</a></li>
+            <li><a href="./mediation.html">Médiation</a></li>
+        </ul>
+    </nav>
+
+    <!-- <div id="loader" class="radar" aria-hidden="true">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+    </div> -->
+    
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    
+    <script>
+        
+        // $(document).ready(function() {
+        //     $('body').addClass('page-loading');
+        // });
+        
+        $(window).on('load', function() {
+            //  console.log('loaded')
+            ///////////////////////////////////////
+            // On scroll animation
+            ///////////////////////////////////////
+
+            var headline = document.getElementsByClassName('text-anim-wrapper');
+            var headlineOffset = headline[0].offsetTop;
+            var letters = headline[0].innerText.split('');
+            letters = letters.filter(function (letter) {
+                return letter !== ' ' && letter !== '\n' ? letter : false;
+            });
+            var tweenDistance = getRandomArbitrary(200, 400);
+            var topDistance = 0;
+            var movement = 0;
+            var elements = [];
+
+            function getRandomArbitrary(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            function move(element, distance) {
+                var translate3d = 'translate3d(0, ' + distance + 'px, 0)';
+                element.style['-webkit-transform'] = translate3d;
+                element.style['-moz-transform'] = translate3d;
+                element.style['-ms-transform'] = translate3d;
+                element.style['-o-transform'] = translate3d;
+                element.style.transform = translate3d;
+            };
+
+            function moveY(element, distance) {
+                var translate3d = 'translateY(' + distance + '%)';
+                element.style['-webkit-transform'] = translate3d;
+                element.style['-moz-transform'] = translate3d;
+                element.style['-ms-transform'] = translate3d;
+                element.style['-o-transform'] = translate3d;
+                element.style.transform = translate3d;
+            };
+
+            function fadeOut(element, scrollDistance, tweenDistance) {
+                element.style.opacity = (tweenDistance - scrollDistance) / tweenDistance;
+            }
+
+            function tweenHeight(element, scrollDistance, tweenDistance, initialHeight) {
+                element.style.height = (((tweenDistance - scrollDistance) / tweenDistance) * initialHeight) + 'px';
+            }
+
+            letters.forEach(function (letter) {
+                var element = document.createElement('span');
+                element.innerText = letter;
+                element.dataset.speed = Math.random(0, 1).toFixed(2);
+                headline[0].appendChild(element);
+                elements.push(element);
+            });
+
+            window.addEventListener('scroll', function (event) {
+                var scrollIndicator = document.getElementsByClassName('scroll-indicator');
+                var scrollIndicatorLine = document.getElementsByClassName('scroll-indicator__line');
+                topDistance = window.pageYOffset;
+                movement = topDistance * 2;
+
+                fadeOut(scrollIndicator[0], topDistance, 150);
+                tweenHeight(scrollIndicatorLine[0], topDistance, 100, 25);
+
+                elements.forEach(function (element) {
+                    movement = -(topDistance * element.dataset.speed);
+                    move(element, movement);
+                    fadeOut(element, topDistance, tweenDistance);
+                });
+            });
+
+            $('.text-anim-wrapper').find('span').attr('aria-hidden', true).eq(6).after('<br />');
+            
+            // LOADING AND VIDEO PLAY
+            setTimeout(function () {
+
+                // $('body').removeClass('page-loading').addClass('page-loaded');
+
+                $('#loader').fadeOut(400, function () {
+                      let videoElem = document.getElementById("video");
+                      videoElem.play();
+                });
+
+            }, 3500);
+            
+            let videoElem = document.getElementById("video");
+            videoElem.play();
+            
+        });
+        
+        $(window).scroll(function () {
+            var _body = $('body');
+            var _introText = $('#intro-text');
+            var _zones = $('#zones');
+            var _menuIcon = $('.hamburger');
+
+            if ($(window).scrollTop() >= (_introText.offset().top - 45)) {
+                _body.addClass('ham-menu-alt');
+            } else {
+                _body.removeClass('ham-menu-alt');
+            }
+            
+            if ($(window).scrollTop() >= (_zones.offset().top - 100)) {
+                _body.addClass('reached-zones');
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

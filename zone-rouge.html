@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Demain j'étais ici - Théâtre Catapulte</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="author" content="Théâtre Catapulte">
+    <!--meta name="keywords" content=""-->
+    <meta name="description" content="">
+    
+    <meta itemprop="name" content="Project">
+    <meta itemprop="description" content="Content description less than 200 characters">
+    <meta itemprop="image" content="http://yourawesomeproject.com/image.jpg">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Demain j'étais ici">
+    
+    <meta property="og:url" content="http://yourawesomeproject.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Your Next Awesome Project">
+    <meta property="og:image" content="http://yourawesomeproject.com/image.jpg">
+    <meta property="og:description" content="Description Here">
+    <meta property="og:site_name" content="Site Name">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@site_account">
+    <meta name="twitter:creator" content="@individual_account">
+    <meta name="twitter:url" content="http://yourawesomeproject.com">
+    <meta name="twitter:title" content="Project">
+    <meta name="twitter:description" content="Content description less than 200 characters">
+    <meta name="twitter:image" content="http://yourawesomeproject.com/image.jpg">
+    
+    <link href="https://plus.google.com/+YourPage" rel="publisher">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="alternate" hreflang="en" href="http://yourawesomeproject.com/en">
+    <link type="text/plain" rel="author" href="humans.txt">
+    
+    <!-- Normalise.css -->
+    <link rel="stylesheet" href="./assets/scss/app.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./assets/scss/theme.css">
+    
+</head>
+
+<body class="zone-page zone-rouge ham-menu-alt">
+    
+    <div id="top-nav">
+        <div id="top-menu">
+            <button class="hamburger" id="hamburger-1" aria-label="Menu">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div> <!-- end .top-menu -->
+    </div>
+    
+
+    <nav id="side-menu">
+        <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./a-propos.html">À propos</a></li>
+            <li><a href="./participants.html">Participants</a></li>
+            <li><a href="./mediation.html">Médiation</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        
+        <a href="index.html#zones" id="btn-back">Go back</a>
+        
+        <div class="inner">
+            <h1>Zone rouge</h1>
+        </div>
+        <div class="playerizer">
+            
+        </div>
+        <!-- <ul class="playlist">
+            <li class="listened"><a href="./assets/mp3/zone-rouge/piste1.mp3" data-track="track1">Station St-Laurent</a></li>
+            <li class="listened"><a href="./assets/mp3/zone-rouge/piste2.mp3" data-track="track2">Piste 2</a></li>
+            <li><a href="./assets/mp3/zone-rouge/piste3.mp3" data-track="track3">Piste 3</a></li>
+            <li><a href="./assets/mp3/zone-rouge/piste4.mp3" data-track="track4">Piste 4</a></li>
+            <li><a href="./assets/mp3/zone-rouge/piste5.mp3" data-track="track5">Piste 5</a></li>
+            <li><a href="./assets/mp3/zone-rouge/piste6.mp3" data-track="track6">Piste 6</a></li>
+            <li><a href="./assets/mp3/zone-rouge/piste7.mp3" data-track="track7">Piste 7</a></li>
+        </ul> -->
+    </main>
+
+    <!-- <div id="player">
+        <div class="inner">
+            <h2>Station St-Laurent</h2>
+            <p class="credit text-theme-a">Ludovic Longpres Roxanne Myre</p>
+            <p class="desc text-theme-b">Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif. Cette experience</p>
+            <button id="btn_play">Jouer la balado</button>
+            <p class="duration text-theme-a">6 min</p>
+            <button id="btn_playlist">Retour à la liste de lecture</button>
+        </div>
+    </div> -->
+
+    <!-- <div id="loader" class="radar" aria-hidden="true">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+    </div> -->
+    
+    <div id="loading_screen"></div>
+    
+    <!-- jQuery --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- HOWLER.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    
+    <!-- Important to include both next files together -->
+    <script type="text/javascript" src="./assets/js/tracks.js"></script>
+    <script type="text/javascript" src="./assets/js/playerHandler.js"></script>
+    <!-- -->
+    
+    <script>
+        
+        $('.playerizer').playerizer({
+            zone: "Zone rouge"
+        });
+        
+    </script>
+
+</body>
+
+</html>
