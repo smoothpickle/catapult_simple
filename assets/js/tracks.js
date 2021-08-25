@@ -5,124 +5,77 @@ var trackDataObj = {
             location: "St-Laurent Station - Station St-Laurent",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
+            url: "./assets/mp3/zone-rouge/piste1.mp3", // See if we can host them elsewhere.
+            tracktime: "6 MIN",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif."
+            desc: "Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif.",
+            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
         },
         track2: {
-            name: "Kamé",
+            name: "Piste 2",
             location: "None",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
+            url: "./assets/mp3/zone-rouge/piste2.mp3", // See if we can host them elsewhere.
+            tracktime: "7 MIN",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
+            videoURL: "./assets/video/zone-rouge/video-intro2.mp4"
         },
         track3: {
-            name: "Toby",
+            name: "Piste 3",
             location: "Arch St.",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
+            url: "./assets/mp3/zone-rouge/piste3.mp3", // See if we can host them elsewhere.
+            tracktime: "2 MIN",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
+            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
         },
         track4: {
             name: "Simon Gagné",
             location: "Arch St.",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
+            url: "./assets/mp3/zone-rouge/piste4.mp3", // See if we can host them elsewhere.
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
+            videoURL: "./assets/video/zone-rouge/video-intro2.mp4"
         },
         track5: {
             name: "Jonas",
             location: "Arch St.",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
+            url: "./assets/mp3/zone-rouge/piste5.mp3", // See if we can host them elsewhere.
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
+            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
         },
         track6: {
             name: "Sophie",
             location: "Cameron-King",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
+            url: "./assets/mp3/zone-rouge/piste6.mp3", // See if we can host them elsewhere.
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
+            videoURL: "./assets/video/zone-rouge/video-intro2.mp4"
         },
         track7: {
-            name: "Sophie",
+            name: "Piste 7",
             location: "Cameron-King",
             coord1: "48°51'12.2″N",
             coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
+            url: "./assets/mp3/zone-rouge/piste7.mp3", // See if we can host them elsewhere.
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
-        }
-    },
-    "Zone orange": {
-        track1: {
-            name: "Amel",
-            location: "St-Laurent Station - Station St-Laurent",
-            coord1: "48°51'12.2″N",
-            coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
-            credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
-        },
-        track2: {
-            name: "Kamé",
-            location: "None",
-            coord1: "48°51'12.2″N",
-            coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
-            credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
-        },
-        track3: {
-            name: "Toby",
-            location: "Arch St.",
-            coord1: "48°51'12.2″N",
-            coord2: "2°20'55.7″E",
-            url: "./assets/mp3/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
-            credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
-        }
-    },
-    "Zone verte": {
-        track1: {
-            name: "Amel",
-            location: "St-Laurent Station - Station St-Laurent",
-            coord1: "48°51'12.2″N",
-            coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
-            credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
-        },
-        track2: {
-            name: "Kamé",
-            location: "None",
-            coord1: "48°51'12.2″N",
-            coord2: "2°20'55.7″E",
-            url: "./src/data/playlist/podcast1.mp3", // See if we can host them elsewhere.
-            tracktime: "4:40",
-            credits: "Ludovic Longprés Roxane Myre",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi."
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
+            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
         }
     }
 }

@@ -38,7 +38,10 @@
 			
 			zone: "Zone verte",
 			parentContainer: $(this._element).parent(),
-			_currentTrack: ""
+			_currentTrack: "",
+			isLocked: false,
+			els: {},
+			_howler: {}
 			
 		}, this._defaults, options);
 		/*
@@ -71,20 +74,29 @@
 			this.$_element = $(this._element);
 			this._tracks = trackDataObj[this._settings.zone];
 			
+			this._buildAudioElement();
 			this._buildPlaylist();
-			this._createPlayer();
+			this._createArtistPanel();
+		},
+		
+		_buildAudioElement: function() {
+			var _this = this;
+			
+			this._newAudio = new Audio();
 		},
 		
 		_buildPlaylist: function() {
 			// Build list with songs from obj
-			
-			var _this = this.$_element;
+			var _this = this;
+			var _el = this.$_element;
 			var tracks_data = this._tracks;
 			var tracks = "";
 			
-			_this.append($('<ul>', {class: 'playlist'}));
+			this._settings.playlistUrlArr = [];
 			
-			var _playlist = _this.find('ul');
+			_el.append($('<ul>', {class: 'playlist'}));
+			
+			var _playlist = _el.find('ul');
 			
 			$.each( tracks_data, function( key, value ) {
 				
@@ -96,15 +108,17 @@
 						click: function(e) {
 							e.preventDefault();
 							
-							plugin._settings._currentTrack = plugin._tracks[key];
+							plugin._settings._currentTrack = tracks_data[key];
 							plugin._onClickTrack($(this));
 						}
 					}))
 				);
 				
+				plugin._settings.playlistUrlArr.push(value.url)
+				
 			});
 			
-			
+			//console.log(this._settings.playlistUrlArr);
 		},
 		
 		_onClickTrack: function(el) {
@@ -114,13 +128,11 @@
 			// $('html').addClass('player-is-active');
 			el.closest('li').addClass('listened');
 				
-			this._updatePlayer();
-			
-			
-		
+			this._updateArtistPanel();
+
 		},
 		
-		_createPlayer: function() {
+		_createArtistPanel: function() {
 			
 			// var currentTrack = this._tracks[this._settings._currentTrack];
 			
@@ -129,62 +141,118 @@
 			$('body').append(
 				$('<div/>', {
 					id: 'player'
-				}).append($('<div/>', {class: 'inner'})
+				})
+				.append($('<div/>', { id: 'artistPlayerContainer' })
+					.append($('<div/>', { id: 'artistVideo' }))
+				)
+				.append($('<div />', {
+					id: 'artistInfoPanel'
+				})
+				.append($('<div/>', {class: 'inner'})
 				.append($('<h2/>'))
 				.append($('<p/>', { id: 'player_credits', class: 'text-theme-a' }))
 				.append($('<p/>', { id: 'player_desc', class: 'text-theme-b' }))
-				.append($('<button/>', {
-					id: 'btn_playlist',
-					text: 'Retour à la liste de lecture',
-					click: function(e) {
-						e.preventDefault();
-						console.log('Click back to playlist');
-						plugin._hidePlayerContainer();
-					}
-				}))
-				.append($('<button/>', { 
-					id: 'btn_play',
-					text: 'Jouer la balado',
-					click: function(e) {
-						e.preventDefault();
-						console.log('Clicked play button');
-						// plugin._constructPlay();
-					}
-				}))
-				.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
 				)
-			);
+			)
+			.append($('<div/>', { id: 'artistPlayer' })
+				.append($('<div/>', { id: 'playerProgressBarContainer' })
+					.append($('<div/>', { id: 'playerSongName' }))
+					.append($('<div/>', { id: 'playerProgressBar' }))
+					.append($('<div/>', { id: 'playerTimeleft' }))
+				)
+				.append($('<div/>', { id: 'playerControls' })
+					.append($('<button/>', {
+						id: 'btnPlaylist',
+						text: 'Retour à la liste de lecture',
+						click: function(e) {
+							e.preventDefault();
+							console.log('Click back to playlist');
+							plugin._hidePlayerContainer();
+						}
+					}))
+					.append($('<button/>', { 
+						id: 'btnPlay',
+						text: 'Jouer la balado'
+					}))
+					.append($('<button/>', { 
+						id: 'btnStop',
+						text: 'Arrête la balado'
+					}))
+					.append($('<button/>', {
+						id: 'btnNext',
+						text: 'Jouer la prochaine la balado'
+					}))
+					.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
+				)
+			));
+			
+			this._assignElements();
 		},
 		
-		_updatePlayer: function() {
+		_assignElements: function() {
+			// assign all elements so we can reuse it later on
+			
+			this._settings.els.html = $('html');
+			this._settings.els.player = $('#player');
+			this._settings.els.trackName = this._settings.els.player.find('h2');
+			this._settings.els.trackCredits = this._settings.els.player.find('#player_credits');
+			this._settings.els.trackDesc = this._settings.els.player.find('#player_desc');
+			this._settings.els.trackDuration = this._settings.els.player.find('#player_duration');
+			
+			this._settings.els.artistPlayerContainer = this._settings.els.player.find('#artistPlayerContainer');
+			this._settings.els.artistVideo = this._settings.els.player.find('#artistVideo');
+			
+			this._settings.els.artistPlayer = this._settings.els.player.find('#artistPlayer');
+			this._settings.els.playerProgressBarContainer = this._settings.els.player.find('#playerProgressBarContainer');
+			this._settings.els.playerSongName = this._settings.els.player.find('#playerSongName');
+			this._settings.els.playerProgressBar = this._settings.els.player.find('#playerProgressBar');
+			this._settings.els.playerTimeleft = this._settings.els.player.find('#playerTimeleft');
+			
+			this._settings.els.playerControls = this._settings.els.player.find('#playerControls');
+			this._settings.els.btnPlaylist = this._settings.els.player.find('#btnPlaylist');
+			this._settings.els.btnPlay = this._settings.els.player.find('#btnPlay');
+			this._settings.els.btnStop = this._settings.els.player.find('#btnStop');
+			this._settings.els.btnNext = this._settings.els.player.find('#btnNext');
+			
+		},
+		
+		_updateArtistPanel: function() {
 			
 			var currentTrack = this._settings._currentTrack;
 			
 			console.log(currentTrack);
-			
-			var _player = $('#player');
-			
+
 			// Assign Current track values
-			_player.find('h2').text(currentTrack.name);
-			_player.find('#player_credits').text(currentTrack.credits);
-			_player.find('#player_desc').text(currentTrack.desc);
-			_player.find('#player_duration').text(currentTrack.tracktime);
+			this._settings.els.trackName.text(currentTrack.name);
+			this._settings.els.trackCredits.text(currentTrack.credits);
+			this._settings.els.trackDesc.text(currentTrack.desc);
+			this._settings.els.trackDuration.text(currentTrack.tracktime);
 			
 			this._showPlayerContainer();
-
 		},
 		
 		_showPlayerContainer: function() {
-			$('html').addClass('player-is-active');
-			
+			this._settings.els.html.addClass('player-is-active');
 			this._settings.parentContainer.fadeOut(300);
 		},
 		
 		_hidePlayerContainer: function() {
-			
-			$('html').removeClass('player-is-active');
-			
+			this._settings.els.html.removeClass('player-is-active');
 			this._settings.parentContainer.fadeIn(300);
+		},
+		
+		playSound: function() {
+			
+			console.log('Play howler sound');
+			this.isPlaying = true;
+			this._settings._howler.currentSongPlaying.play();
+		},
+		
+		stopSound: function() {
+			
+			console.log('Stop howler sound');
+			this.isPlaying = false;
+			this._settings._howler.currentSongPlaying.stop();
 		},
 		
 		// Bind events that trigger methods

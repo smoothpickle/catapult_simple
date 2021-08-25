@@ -1,9 +1,5 @@
+@import "_vars";
 @import "_player";
-
-$green: #a8e07d;
-$green2: #365151;
-$green3: #75dc93;
-$red: #eb5f5f;
 
 body,
 html {
@@ -36,7 +32,8 @@ body {
     }
     
     &.zone-orange {
-        
+        background: rgb(250, 228, 116);
+        background: linear-gradient(0deg, rgba(250, 228, 116, 1) 0%, rgba(229, 147, 112, 1) 100%);
     }
     
     &.zone-verte {
@@ -68,7 +65,7 @@ h1, h2 {
         color: $green2;
         font-size: 2.5em;
         line-height: 0.8;
-        margin: 0.5em 0;
+        margin: 0.5em 0.5em 1em;
         width: 150px;
     }
 }
@@ -91,7 +88,7 @@ main {
         padding: 80px 20px 40px;
         
         .zone-page & {
-            padding: 80px 20px 0 20px;
+            padding: 80px 0 20px;
         }
     }
     
@@ -678,12 +675,12 @@ $main-width: 70px;
             // padding-left: 0;
             // padding-right: 0;
             
-            .text-theme-a {
-                left: 50%;
-                position: fixed;
-                top: 12px;
-                transform: translateX(-50%);
-            }
+            // .text-theme-a {
+            //     left: 50%;
+            //     position: fixed;
+            //     top: 12px;
+            //     transform: translateX(-50%);
+            // }
             
         }
         
@@ -764,6 +761,11 @@ $main-width: 70px;
         background: linear-gradient(0deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
     }
     
+    .zone-orange & {
+        background: rgb(250, 228, 116);
+        background: linear-gradient(0deg, rgba(250, 228, 116, 1) 0%, rgba(229, 147, 112, 1) 100%);
+    }
+    
     .zone-verte & {
         background: rgb(110, 220, 147);
         background: linear-gradient(0deg, rgba(110, 220, 147, 1) 0%, rgba(191, 229, 116, 1) 100%);
@@ -777,7 +779,17 @@ $main-width: 70px;
 */
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+    
+    .container {
+
+        .inner {
+            margin: 0 auto;
+            max-width: 764px;
+        }
+    }
+    
+}
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {}
@@ -790,11 +802,5 @@ $main-width: 70px;
         }
     }
 
-    .container {
-
-        .inner {
-            margin: 0 auto;
-            max-width: 764px;
-        }
-    }
+    
 }
