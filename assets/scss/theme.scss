@@ -195,13 +195,13 @@ video {
     margin: 0 auto;
     max-width: 764px;
     position: relative;
-    
-    .text-theme-a {
-        left: 50%;
-        position: fixed;
-        top: 12px;
-        transform: translateX(-50%);
-    }
+}
+
+.text-locked {
+    left: 50%;
+    position: fixed;
+    top: 12px;
+    transform: translateX(-50%);
 }
 
 #top-menu {

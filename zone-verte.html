@@ -78,7 +78,7 @@
         
         <div class="inner">
             <h1>Zone verte</h1>
-            <p class="text-theme-a">Dès le 24 sept. 2021</p>
+            <p class="text-theme-a text-locked">Dès le 24 sept. 2021</p>
         </div>
         <ul class="playlist">
             <li class="listened"><a href="./assets/mp3/zone-rouge/piste1.mp3" data-track="track1">Station St-Laurent</a></li>
@@ -117,15 +117,15 @@
     <script>
         $('.playlist a').on('click', function (e) {
             e.preventDefault();
-            $('main').fadeOut(300);
-            $('html').addClass('player-is-active');
-            $(this).closest('li').addClass('listened');
+            // $('main').fadeOut(300);
+            // $('html').addClass('player-is-active');
+            // $(this).closest('li').addClass('listened');
         });
 
         $('#btn_playlist').on('click', function (e) {
             e.preventDefault();
-            $('main').fadeIn(300);
-            $('html').removeClass('player-is-active');
+            // $('main').fadeIn(300);
+            // $('html').removeClass('player-is-active');
         });
 
     </script>

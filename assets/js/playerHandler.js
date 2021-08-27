@@ -74,15 +74,21 @@
 			this.$_element = $(this._element);
 			this._tracks = trackDataObj[this._settings.zone];
 			
+			this.isSongPlaying = false;
+			
 			this._buildAudioElement();
 			this._buildPlaylist();
 			this._createArtistPanel();
+			this._buildProgressBar();
 		},
 		
 		_buildAudioElement: function() {
 			var _this = this;
 			
 			this._newAudio = new Audio();
+			this._newAudio.onended = function() {
+				
+			}
 		},
 		
 		_buildPlaylist: function() {
@@ -121,6 +127,53 @@
 			//console.log(this._settings.playlistUrlArr);
 		},
 		
+		_buildProgressBar: function() {
+			var _this = this;
+			
+			const audio = this._newAudio;
+			const start = this._settings.els.playerTime_Start;
+			const end = this._settings.els.playerTime_End;
+			const progressBar = this._settings.els.playerProgressBar;
+			const now = this._settings.els.playerTime_Now;
+			
+			
+
+			function conversion (value) {
+				let minute = Math.floor(value / 60);
+				minute = minute.toString().length === 1 ? ('0' + minute) : minute;
+				let second = Math.round(value % 60);
+				second = second.toString().length === 1 ? ('0' + second) : second;
+				return `${minute}:${second}`;
+			}
+
+			audio.onloadedmetadata = function () {
+				end.innerHTML = conversion(audio.duration);
+				start.innerHTML = conversion(audio.currentTime);
+			}
+
+			progressBar.on('click', function (event) {
+				let coordStart = this.getBoundingClientRect().left;
+				let coordEnd = event.pageX;
+				let p = (coordEnd - coordStart) / this.offsetWidth;
+				// now.style.width = p.toFixed(3) * 100 + '%';
+				now.css({width: p.toFixed(3) * 100 + '%'});
+				
+				console.log(now);
+
+				audio.currentTime = p * audio.duration;
+				audio.play();
+				
+				_this._hidePlayBtn();
+			});
+
+			setInterval(() => {
+				start.text(conversion(audio.currentTime));
+				// now.style.width = audio.currentTime / audio.duration.toFixed(3) * 100 + '%';
+				now.css({width: audio.currentTime / audio.duration.toFixed(3) * 100 + '%'});
+			}, 1000);
+			
+		},
+		
 		_onClickTrack: function(el) {
 			
 			console.log('clicked track');
@@ -157,8 +210,13 @@
 			.append($('<div/>', { id: 'artistPlayer' })
 				.append($('<div/>', { id: 'playerProgressBarContainer' })
 					.append($('<div/>', { id: 'playerSongName' }))
-					.append($('<div/>', { id: 'playerProgressBar' }))
-					.append($('<div/>', { id: 'playerTimeleft' }))
+					.append($('<div/>', { id: 'playerProgressBarWrapper' })
+						.append($('<div/>', { id: 'playerTime_Start' }))
+						.append($('<div/>', { id: 'playerProgressBar' })
+							.append($('<div/>', { id: 'playerTime_Now' }))
+						)
+					)
+					.append($('<div/>', { id: 'playerTime_End' }))
 				)
 				.append($('<div/>', { id: 'playerControls' })
 					.append($('<button/>', {
@@ -167,16 +225,24 @@
 						click: function(e) {
 							e.preventDefault();
 							console.log('Click back to playlist');
-							plugin._hidePlayerContainer();
+							plugin._hideArtistPanel();
 						}
 					}))
 					.append($('<button/>', { 
 						id: 'btnPlay',
-						text: 'Jouer la balado'
+						text: 'Jouer la balado',
+						click: function() {
+							
+							plugin.playSound();
+						}
 					}))
 					.append($('<button/>', { 
 						id: 'btnStop',
-						text: 'Arrête la balado'
+						text: 'Arrête la balado',
+						click: function() {
+							
+							plugin.stopSound();
+						}
 					}))
 					.append($('<button/>', {
 						id: 'btnNext',
@@ -204,9 +270,13 @@
 			
 			this._settings.els.artistPlayer = this._settings.els.player.find('#artistPlayer');
 			this._settings.els.playerProgressBarContainer = this._settings.els.player.find('#playerProgressBarContainer');
+			
 			this._settings.els.playerSongName = this._settings.els.player.find('#playerSongName');
 			this._settings.els.playerProgressBar = this._settings.els.player.find('#playerProgressBar');
-			this._settings.els.playerTimeleft = this._settings.els.player.find('#playerTimeleft');
+			
+			this._settings.els.playerTime_End = this._settings.els.player.find('#playerTime_End');
+			this._settings.els.playerTime_Start = this._settings.els.player.find('#playerTime_Seft');
+			this._settings.els.playerTime_Now = this._settings.els.player.find('#playerTime_Now');
 			
 			this._settings.els.playerControls = this._settings.els.player.find('#playerControls');
 			this._settings.els.btnPlaylist = this._settings.els.player.find('#btnPlaylist');
@@ -214,9 +284,16 @@
 			this._settings.els.btnStop = this._settings.els.player.find('#btnStop');
 			this._settings.els.btnNext = this._settings.els.player.find('#btnNext');
 			
+			this._settings.els.btnStop.hide();
+			
 		},
 		
 		_updateArtistPanel: function() {
+			
+			if (this.isSongPlaying == true) {
+				this._settings.els.btnStop.hide();
+				this._settings.els.btnPlay.show();
+			}
 			
 			var currentTrack = this._settings._currentTrack;
 			
@@ -228,31 +305,51 @@
 			this._settings.els.trackDesc.text(currentTrack.desc);
 			this._settings.els.trackDuration.text(currentTrack.tracktime);
 			
-			this._showPlayerContainer();
+			// Assign new src to audio
+			this._newAudio.src = currentTrack.url;
+			
+			// Player
+			this._settings.els.playerSongName.text(currentTrack.name);
+			
+			this._showArtistPanel();
 		},
 		
-		_showPlayerContainer: function() {
-			this._settings.els.html.addClass('player-is-active');
+		_showArtistPanel: function() {
+			this._settings.els.html.addClass('show-artistPanel');
 			this._settings.parentContainer.fadeOut(300);
 		},
 		
-		_hidePlayerContainer: function() {
-			this._settings.els.html.removeClass('player-is-active');
+		_hideArtistPanel: function() {
+			this._settings.els.html.removeClass('show-artistPanel');
 			this._settings.parentContainer.fadeIn(300);
 		},
 		
 		playSound: function() {
 			
-			console.log('Play howler sound');
-			this.isPlaying = true;
-			this._settings._howler.currentSongPlaying.play();
+			console.log('Play sound');
+			this.isSongPlaying = true;
+			this._newAudio.play();
+			
+			this._hidePlayBtn();
 		},
 		
 		stopSound: function() {
 			
-			console.log('Stop howler sound');
-			this.isPlaying = false;
-			this._settings._howler.currentSongPlaying.stop();
+			console.log('Stop sound');
+			this.isSongPlaying = false;
+			this._newAudio.pause();
+			
+			this._hideStopBtn();
+		},
+		
+		_hidePlayBtn: function() {
+			this._settings.els.btnPlay.hide();
+			this._settings.els.btnStop.show();
+		},
+		
+		_hideStopBtn: function() {
+			this._settings.els.btnStop.hide();
+			this._settings.els.btnPlay.show();
 		},
 		
 		// Bind events that trigger methods
