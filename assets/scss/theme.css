@@ -107,7 +107,6 @@
   left: 0;
   display: inline-block;
   height: 5px;
-  width: 70%;
   background-color: #365151;
 }
 
@@ -719,6 +718,8 @@ video {
 
 #zones .zone-list li.zone-locked > a {
   opacity: 0.7;
+  -webkit-transition: opacity 255ms ease;
+  transition: opacity 255ms ease;
 }
 
 #zones .zone-list li.zone-locked > a::after {
@@ -735,6 +736,15 @@ video {
   width: 20px;
 }
 
+#zones .zone-list li.zone-locked > a:hover {
+  opacity: 1;
+}
+
+#zones .zone-list li.zone-locked > a:hover::after {
+  -webkit-animation: shake 0.4s ease-out;
+          animation: shake 0.4s ease-out;
+}
+
 #zones .zone-list li > a {
   color: #365151;
   display: inline-block;
@@ -743,6 +753,52 @@ video {
   position: relative;
   text-decoration: none;
   width: 150px;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  25% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  50% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  75% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  25% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  50% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  75% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
 }
 
 .sigContain {
@@ -874,6 +930,11 @@ video {
   width: 21px;
 }
 
+.zone-page.zone-locked .playlist a:hover::before {
+  -webkit-animation: shake_inside_locked_zone 0.4s ease-out;
+          animation: shake_inside_locked_zone 0.4s ease-out;
+}
+
 .zone-page.zone-locked .playlist a::before {
   background: transparent url("../images/ico-lock2.svg") no-repeat center !important;
   background-size: cover !important;
@@ -886,6 +947,52 @@ video {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   width: 20px !important;
+}
+
+@-webkit-keyframes shake_inside_locked_zone {
+  0% {
+    -webkit-transform: translateY(-50%) rotate(-10deg);
+            transform: translateY(-50%) rotate(-10deg);
+  }
+  25% {
+    -webkit-transform: translateY(-50%) rotate(10deg);
+            transform: translateY(-50%) rotate(10deg);
+  }
+  50% {
+    -webkit-transform: translateY(-50%) rotate(-10deg);
+            transform: translateY(-50%) rotate(-10deg);
+  }
+  75% {
+    -webkit-transform: translateY(-50%) rotate(10deg);
+            transform: translateY(-50%) rotate(10deg);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) rotate(-10deg);
+            transform: translateY(-50%) rotate(-10deg);
+  }
+}
+
+@keyframes shake_inside_locked_zone {
+  0% {
+    -webkit-transform: translateY(-50%) rotate(-10deg);
+            transform: translateY(-50%) rotate(-10deg);
+  }
+  25% {
+    -webkit-transform: translateY(-50%) rotate(10deg);
+            transform: translateY(-50%) rotate(10deg);
+  }
+  50% {
+    -webkit-transform: translateY(-50%) rotate(-10deg);
+            transform: translateY(-50%) rotate(-10deg);
+  }
+  75% {
+    -webkit-transform: translateY(-50%) rotate(10deg);
+            transform: translateY(-50%) rotate(10deg);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) rotate(-10deg);
+            transform: translateY(-50%) rotate(-10deg);
+  }
 }
 
 #loading_screen {
