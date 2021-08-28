@@ -1,17 +1,41 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 #player {
     align-content: space-between;
     display: flex;
     flex-wrap: wrap;
     height: 100%;
     text-align: left;
-    position: fixed;
+    // position: fixed;
     // position: absolute;
-    top: 0;
-    right: 0;
-    transition: transform 0.3s ease-in-out;
-    transform: translateY(100%);
+    // top: 0;
+    // right: 0;
+    
+    // -webkit-transition: transform 0.3s ease-in-out;
+    // -webkit-transform: translateY(100%);
+    
+    // transition: transform 0.3s ease-in-out;
+    // transform: translateY(100%);
+    
     width: 100%;
     z-index: 10;
+    
+    display: none;
+    
+    // &::after {
+    //     bottom: 0vh;
+    //     content: "";
+    //     display: block;
+    //     height: 146px;
+    //     left: 0;
+    //     position: absolute;
+    //     right: 0;
+    //     z-index: -1;
+    //     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    //     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    // }
     
     h2 {
         color: $green2;
@@ -21,9 +45,11 @@
         width: auto;
     }
 
-    .show-artistPanel & {
-        transform: translateY(0);
-    }
+    // .show-artistPanel & {
+        
+    //     -webkit-transform: translateY(0);
+    //     transform: translateY(0);
+    // }
     
     // .zone-rouge & {
     //     background: rgb(229, 154, 112);
@@ -40,47 +66,68 @@
     //     background: linear-gradient(0deg, rgba(110, 220, 147, 1) 0%, rgba(191, 229, 116, 1) 100%);
     // }
     
-    .zone-rouge & {
-        background: rgb(229, 154, 112);
-        background: linear-gradient(0deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
-    }
+    // .zone-rouge & {
+    //     background: rgb(229, 154, 112);
+    //     background: linear-gradient(0deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
+    // }
 
-    .zone-orange & {
-        background: rgb(250, 228, 116);
-        background: linear-gradient(0deg, rgba(250, 228, 116, 1) 0%, rgba(229, 147, 112, 1) 100%);
-    }
+    // .zone-orange & {
+    //     background: rgb(250, 228, 116);
+    //     background: linear-gradient(0deg, rgba(250, 228, 116, 1) 0%, rgba(229, 147, 112, 1) 100%);
+    // }
 
-    .zone-verte & {
-        background: rgb(110, 220, 147);
-        background: linear-gradient(0deg, rgba(110, 220, 147, 1) 0%, rgba(191, 229, 116, 1) 100%);
-    }
+    // .zone-verte & {
+    //     background: rgb(110, 220, 147);
+    //     background: linear-gradient(0deg, rgba(110, 220, 147, 1) 0%, rgba(191, 229, 116, 1) 100%);
+    // }
     
     .inner {
         min-height: 100%;
         margin: 0 auto;
         max-width: 764px;
-        padding: 80px 20px 110px;
+        padding: 60px 20px 140px;
         position: relative;
+        
+        height: 100vh;
+        overflow-y: scroll;
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 75%);
+        mask-image: linear-gradient(to bottom, black 60%, transparent 75%);
+
     }
     
     #artistInfoPanel {
         
         // height: 100%;
         position: relative;
+        
+        -webkit-transition: transform 0.3s ease-in-out;
+        -webkit-transform: translateY(0);
+        
         transition: transform 0.3s ease-in-out;
         transform: translateY(0);
+        
         width: 100%;
         
-        
+        // -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        // mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
         
         .hide-artistInfo & {
+            -webkit-transform: translateY(100%);
             transform: translateY(100%);
         }
         
     }
     
     #artistPlayer {
+        bottom: 0;
+        position: fixed;
         width: 100%;
+        
+        //  background-image: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
+    }
+    
+    #player_desc {
+        padding-bottom: 40px;
     }
     
     #playerProgressBarContainer {
@@ -200,4 +247,24 @@
     #credits {
         width: 150px;
     }
+}
+
+/*
+ *******************
+ *  MEDIA QUERIES  *
+ *******************
+*/
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+
 }

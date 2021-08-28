@@ -227,13 +227,13 @@ video {
     background: transparent url('../images/ico-back.svg') no-repeat center;
     background-size: cover;
     display: block;
-    height: 34px;
+    height: 28px;
     overflow: hidden;
     position: fixed;
     text-indent: -9999px;
     top: 20px;
     left: 20px;
-    width: 34px;
+    width: 28px;
 }
 
 #side-menu {
@@ -247,12 +247,17 @@ video {
     position: fixed;
     top: 0;
     right: 0;
+    -webkit-transition: transform 0.3s ease-in-out;
+    -webkit-transform: translateX(100%);
+    
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
+    
     width: 100%;
     z-index: 11;
 
     .menu-is-active & {
+        -webkit-transform: translateX(0);
         transform: translateX(0);
     }
     
@@ -279,7 +284,7 @@ video {
     height: 2px;
     background-color: white;
     display: block;
-    margin: 11px auto;
+    margin: 8px auto;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -306,10 +311,10 @@ video {
 
     .menu-is-active & {
         background-color: white;
-        -webkit-transform: translateY(13px) rotate(45deg);
-        -ms-transform: translateY(13px) rotate(45deg);
-        -o-transform: translateY(13px) rotate(45deg);
-        transform: translateY(13px) rotate(45deg);
+        -webkit-transform: translateY(8px) rotate(45deg);
+        -ms-transform: translateY(8px) rotate(45deg);
+        -o-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
     }
 }
 
@@ -702,6 +707,8 @@ $main-width: 70px;
     
     main {
         
+        padding-bottom: 60px;
+        
         .inner {
             // padding-left: 0;
             // padding-right: 0;
@@ -721,7 +728,7 @@ $main-width: 70px;
             margin: 0 auto;
             max-width: 764px;
             // overflow: visible;
-            padding: 0 0 60px 0;
+            // padding: 0 0 60px 0;
             
             li {
                 border-top: 1px solid rgba(255,255,255, 0.6);
@@ -738,6 +745,11 @@ $main-width: 70px;
                     padding: 12px 20px;
                     position: relative;
                     text-decoration: none;
+                    transition: padding 300ms ease;
+                    
+                    &:hover {
+                        padding-left: 35px;
+                    }
                 }
                 
                 &.listened {

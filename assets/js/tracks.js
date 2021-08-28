@@ -8,7 +8,7 @@ var trackDataObj = {
             url: "./assets/mp3/zone-rouge/piste1.mp3", // See if we can host them elsewhere.
             tracktime: "6 MIN",
             credits: "Ludovic Longprés Roxane Myre",
-            desc: "Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif.",
+            desc: "Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
             videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
         },
         track2: {

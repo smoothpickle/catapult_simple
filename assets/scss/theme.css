@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 #player {
   -ms-flex-line-pack: justify;
       align-content: space-between;
@@ -8,17 +12,9 @@
       flex-wrap: wrap;
   height: 100%;
   text-align: left;
-  position: fixed;
-  top: 0;
-  right: 0;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
   width: 100%;
   z-index: 10;
+  display: none;
 }
 
 #player h2 {
@@ -29,55 +25,45 @@
   width: auto;
 }
 
-.show-artistPanel #player {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
-.zone-rouge #player {
-  background: #e59a70;
-  background: -webkit-gradient(linear, left bottom, left top, from(#e59a70), to(#fa748c));
-  background: linear-gradient(0deg, #e59a70 0%, #fa748c 100%);
-}
-
-.zone-orange #player {
-  background: #fae474;
-  background: -webkit-gradient(linear, left bottom, left top, from(#fae474), to(#e59370));
-  background: linear-gradient(0deg, #fae474 0%, #e59370 100%);
-}
-
-.zone-verte #player {
-  background: #6edc93;
-  background: -webkit-gradient(linear, left bottom, left top, from(#6edc93), to(#bfe574));
-  background: linear-gradient(0deg, #6edc93 0%, #bfe574 100%);
-}
-
 #player .inner {
   min-height: 100%;
   margin: 0 auto;
   max-width: 764px;
-  padding: 80px 20px 110px;
+  padding: 60px 20px 140px;
   position: relative;
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, black), color-stop(75%, transparent));
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 75%);
+  mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, black), color-stop(75%, transparent));
+  mask-image: linear-gradient(to bottom, black 60%, transparent 75%);
 }
 
 #player #artistInfoPanel {
   position: relative;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translateY(0);
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
+  transform: translateY(0);
   width: 100%;
 }
 
 .hide-artistInfo #player #artistInfoPanel {
   -webkit-transform: translateY(100%);
-          transform: translateY(100%);
+  transform: translateY(100%);
 }
 
 #player #artistPlayer {
+  bottom: 0;
+  position: fixed;
   width: 100%;
+}
+
+#player #player_desc {
+  padding-bottom: 40px;
 }
 
 #player #playerProgressBarContainer {
@@ -177,6 +163,11 @@
   width: 150px;
 }
 
+/*
+ *******************
+ *  MEDIA QUERIES  *
+ *******************
+*/
 body,
 html {
   min-height: 100%;
@@ -391,13 +382,13 @@ video {
   background: transparent url("../images/ico-back.svg") no-repeat center;
   background-size: cover;
   display: block;
-  height: 34px;
+  height: 28px;
   overflow: hidden;
   position: fixed;
   text-indent: -9999px;
   top: 20px;
   left: 20px;
-  width: 34px;
+  width: 28px;
 }
 
 #side-menu {
@@ -418,19 +409,20 @@ video {
   position: fixed;
   top: 0;
   right: 0;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translateX(100%);
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  transform: translateX(100%);
   width: 100%;
   z-index: 11;
 }
 
 .menu-is-active #side-menu {
   -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
 }
 
 #side-menu li.active a {
@@ -454,7 +446,7 @@ video {
   height: 2px;
   background-color: white;
   display: block;
-  margin: 11px auto;
+  margin: 8px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -470,8 +462,8 @@ video {
 
 .menu-is-active #hamburger-1 .line:nth-child(1) {
   background-color: white;
-  -webkit-transform: translateY(13px) rotate(45deg);
-  transform: translateY(13px) rotate(45deg);
+  -webkit-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .menu-is-active #hamburger-1 .line:nth-child(3) {
@@ -896,10 +888,13 @@ video {
 }
 
 /* ZONES PAGES */
+.zone-page main {
+  padding-bottom: 60px;
+}
+
 .zone-page main .playlist {
   margin: 0 auto;
   max-width: 764px;
-  padding: 0 0 60px 0;
 }
 
 .zone-page main .playlist li {
@@ -918,6 +913,12 @@ video {
   padding: 12px 20px;
   position: relative;
   text-decoration: none;
+  -webkit-transition: padding 300ms ease;
+  transition: padding 300ms ease;
+}
+
+.zone-page main .playlist li a:hover {
+  padding-left: 35px;
 }
 
 .zone-page main .playlist li.listened a::before {

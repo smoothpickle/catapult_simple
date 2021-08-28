@@ -135,8 +135,6 @@
 			const end = this._settings.els.playerTime_End;
 			const progressBar = this._settings.els.playerProgressBar;
 			const now = this._settings.els.playerTime_Now;
-			
-			
 
 			function conversion (value) {
 				let minute = Math.floor(value / 60);
@@ -310,18 +308,30 @@
 			
 			// Player
 			this._settings.els.playerSongName.text(currentTrack.name);
+			this._settings.els.playerTime_Now.css({'width': '0%'});
 			
 			this._showArtistPanel();
 		},
 		
 		_showArtistPanel: function() {
+			var _this = this;
+			console.log(this._settings.els.artistPlayer)
+			
 			this._settings.els.html.addClass('show-artistPanel');
-			this._settings.parentContainer.fadeOut(300);
+			
+			this._settings.parentContainer.fadeOut(300, function() {
+				_this._settings.els.player.fadeIn(300);
+			});
 		},
 		
 		_hideArtistPanel: function() {
+			var _this = this;
+			
 			this._settings.els.html.removeClass('show-artistPanel');
-			this._settings.parentContainer.fadeIn(300);
+			this._settings.els.player.fadeOut(300, function() {
+				_this._settings.parentContainer.fadeIn(300);
+			});
+			
 		},
 		
 		playSound: function() {
