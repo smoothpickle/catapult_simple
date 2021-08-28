@@ -63,7 +63,7 @@
 }
 
 #player #player_desc {
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 }
 
 #player #playerProgressBarContainer {
@@ -431,7 +431,7 @@ video {
 
 #side-menu a {
   color: #75dc93;
-  font-size: 3.8em;
+  font-size: 3.2em;
   text-decoration: none;
   -webkit-transition: color 200ms ease;
   transition: color 200ms ease;
@@ -442,7 +442,7 @@ video {
 }
 
 .hamburger .line {
-  width: 38px;
+  width: 32px;
   height: 2px;
   background-color: white;
   display: block;
@@ -1028,6 +1028,18 @@ video {
  *  MEDIA QUERIES  *
  *******************
 */
+@media (max-width: 321px) {
+  #intro-video .text-anim-wrapper span {
+    font-size: 4em;
+  }
+}
+
+@media (max-width: 376px) {
+  #intro-video .text-anim-wrapper span {
+    font-size: 5em;
+  }
+}
+
 @media (min-width: 576px) {
   .container .inner {
     margin: 0 auto;

@@ -267,7 +267,7 @@ video {
 
     a {
         color: $green3;
-        font-size: 3.8em;
+        font-size: 3.2em;
         text-decoration: none;
         transition: color 200ms ease;
 
@@ -280,7 +280,7 @@ video {
 
 // Menu icon animation
 .hamburger .line {
-    width: 38px;
+    width: 32px;
     height: 2px;
     background-color: white;
     display: block;
@@ -849,6 +849,20 @@ $main-width: 70px;
  *  MEDIA QUERIES  *
  *******************
 */
+
+@media (max-width: 321px) {
+
+    #intro-video .text-anim-wrapper span { font-size: 4em; }
+
+}
+
+@media (max-width: 376px) {
+
+    #intro-video .text-anim-wrapper span {
+        font-size: 5em;
+    }
+
+}
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
