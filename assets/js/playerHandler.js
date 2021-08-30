@@ -79,16 +79,27 @@
 			this._buildAudioElement();
 			this._buildPlaylist();
 			this._createArtistPanel();
+			this._buildVideoElement();
 			this._buildProgressBar();
+		},
+		
+		_buildVideoElement: function() {
+			var _this = this;
+			
+			this._newVideo = document.createElement("video");
+			// this._newVideo.autoplay = true;
+			this._newVideo.loop = true;
+			this._newVideo.controls = false;
+			this._settings.els.artistVideo.append(this._newVideo);
 		},
 		
 		_buildAudioElement: function() {
 			var _this = this;
 			
 			this._newAudio = new Audio();
-			this._newAudio.onended = function() {
-				
-			}
+			$(this._newAudio).on('ended', function() {
+				_this._handleStopSound();
+			});
 		},
 		
 		_buildPlaylist: function() {
@@ -145,8 +156,8 @@
 			}
 
 			audio.onloadedmetadata = function () {
-				end.innerHTML = conversion(audio.duration);
-				start.innerHTML = conversion(audio.currentTime);
+				end.text(conversion(audio.duration));
+				start.text(conversion(audio.currentTime));
 			}
 
 			progressBar.on('click', function (event) {
@@ -156,7 +167,7 @@
 				// now.style.width = p.toFixed(3) * 100 + '%';
 				now.css({width: p.toFixed(3) * 100 + '%'});
 				
-				console.log(now);
+				// console.log(now);
 
 				audio.currentTime = p * audio.duration;
 				audio.play();
@@ -231,7 +242,8 @@
 						text: 'Jouer la balado',
 						click: function() {
 							
-							plugin.playSound();
+							// plugin.playSound();
+							plugin._handlePlaySound();
 						}
 					}))
 					.append($('<button/>', { 
@@ -239,15 +251,30 @@
 						text: 'Arrête la balado',
 						click: function() {
 							
-							plugin.stopSound();
+							// plugin.stopSound();
+							plugin._handleStopSound();
 						}
 					}))
+					.append($('<div/>', { 
+						id: 'playerLoadingIcon',
+						class: 'radar radar-color-alt'
+					})
+						.append($('<div/>', { class: 'wave wave1' }))
+						.append($('<div/>', { class: 'wave wave2' }))
+						.append($('<div/>', { class: 'wave wave3' }))
+					)
 					.append($('<button/>', {
 						id: 'btnNext',
 						text: 'Jouer la prochaine la balado'
 					}))
 					.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
 				)
+				.append($('<button/>', { 
+					id: 'btnToggleCollapsePlayer',
+					click: function() {
+						plugin.toggleCollapsePlayer();
+					}
+				}))
 			));
 			
 			this._assignElements();
@@ -273,7 +300,7 @@
 			this._settings.els.playerProgressBar = this._settings.els.player.find('#playerProgressBar');
 			
 			this._settings.els.playerTime_End = this._settings.els.player.find('#playerTime_End');
-			this._settings.els.playerTime_Start = this._settings.els.player.find('#playerTime_Seft');
+			this._settings.els.playerTime_Start = this._settings.els.player.find('#playerTime_Start');
 			this._settings.els.playerTime_Now = this._settings.els.player.find('#playerTime_Now');
 			
 			this._settings.els.playerControls = this._settings.els.player.find('#playerControls');
@@ -282,11 +309,21 @@
 			this._settings.els.btnStop = this._settings.els.player.find('#btnStop');
 			this._settings.els.btnNext = this._settings.els.player.find('#btnNext');
 			
+			this._settings.els.btnToggleCollapsePlayer = this._settings.els.player.find('#btnToggleCollapsePlayer');
+			
+			this._settings.els.loadingIcon = this._settings.els.player.find('#playerLoadingIcon');
+			
+			this._settings.els.loadingIcon.hide();
 			this._settings.els.btnStop.hide();
 			
 		},
 		
 		_updateArtistPanel: function() {
+			var _this = this;
+			
+			this._areMediasReady = false;
+			this._videoReady = false;
+			this._audioReady = false;
 			
 			if (this.isSongPlaying == true) {
 				this._settings.els.btnStop.hide();
@@ -303,14 +340,60 @@
 			this._settings.els.trackDesc.text(currentTrack.desc);
 			this._settings.els.trackDuration.text(currentTrack.tracktime);
 			
-			// Assign new src to audio
+			// Video
+			$(this._newVideo).attr('src', currentTrack.videoURL);
+			this._newVideo.load();
+			// this._newVideo.onloadeddata = function() {
+			// 	console.log('video is loaded');
+			// 	_this._videoReady = true;
+			// 	_this._checkIfMediasAreReady();
+			// }
+			
+			$(this._newVideo).on('canplaythrough', function() {
+				console.log('video is loaded');
+				_this._videoReady = true;
+				$(_this._newVideo).off('canplaythrough');
+				//_this._checkIfMediasAreReady();
+			});
+			
+			// Audio
 			this._newAudio.src = currentTrack.url;
+			// this._newAudio.onloadeddata = function() {
+			// 	console.log('audio is ready');
+			// 	_this._audioReady = true;
+			// 	_this._checkIfMediasAreReady();
+			// }
+			
+			$(this._newAudio).on('canplay', function() {
+				console.log('audio is loaded');
+				_this._audioReady = true;
+				$(_this._newAudio).off('canplay');
+				//_this._checkIfMediasAreReady();
+			});
+			
 			
 			// Player
 			this._settings.els.playerSongName.text(currentTrack.name);
 			this._settings.els.playerTime_Now.css({'width': '0%'});
 			
+			console.log(this._audioReady, this._videoReady);
+			
+			// if (this._audioReady == true && this._videoReady == true ) {
+			// 	console.log('GO')
+			// 	_this._showArtistPanel();
+			// }
+			
 			this._showArtistPanel();
+		},
+		
+		_checkIfMediasAreReady: function() {
+			var _this = this;
+			
+			if (this._audioReady == true && this._videoReady == true) {
+				console.log('Medias are ready')
+				this._areMediasReady = true;
+				// this.playSound();
+			}
 		},
 		
 		_showArtistPanel: function() {
@@ -319,37 +402,79 @@
 			
 			this._settings.els.html.addClass('show-artistPanel');
 			
+			this._settings.els.btnToggleCollapsePlayer.fadeOut(300);
+			
 			this._settings.parentContainer.fadeOut(300, function() {
-				_this._settings.els.player.fadeIn(300);
+				
+				_this._settings.els.player.fadeIn(300, function() {
+
+				});
 			});
+
 		},
 		
 		_hideArtistPanel: function() {
 			var _this = this;
 			
 			this._settings.els.html.removeClass('show-artistPanel');
+			this._settings.els.html.removeClass('song-is-playing');
+			
+
 			this._settings.els.player.fadeOut(300, function() {
-				_this._settings.parentContainer.fadeIn(300);
+
+				_this._settings.parentContainer.fadeIn(300, function() {
+
+				});
 			});
 			
 		},
 		
 		playSound: function() {
+			var _this = this;
 			
 			console.log('Play sound');
 			this.isSongPlaying = true;
-			this._newAudio.play();
+		
+			// this._settings.els.html.addClass('song-is-playing');
 			
+			this._newVideo.play();
+			this._newAudio.play();
+
 			this._hidePlayBtn();
+		},
+		
+		_handlePlaySound: function() {
+			var _this = this;
+
+			this._settings.els.html.addClass('song-is-playing');
+			
+			this._settings.els.btnToggleCollapsePlayer.fadeIn(300);
+			
+			this.playSound();
+			
 		},
 		
 		stopSound: function() {
 			
 			console.log('Stop sound');
 			this.isSongPlaying = false;
+			
+			this._newVideo.pause();
 			this._newAudio.pause();
 			
 			this._hideStopBtn();
+		},
+		
+		_handleStopSound: function() {
+			var _this = this;
+			
+			this._settings.els.html.removeClass('song-is-playing');
+			this._settings.els.html.removeClass('player-is-collapse');
+			
+			this._settings.els.btnToggleCollapsePlayer.hide();
+			
+			this.stopSound();
+			
 		},
 		
 		_hidePlayBtn: function() {
@@ -360,6 +485,12 @@
 		_hideStopBtn: function() {
 			this._settings.els.btnStop.hide();
 			this._settings.els.btnPlay.show();
+		},
+		
+		toggleCollapsePlayer: function() {
+			var _this = this;
+			
+			this._settings.els.html.toggleClass('player-is-collapse');
 		},
 		
 		// Bind events that trigger methods

@@ -9,7 +9,7 @@ var trackDataObj = {
             tracktime: "6 MIN",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-1_VID.mp4"
         },
         track2: {
             name: "Piste 2",
@@ -20,7 +20,7 @@ var trackDataObj = {
             tracktime: "7 MIN",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro2.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-2_VID.mp4"
         },
         track3: {
             name: "Piste 3",
@@ -31,7 +31,7 @@ var trackDataObj = {
             tracktime: "2 MIN",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-3_VID.mp4"
         },
         track4: {
             name: "Simon Gagné",
@@ -42,7 +42,7 @@ var trackDataObj = {
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro2.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-4_VID.mp4"
         },
         track5: {
             name: "Jonas",
@@ -53,7 +53,7 @@ var trackDataObj = {
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-5_VID.mp4"
         },
         track6: {
             name: "Sophie",
@@ -64,7 +64,7 @@ var trackDataObj = {
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro2.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-6_VID.mp4"
         },
         track7: {
             name: "Piste 7",
@@ -75,7 +75,7 @@ var trackDataObj = {
             tracktime: "4:40",
             credits: "Ludovic Longprés Roxane Myre",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-            videoURL: "./assets/video/zone-rouge/video-intro1.mp4"
+            videoURL: "./assets/videos/zone-rouge/3-7_VID.mp4"
         }
     }
 }
