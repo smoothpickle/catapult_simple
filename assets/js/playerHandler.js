@@ -90,6 +90,9 @@
 			// this._newVideo.autoplay = true;
 			this._newVideo.loop = true;
 			this._newVideo.controls = false;
+			this._newVideo.setAttribute('playsinline', 'playsinline');
+			// this._newVideo.attr('webkit-playsinline', 'webkit-playsinline');
+			this._newVideo.setAttribute('muted', 'muted');
 			this._settings.els.artistVideo.append(this._newVideo);
 		},
 		
@@ -265,7 +268,10 @@
 					)
 					.append($('<button/>', {
 						id: 'btnNext',
-						text: 'Jouer la prochaine la balado'
+						text: 'Jouer la prochaine la balado',
+						// click: function() {
+						// 	plugin.skip();
+						// }
 					}))
 					.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
 				)
@@ -315,11 +321,18 @@
 			
 			this._settings.els.loadingIcon.hide();
 			this._settings.els.btnStop.hide();
+			this._settings.els.btnNext.hide();
 			
 		},
 		
-		_updateArtistPanel: function() {
+		_updateArtistPanel: function(trackIndex) {
 			var _this = this;
+			
+			this._settings.els.btnPlay.hide();
+			this._settings.els.loadingIcon.show();
+			
+			this._settings.els.trackDuration.show();
+			this._settings.els.btnNext.hide();
 			
 			this._areMediasReady = false;
 			this._videoReady = false;
@@ -330,50 +343,53 @@
 				this._settings.els.btnPlay.show();
 			}
 			
-			var currentTrack = this._settings._currentTrack;
+			var trackIndex;
 			
-			console.log(currentTrack);
+			if (trackIndex) {
+				
+				trackIndex = trackIndex;
+				
+			} else {
+				trackIndex = this._settings._currentTrack;
+			}
+			
 
 			// Assign Current track values
-			this._settings.els.trackName.text(currentTrack.name);
-			this._settings.els.trackCredits.text(currentTrack.credits);
-			this._settings.els.trackDesc.text(currentTrack.desc);
-			this._settings.els.trackDuration.text(currentTrack.tracktime);
+			this._settings.els.trackName.text(trackIndex.name);
+			this._settings.els.trackCredits.text(trackIndex.credits);
+			this._settings.els.trackDesc.text(trackIndex.desc);
+			this._settings.els.trackDuration.text(trackIndex.tracktime);
 			
 			// Video
-			$(this._newVideo).attr('src', currentTrack.videoURL);
+			$(this._newVideo).attr('src', trackIndex.videoURL);
 			this._newVideo.load();
-			// this._newVideo.onloadeddata = function() {
-			// 	console.log('video is loaded');
-			// 	_this._videoReady = true;
-			// 	_this._checkIfMediasAreReady();
-			// }
-			
+
 			$(this._newVideo).on('canplaythrough', function() {
 				console.log('video is loaded');
 				_this._videoReady = true;
 				$(_this._newVideo).off('canplaythrough');
-				//_this._checkIfMediasAreReady();
+				_this._checkIfMediasAreReady();
 			});
 			
 			// Audio
-			this._newAudio.src = currentTrack.url;
+			console.log(trackIndex.url);
+			this._newAudio.src = trackIndex.url;
+			this._newAudio.load();
 			// this._newAudio.onloadeddata = function() {
-			// 	console.log('audio is ready');
+			// 	console.log('audio is loaded');
 			// 	_this._audioReady = true;
 			// 	_this._checkIfMediasAreReady();
 			// }
-			
+			// console.log('SOUND DOESNT WANT TO ACTIVATE')
 			$(this._newAudio).on('canplay', function() {
 				console.log('audio is loaded');
 				_this._audioReady = true;
 				$(_this._newAudio).off('canplay');
-				//_this._checkIfMediasAreReady();
+				_this._checkIfMediasAreReady();
 			});
 			
-			
 			// Player
-			this._settings.els.playerSongName.text(currentTrack.name);
+			this._settings.els.playerSongName.text(trackIndex.name);
 			this._settings.els.playerTime_Now.css({'width': '0%'});
 			
 			console.log(this._audioReady, this._videoReady);
@@ -392,13 +408,19 @@
 			if (this._audioReady == true && this._videoReady == true) {
 				console.log('Medias are ready')
 				this._areMediasReady = true;
-				// this.playSound();
+				
+				
+				this._settings.els.btnPlay.show();
+				this._settings.els.loadingIcon.hide();
+			
 			}
 		},
 		
 		_showArtistPanel: function() {
 			var _this = this;
-			console.log(this._settings.els.artistPlayer)
+			console.log(this._settings.els.artistPlayer);
+			
+			this._settings.els.btnPlay.hide();
 			
 			this._settings.els.html.addClass('show-artistPanel');
 			
@@ -450,6 +472,9 @@
 			
 			this._settings.els.btnToggleCollapsePlayer.fadeIn(300);
 			
+			this._settings.els.trackDuration.hide();
+			this._settings.els.btnNext.show();
+			
 			this.playSound();
 			
 		},
@@ -473,6 +498,9 @@
 			
 			this._settings.els.btnToggleCollapsePlayer.hide();
 			
+			this._settings.els.trackDuration.show();
+			this._settings.els.btnNext.hide();
+			
 			this.stopSound();
 			
 		},
@@ -492,6 +520,24 @@
 			
 			this._settings.els.html.toggleClass('player-is-collapse');
 		},
+		
+		// skip: function() {
+		// 	var _this = this;
+			
+		// 	var currentTrack = this._settings._currentTrack.id;
+		// 	currentTrack + 1;
+			
+		// 	const output = Object.entries(_this._tracks['track'+currentTrack])
+		// 	.filter(([k, v]) => {
+		// 		return true; // some irrelevant conditions here
+		// 	})
+		// 	.reduce((accum, [k, v]) => {
+		// 		accum[k] = v;
+		// 		return accum;
+		// 	}, {});
+		// 	console.log(output);
+			
+		// },
 		
 		// Bind events that trigger methods
 		_bindEvents: function () {

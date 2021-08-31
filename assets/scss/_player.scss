@@ -11,9 +11,12 @@ body {
         overflow: hidden;
     }
     
-    &::-webkit-scrollbar {
-        display: none;
+    &.zone-page {
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
+    
 }
 
 #player {
@@ -123,8 +126,8 @@ body {
         }
         
         .player-is-collapse & {
-            -webkit-transform: translateY(140px);
-            transform: translateY(140px);
+            -webkit-transform: translateY(160px);
+            transform: translateY(160px);
         }
         
         &::before {
@@ -162,7 +165,7 @@ body {
     }
     
     #playerProgressBarContainer {
-        margin: 0 auto;
+        margin: 0 auto 20px;
         max-width: 764px;
         opacity: 0;
         padding: 0 20px;
@@ -272,7 +275,7 @@ body {
         // transform: translateX(-50%);
         width: 32px;
         
-        display: none;
+        // display: none;
     }
     
     #btnToggleCollapsePlayer {
@@ -295,14 +298,14 @@ body {
     }
     
     #player_duration {
-        opacity: 1;
+        // opacity: 1;
 
-        -webkit-transition: opacity 300ms ease;
-        transition: opacity 300ms ease;
+        // -webkit-transition: opacity 300ms ease;
+        // transition: opacity 300ms ease;
 
-        .song-is-playing & {
-            opacity: 0;
-        }
+        // .song-is-playing & {
+        //     opacity: 0;
+        // }
     }
     
     #btnPlaylist {
