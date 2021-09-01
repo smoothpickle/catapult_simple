@@ -167,15 +167,15 @@ body {
     #playerProgressBarContainer {
         margin: 0 auto 20px;
         max-width: 764px;
-        opacity: 0;
+        // opacity: 0;
         padding: 0 20px;
         position: relative;
-        -webkit-transition: opacity 300ms ease;
-        transition: opacity 300ms ease;
+        // -webkit-transition: opacity 300ms ease;
+        // transition: opacity 300ms ease;
         
-        .song-is-playing & {
-            opacity: 1;
-        }
+        // .song-is-playing & {
+        //     opacity: 1;
+        // }
         
         #playerSongName {
             color: white;

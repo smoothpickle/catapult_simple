@@ -1,5 +1,6 @@
 @import "_vars";
 @import "_player";
+@import "_flicker";
 
 body,
 html {
@@ -65,7 +66,7 @@ h1, h2 {
         color: $green2;
         font-size: 2.5em;
         line-height: 0.8;
-        margin: 0.5em 0.5em 1em;
+        margin: 0.5em 0.5em 0;
         width: 150px;
     }
 }
@@ -532,15 +533,22 @@ $main-width: 70px;
             width: 100%;
             
             &:nth-child(1) {
-                transition: opacity 350ms ease;
+                -webkit-transition: opacity 600ms ease;
+                transition: opacity 300ms ease;
             }
             
             &:nth-child(2) {
-                transition: opacity 650ms ease;
+                -webkit-transition: opacity 600ms ease;
+                -webkit-transition-delay: 300ms;
+                transition: opacity 600ms ease;
+                transition-delay: 300ms;
             }
             
             &:nth-child(3) {
-                transition: opacity 950ms ease;
+                -webkit-transition: opacity 600ms ease;
+                -webkit-transition-delay: 600ms;
+                transition: opacity 600ms ease;
+                transition-delay: 600ms;
             }
             
             .reached-zones & {
@@ -653,7 +661,7 @@ $main-width: 70px;
 .signal {
     // overflow: hidden;
     position: absolute;
-    top: 0;
+    top: -70px;
     bottom: 0;
     left: 0;
     right: 0;

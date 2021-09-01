@@ -12,9 +12,9 @@ if (window.mobileCheck === true) {
 
 $(window).on('load', function() {
     
-    var _body = $('body');
+    // var _body = $('body');
     
-    _body.addClass('page-loaded');
+    // _body.addClass('page-loaded');
     
     // 
     // LOADING Screens handler

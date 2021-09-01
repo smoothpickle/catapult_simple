@@ -334,6 +334,8 @@
 			this._settings.els.trackDuration.show();
 			this._settings.els.btnNext.hide();
 			
+			this._settings.els.playerProgressBarContainer.hide();
+			
 			this._areMediasReady = false;
 			this._videoReady = false;
 			this._audioReady = false;
@@ -362,7 +364,7 @@
 			
 			// Video
 			$(this._newVideo).attr('src', trackIndex.videoURL);
-			this._newVideo.load();
+			// this._newVideo.load();
 
 			$(this._newVideo).on('canplaythrough', function() {
 				console.log('video is loaded');
@@ -374,7 +376,7 @@
 			// Audio
 			console.log(trackIndex.url);
 			this._newAudio.src = trackIndex.url;
-			this._newAudio.load();
+			// this._newAudio.load();
 			// this._newAudio.onloadeddata = function() {
 			// 	console.log('audio is loaded');
 			// 	_this._audioReady = true;
@@ -418,10 +420,10 @@
 		
 		_showArtistPanel: function() {
 			var _this = this;
-			console.log(this._settings.els.artistPlayer);
+			// console.log(this._settings.els.artistPlayer);
 			
 			this._settings.els.btnPlay.hide();
-			
+
 			this._settings.els.html.addClass('show-artistPanel');
 			
 			this._settings.els.btnToggleCollapsePlayer.fadeOut(300);
@@ -471,6 +473,7 @@
 			this._settings.els.html.addClass('song-is-playing');
 			
 			this._settings.els.btnToggleCollapsePlayer.fadeIn(300);
+			this._settings.els.playerProgressBarContainer.fadeIn(300);
 			
 			this._settings.els.trackDuration.hide();
 			this._settings.els.btnNext.show();
@@ -497,6 +500,7 @@
 			this._settings.els.html.removeClass('player-is-collapse');
 			
 			this._settings.els.btnToggleCollapsePlayer.hide();
+			this._settings.els.playerProgressBarContainer.hide();
 			
 			this._settings.els.trackDuration.show();
 			this._settings.els.btnNext.hide();
