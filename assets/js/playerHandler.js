@@ -364,7 +364,7 @@
 			
 			// Video
 			$(this._newVideo).attr('src', trackIndex.videoURL);
-			// this._newVideo.load();
+			this._newVideo.load();
 
 			$(this._newVideo).on('canplaythrough', function() {
 				console.log('video is loaded');
@@ -374,9 +374,9 @@
 			});
 			
 			// Audio
-			console.log(trackIndex.url);
+			// console.log(trackIndex.url);
 			this._newAudio.src = trackIndex.url;
-			// this._newAudio.load();
+			this._newAudio.load();
 			// this._newAudio.onloadeddata = function() {
 			// 	console.log('audio is loaded');
 			// 	_this._audioReady = true;
