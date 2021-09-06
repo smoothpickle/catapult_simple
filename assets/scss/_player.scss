@@ -1,3 +1,4 @@
+@import "_playerAnimations";
 
 html {
     &.song-is-playing {
@@ -12,6 +13,7 @@ body {
     }
     
     &.zone-page {
+        
         &::-webkit-scrollbar {
             display: none;
         }

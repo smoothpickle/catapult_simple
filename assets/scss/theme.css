@@ -1,3 +1,165 @@
+/**
+ * ==============================================
+ * Dot Pulse
+ * ==============================================
+ */
+.dot-pulse-container {
+  position: absolute;
+  right: 37px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: none;
+}
+
+.is-playing .dot-pulse-container {
+  display: block;
+}
+
+.dot-pulse {
+  display: block;
+  position: relative;
+  left: -9999px;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: #365151;
+  color: #365151;
+  -webkit-box-shadow: 9999px 0 0 -5px #365151;
+          box-shadow: 9999px 0 0 -5px #365151;
+  -webkit-animation: dotPulse 1.5s infinite linear;
+          animation: dotPulse 1.5s infinite linear;
+  -webkit-animation-delay: .25s;
+          animation-delay: .25s;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: #365151;
+  color: #365151;
+}
+
+.dot-pulse::before {
+  -webkit-box-shadow: 9984px 0 0 -5px #365151;
+          box-shadow: 9984px 0 0 -5px #365151;
+  -webkit-animation: dotPulseBefore 1.5s infinite linear;
+          animation: dotPulseBefore 1.5s infinite linear;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.dot-pulse::after {
+  -webkit-box-shadow: 10014px 0 0 -5px #365151;
+          box-shadow: 10014px 0 0 -5px #365151;
+  -webkit-animation: dotPulseAfter 1.5s infinite linear;
+          animation: dotPulseAfter 1.5s infinite linear;
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+}
+
+@-webkit-keyframes dotPulseBefore {
+  0% {
+    -webkit-box-shadow: 9984px 0 0 -5px #365151;
+            box-shadow: 9984px 0 0 -5px #365151;
+  }
+  30% {
+    -webkit-box-shadow: 9984px 0 0 2px #365151;
+            box-shadow: 9984px 0 0 2px #365151;
+  }
+  60%,
+  100% {
+    -webkit-box-shadow: 9984px 0 0 -5px #365151;
+            box-shadow: 9984px 0 0 -5px #365151;
+  }
+}
+
+@keyframes dotPulseBefore {
+  0% {
+    -webkit-box-shadow: 9984px 0 0 -5px #365151;
+            box-shadow: 9984px 0 0 -5px #365151;
+  }
+  30% {
+    -webkit-box-shadow: 9984px 0 0 2px #365151;
+            box-shadow: 9984px 0 0 2px #365151;
+  }
+  60%,
+  100% {
+    -webkit-box-shadow: 9984px 0 0 -5px #365151;
+            box-shadow: 9984px 0 0 -5px #365151;
+  }
+}
+
+@-webkit-keyframes dotPulse {
+  0% {
+    -webkit-box-shadow: 9999px 0 0 -5px #365151;
+            box-shadow: 9999px 0 0 -5px #365151;
+  }
+  30% {
+    -webkit-box-shadow: 9999px 0 0 2px #365151;
+            box-shadow: 9999px 0 0 2px #365151;
+  }
+  60%,
+  100% {
+    -webkit-box-shadow: 9999px 0 0 -5px #365151;
+            box-shadow: 9999px 0 0 -5px #365151;
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    -webkit-box-shadow: 9999px 0 0 -5px #365151;
+            box-shadow: 9999px 0 0 -5px #365151;
+  }
+  30% {
+    -webkit-box-shadow: 9999px 0 0 2px #365151;
+            box-shadow: 9999px 0 0 2px #365151;
+  }
+  60%,
+  100% {
+    -webkit-box-shadow: 9999px 0 0 -5px #365151;
+            box-shadow: 9999px 0 0 -5px #365151;
+  }
+}
+
+@-webkit-keyframes dotPulseAfter {
+  0% {
+    -webkit-box-shadow: 10014px 0 0 -5px #365151;
+            box-shadow: 10014px 0 0 -5px #365151;
+  }
+  30% {
+    -webkit-box-shadow: 10014px 0 0 2px #365151;
+            box-shadow: 10014px 0 0 2px #365151;
+  }
+  60%,
+  100% {
+    -webkit-box-shadow: 10014px 0 0 -5px #365151;
+            box-shadow: 10014px 0 0 -5px #365151;
+  }
+}
+
+@keyframes dotPulseAfter {
+  0% {
+    -webkit-box-shadow: 10014px 0 0 -5px #365151;
+            box-shadow: 10014px 0 0 -5px #365151;
+  }
+  30% {
+    -webkit-box-shadow: 10014px 0 0 2px #365151;
+            box-shadow: 10014px 0 0 2px #365151;
+  }
+  60%,
+  100% {
+    -webkit-box-shadow: 10014px 0 0 -5px #365151;
+            box-shadow: 10014px 0 0 -5px #365151;
+  }
+}
+
 html.song-is-playing {
   height: 100%;
 }
@@ -460,6 +622,26 @@ body.zone-page::-webkit-scrollbar {
   }
 }
 
+@-webkit-keyframes moveBack {
+  0% {
+    webkit-transform: translateY(-100vh);
+  }
+  100% {
+    webkit-transform: translateY(0vh);
+  }
+}
+
+@keyframes moveBack {
+  0% {
+    -webkit-transform: translateY(100vh);
+            transform: translateY(100vh);
+  }
+  100% {
+    -webkit-transform: translateY(0vh);
+            transform: translateY(0vh);
+  }
+}
+
 .page-loaded .text-anim-wrapper :nth-child(2),
 .page-loaded .text-anim-wrapper :nth-child(3),
 .page-loaded .text-anim-wrapper :nth-child(4),
@@ -469,6 +651,8 @@ body.zone-page::-webkit-scrollbar {
 .page-loaded .text-anim-wrapper :nth-child(8) {
   -webkit-animation: text-flicker-out-glow 2.2s linear;
   animation: text-flicker-out-glow 2.2s linear;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 .page-loaded .text-anim-wrapper :nth-child(10),
@@ -481,16 +665,16 @@ body.zone-page::-webkit-scrollbar {
   -webkit-animation: text-flicker-out-glow 1.5s linear;
   animation: text-flicker-out-glow 1.5s linear;
   -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .page-loaded .text-anim-wrapper :nth-child(17),
 .page-loaded .text-anim-wrapper :nth-child(18),
 .page-loaded .text-anim-wrapper :nth-child(19) {
-  -webkit-animation: text-flicker-out-glow 1.2s linear;
-  animation: text-flicker-out-glow 1.2s linear;
-  -webkit-animation-delay: 1.4s;
-  animation-delay: 1.4s;
+  -webkit-animation: moveBack 1.9s ease-out, text-flicker-out-glow 1.2s linear;
+  animation: moveBack 1.9s ease-out, text-flicker-out-glow 1.2s linear;
+  -webkit-animation-delay: 0s, 1.4s;
+  animation-delay: 0s, 2.4s;
 }
 
 body,
@@ -763,7 +947,9 @@ video {
 }
 
 #side-menu a:hover {
-  color: white;
+  font-family: 'Gramatika Slanted';
+  font-weight: normal;
+  font-style: italic;
 }
 
 .hamburger .line {
@@ -1407,9 +1593,18 @@ video {
   }
 }
 
+@media (min-width: 768px) {
+  #side-menu a {
+    font-size: 4em;
+  }
+}
+
 @media (min-width: 992px) {
   .text-anim-wrapper br {
     display: none;
+  }
+  #side-menu a {
+    font-size: 4.5em;
   }
 }
 /*# sourceMappingURL=theme.css.map */

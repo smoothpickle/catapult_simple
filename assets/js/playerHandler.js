@@ -1,159 +1,65 @@
 /*
-	Plugin Name: Player handler for Demain j'étais ici.
-	Description: It's really custom, so yeah
-*/
-/*
-	The semi-colon before the function invocation is a safety net against concatenated scripts and/or other plugins which may not be closed properly.
-	"undefined" is used because the undefined global variable in ECMAScript 3 is mutable. (ie. it can be changed by someone else). Because we don't pass a value to undefined when the anonymous function is invoked, we ensure that undefined is truly undefined.
-	Note: In ECMAScript 5 undefined can no longer be modified.
-	"window" and "document" are passed as local variables rather than global. This (slightly) quickens the resolution process.
+	Plugin Name: Name of the plugin.
+	Description: Brief description about plugin.
 */
 ; (function ($, window, document, undefined) {
-	/*
-	The purpose of "use strict" is to indicate that the code should be executed in "strict mode". With strict mode, you can not, for example, use undeclared variables.
-	*/
 	"use strict";
-	/*
-		Store the name of the plugin in the "PLUGIN_NAME" variable. This variable is used in the "Plugin" constructor below, as well as in the plugin wrapper to construct the key for the "$.data" method.
-		More: http://api.jquery.com/jquery.data/
-	*/
 	let plugin;
 	const PLUGIN_NAME = 'playerizer';
-	/*
-		The "Plugin" constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on.
-		For example, "$('selector').pluginName();" creates a new instance of pluginName for the given selector.
-	*/
 	function Plugin(element, options) {
-		/*
-			Provide local access to the DOM node(s) that are called the plugin, as well local access to the pluginName and default options.
-        */
 		this._element    = element;
 		this._pluginName = PLUGIN_NAME;
 		this._defaults   = $.fn[PLUGIN_NAME].defaults;
-		/*
-			The "$.extend" method merges the contents of two or more objects, and stores the result in the first object. The first object is empty so that we don't alter the default options for future instances of the plugin.
-			More: http://api.jquery.com/jquery.extend/
-        */
 		this._settings 	 = $.extend({
-			
-			zone: "Zone verte",
-			parentContainer: $(this._element).parent(),
-			_currentTrack: "",
-			isLocked: false,
-			els: {},
-			_howler: {}
-			
-		}, this._defaults, options);
-		/*
-			The "_init" method is the starting point for the plugin logic.
-			Calling the _init method here in the "Plugin" constructor function allows us to store all methods (including the _init method) in the plugin's prototype.
-        */
+            
+            tracks: [],
+            parentContainer: $(this._element).parent(),
+            
+        }, this._defaults, options);
 		this._init();
 	}
 	// Avoid Plugin.prototype conflicts
 	$.extend(Plugin.prototype, {
+        
 		// Initialization logic
 		_init: function () {
-            /*
-                Create additional methods below and call them via "this.myFunction(arg1, arg2)", ie: "this._build();".
-                Note: You can access the DOM node(s), pluginName, default plugin options and custom plugin options for a each instance of the plugin by using the variables "this._element", "this._pluginName", "this._defaults" and "this._settings" created in the "Plugin" constructor function (as shown in the _build
-                method below).
-            */
-		    plugin = this;
+			plugin = this;
+            
+            this._handleErrors();
 			this._build();
-			this._bindEvents();
-			
-			// console.log(trackDataObj['Zone rouge'])
+
 		},
+        
+        //
+        _handleErrors: function() {
+            if (this._settings.tracks.length <= 0) {
+                console.log('NO TRACKS');
+            }
+        },
+        
 		// Cache DOM nodes for performance
 		_build: function () {
-            /*
-				Create variable(s) that can be accessed by other plugin functions. For example, "this.$_element = $(this._element);" will cache a jQuery reference to the element that initialized the plugin.
-				Cached variables can then be used in other methods.
-            */
 			this.$_element = $(this._element);
-			this._tracks = trackDataObj[this._settings.zone];
-			
-			this.isSongPlaying = false;
-			
-			this._buildAudioElement();
-			this._buildPlaylist();
-			this._createArtistPanel();
-			this._buildVideoElement();
-			this._buildProgressBar();
+            
+            this._buildPlaylist();
+            this._buildArtistPanel();
+            this._buildMediasElement();
+            this._buildProgressBar();
 		},
-		
-		_buildVideoElement: function() {
-			var _this = this;
+        
+        //
+        _buildProgressBar: function() {
 			
-			this._newVideo = document.createElement("video");
-			// this._newVideo.autoplay = true;
-			this._newVideo.loop = true;
-			this._newVideo.controls = false;
-			this._newVideo.setAttribute('playsinline', 'playsinline');
-			// this._newVideo.attr('webkit-playsinline', 'webkit-playsinline');
-			this._newVideo.setAttribute('muted', 'muted');
-			this._settings.els.artistVideo.append(this._newVideo);
-		},
-		
-		_buildAudioElement: function() {
-			var _this = this;
-			
-			this._newAudio = new Audio();
-			$(this._newAudio).on('ended', function() {
-				_this._handleStopSound();
-			});
-		},
-		
-		_buildPlaylist: function() {
-			// Build list with songs from obj
-			var _this = this;
-			var _el = this.$_element;
-			var tracks_data = this._tracks;
-			var tracks = "";
-			
-			this._settings.playlistUrlArr = [];
-			
-			_el.append($('<ul>', {class: 'playlist'}));
-			
-			var _playlist = _el.find('ul');
-			
-			$.each( tracks_data, function( key, value ) {
-				
-				_playlist.append(
-					$('<li/>').append($('<a/>', {
-						href: value.url,
-						'data-track': key,
-						text: value.name,
-						click: function(e) {
-							e.preventDefault();
-							
-							plugin._settings._currentTrack = tracks_data[key];
-							plugin._onClickTrack($(this));
-						}
-					}))
-				);
-				
-				plugin._settings.playlistUrlArr.push(value.url)
-				
-			});
-			
-			//console.log(this._settings.playlistUrlArr);
-		},
-		
-		_buildProgressBar: function() {
-			var _this = this;
-			
-			const audio = this._newAudio;
-			const start = this._settings.els.playerTime_Start;
-			const end = this._settings.els.playerTime_End;
-			const progressBar = this._settings.els.playerProgressBar;
-			const now = this._settings.els.playerTime_Now;
+			var audio = this._newAudio;
+			var start = this.$_elements.playerTime_Start;
+			var end = this.$_elements.playerTime_End;
+			var progressBar = this.$_elements.playerProgressBar;
+			var now = this.$_elements.playerTime_Now;
 
 			function conversion (value) {
-				let minute = Math.floor(value / 60);
+				var minute = Math.floor(value / 60);
 				minute = minute.toString().length === 1 ? ('0' + minute) : minute;
-				let second = Math.round(value % 60);
+				var second = Math.round(value % 60);
 				second = second.toString().length === 1 ? ('0' + second) : second;
 				return `${minute}:${second}`;
 			}
@@ -164,18 +70,17 @@
 			}
 
 			progressBar.on('click', function (event) {
-				let coordStart = this.getBoundingClientRect().left;
-				let coordEnd = event.pageX;
-				let p = (coordEnd - coordStart) / this.offsetWidth;
-				// now.style.width = p.toFixed(3) * 100 + '%';
+				var coordStart = this.getBoundingClientRect().left;
+				var coordEnd = event.pageX;
+				var p = (coordEnd - coordStart) / this.offsetWidth;
+                
 				now.css({width: p.toFixed(3) * 100 + '%'});
-				
-				// console.log(now);
 
 				audio.currentTime = p * audio.duration;
 				audio.play();
 				
-				_this._hidePlayBtn();
+				plugin.$_elements.btnPlay.hide();
+                plugin.$_elements.btnStop.show();
 			});
 
 			setInterval(() => {
@@ -183,27 +88,13 @@
 				// now.style.width = audio.currentTime / audio.duration.toFixed(3) * 100 + '%';
 				now.css({width: audio.currentTime / audio.duration.toFixed(3) * 100 + '%'});
 			}, 1000);
-			
-		},
-		
-		_onClickTrack: function(el) {
-			
-			console.log('clicked track');
-			
-			// $('html').addClass('player-is-active');
-			el.closest('li').addClass('listened');
-				
-			this._updateArtistPanel();
-
-		},
-		
-		_createArtistPanel: function() {
-			
-			// var currentTrack = this._tracks[this._settings._currentTrack];
-			
-			// console.log(currentTrack);
-			
-			$('body').append(
+            
+        },
+        
+        //
+        _buildArtistPanel: function() {
+            
+            $('body').append(
 				$('<div/>', {
 					id: 'player'
 				})
@@ -237,25 +128,25 @@
 						click: function(e) {
 							e.preventDefault();
 							console.log('Click back to playlist');
-							plugin._hideArtistPanel();
+							plugin.hideArtistPanel();
 						}
 					}))
 					.append($('<button/>', { 
 						id: 'btnPlay',
 						text: 'Jouer la balado',
-						click: function() {
-							
-							// plugin.playSound();
-							plugin._handlePlaySound();
+						click: function(e) {
+                            e.preventDefault();
+                            console.log('Click play button');
+							plugin._onClickPlayButton();
 						}
 					}))
 					.append($('<button/>', { 
 						id: 'btnStop',
 						text: 'Arrête la balado',
-						click: function() {
-							
-							// plugin.stopSound();
-							plugin._handleStopSound();
+						click: function(e) {
+							e.preventDefault();
+                            console.log('Click stop button');
+							plugin._onClickStopButton();
 						}
 					}))
 					.append($('<div/>', { 
@@ -269,362 +160,309 @@
 					.append($('<button/>', {
 						id: 'btnNext',
 						text: 'Jouer la prochaine la balado',
-						// click: function() {
-						// 	plugin.skip();
-						// }
+						click: function() {
+							plugin.skipTo();
+						}
 					}))
 					.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
 				)
 				.append($('<button/>', { 
 					id: 'btnToggleCollapsePlayer',
 					click: function() {
-						plugin.toggleCollapsePlayer();
+                        console.log('toggleCollapsePlayer');
+						// plugin.toggleCollapsePlayer();
 					}
 				}))
 			));
+            
+            this._assignElements();
+        },
+        
+        // assign all elements so we can reuse it later on
+        _assignElements: function() {
+            
+            this.$_elements = {};
 			
-			this._assignElements();
+			this.$_elements.html = $('html');
+            this.$_elements.ul_playlist = $('#playlist-list'); // list of songs
+            
+			this.$_elements.player = $('#player');
+			this.$_elements.trackName = this.$_elements.player.find('h2');
+			this.$_elements.trackCredits = this.$_elements.player.find('#player_credits');
+			this.$_elements.trackDesc = this.$_elements.player.find('#player_desc');
+			this.$_elements.trackDuration = this.$_elements.player.find('#player_duration');
+			
+			this.$_elements.artistPlayerContainer = this.$_elements.player.find('#artistPlayerContainer');
+			this.$_elements.artistVideo = this.$_elements.player.find('#artistVideo');
+			
+			this.$_elements.artistPlayer = this.$_elements.player.find('#artistPlayer');
+			this.$_elements.playerProgressBarContainer = this.$_elements.player.find('#playerProgressBarContainer');
+            
+            this.$_elements.artistInfoPanel = this.$_elements.player.find('#artistInfoPanel');
+			
+			this.$_elements.playerSongName = this.$_elements.player.find('#playerSongName');
+			this.$_elements.playerProgressBar = this.$_elements.player.find('#playerProgressBar');
+			
+			this.$_elements.playerTime_End = this.$_elements.player.find('#playerTime_End');
+			this.$_elements.playerTime_Start = this.$_elements.player.find('#playerTime_Start');
+			this.$_elements.playerTime_Now = this.$_elements.player.find('#playerTime_Now');
+			
+			this.$_elements.playerControls = this.$_elements.player.find('#playerControls');
+			this.$_elements.btnPlaylist = this.$_elements.player.find('#btnPlaylist');
+			this.$_elements.btnPlay = this.$_elements.player.find('#btnPlay');
+			this.$_elements.btnStop = this.$_elements.player.find('#btnStop');
+			this.$_elements.btnNext = this.$_elements.player.find('#btnNext');
+			
+			this.$_elements.btnToggleCollapsePlayer = this.$_elements.player.find('#btnToggleCollapsePlayer');
+			
+			this.$_elements.loadingIcon = this.$_elements.player.find('#playerLoadingIcon');
+			
+			this.$_elements.loadingIcon.hide();
+			this.$_elements.btnStop.hide();
+			this.$_elements.btnNext.hide();
+			
 		},
-		
-		_assignElements: function() {
-			// assign all elements so we can reuse it later on
-			
-			this._settings.els.html = $('html');
-			this._settings.els.player = $('#player');
-			this._settings.els.trackName = this._settings.els.player.find('h2');
-			this._settings.els.trackCredits = this._settings.els.player.find('#player_credits');
-			this._settings.els.trackDesc = this._settings.els.player.find('#player_desc');
-			this._settings.els.trackDuration = this._settings.els.player.find('#player_duration');
-			
-			this._settings.els.artistPlayerContainer = this._settings.els.player.find('#artistPlayerContainer');
-			this._settings.els.artistVideo = this._settings.els.player.find('#artistVideo');
-			
-			this._settings.els.artistPlayer = this._settings.els.player.find('#artistPlayer');
-			this._settings.els.playerProgressBarContainer = this._settings.els.player.find('#playerProgressBarContainer');
-			
-			this._settings.els.playerSongName = this._settings.els.player.find('#playerSongName');
-			this._settings.els.playerProgressBar = this._settings.els.player.find('#playerProgressBar');
-			
-			this._settings.els.playerTime_End = this._settings.els.player.find('#playerTime_End');
-			this._settings.els.playerTime_Start = this._settings.els.player.find('#playerTime_Start');
-			this._settings.els.playerTime_Now = this._settings.els.player.find('#playerTime_Now');
-			
-			this._settings.els.playerControls = this._settings.els.player.find('#playerControls');
-			this._settings.els.btnPlaylist = this._settings.els.player.find('#btnPlaylist');
-			this._settings.els.btnPlay = this._settings.els.player.find('#btnPlay');
-			this._settings.els.btnStop = this._settings.els.player.find('#btnStop');
-			this._settings.els.btnNext = this._settings.els.player.find('#btnNext');
-			
-			this._settings.els.btnToggleCollapsePlayer = this._settings.els.player.find('#btnToggleCollapsePlayer');
-			
-			this._settings.els.loadingIcon = this._settings.els.player.find('#playerLoadingIcon');
-			
-			this._settings.els.loadingIcon.hide();
-			this._settings.els.btnStop.hide();
-			this._settings.els.btnNext.hide();
-			
-		},
-		
-		_updateArtistPanel: function(trackIndex) {
-			var _this = this;
-			
-			this._settings.els.btnPlay.hide();
-			this._settings.els.loadingIcon.show();
-			
-			this._settings.els.trackDuration.show();
-			this._settings.els.btnNext.hide();
-			
-			this._settings.els.playerProgressBarContainer.hide();
-			
-			this._areMediasReady = false;
-			this._videoReady = false;
-			this._audioReady = false;
-			
-			if (this.isSongPlaying == true) {
-				this._settings.els.btnStop.hide();
-				this._settings.els.btnPlay.show();
-			}
-			
-			var trackIndex;
-			
-			if (trackIndex) {
-				
-				trackIndex = trackIndex;
-				
-			} else {
-				trackIndex = this._settings._currentTrack;
-			}
-			
+        
+        //
+        _buildMediasElement: function() {
+            
+            // Video
+            this._newVideo = document.createElement('video');
+			this._newVideo.loop = true;
+			this._newVideo.controls = false;
+			this._newVideo.setAttribute('playsinline', true);
+			this._newVideo.setAttribute('muted', true);
+            
+            this.$_elements.artistVideo.append(this._newVideo);
 
-			// Assign Current track values
-			this._settings.els.trackName.text(trackIndex.name);
-			this._settings.els.trackCredits.text(trackIndex.credits);
-			this._settings.els.trackDesc.text(trackIndex.desc);
-			this._settings.els.trackDuration.text(trackIndex.tracktime);
-			
-			// Video
-			$(this._newVideo).attr('src', trackIndex.videoURL);
-			this._newVideo.load();
+            // Audio
+            this._newAudio = new Audio();
+			$(this._newAudio).on('ended', function() {
+				plugin.$_playlistEl.closest('li').addClass('listened');
+                plugin._onClickStopButton();
+			});
 
-			$(this._newVideo).on('canplaythrough', function() {
-				console.log('video is loaded');
-				_this._videoReady = true;
-				$(_this._newVideo).off('canplaythrough');
-				_this._checkIfMediasAreReady();
-			});
-			
-			// Audio
-			// console.log(trackIndex.url);
-			this._newAudio.src = trackIndex.url;
-			this._newAudio.load();
-			// this._newAudio.onloadeddata = function() {
-			// 	console.log('audio is loaded');
-			// 	_this._audioReady = true;
-			// 	_this._checkIfMediasAreReady();
-			// }
-			// console.log('SOUND DOESNT WANT TO ACTIVATE')
-			$(this._newAudio).on('canplay', function() {
-				console.log('audio is loaded');
-				_this._audioReady = true;
-				$(_this._newAudio).off('canplay');
-				_this._checkIfMediasAreReady();
-			});
-			
-			// Player
-			this._settings.els.playerSongName.text(trackIndex.name);
-			this._settings.els.playerTime_Now.css({'width': '0%'});
-			
-			console.log(this._audioReady, this._videoReady);
-			
-			// if (this._audioReady == true && this._videoReady == true ) {
-			// 	console.log('GO')
-			// 	_this._showArtistPanel();
-			// }
-			
-			this._showArtistPanel();
-		},
-		
-		_checkIfMediasAreReady: function() {
-			var _this = this;
+        },
+        
+        _checkIfMediasAreReady: function() {
 			
 			if (this._audioReady == true && this._videoReady == true) {
-				console.log('Medias are ready')
+                
+				console.log('Medias are ready');
 				this._areMediasReady = true;
-				
-				
-				this._settings.els.btnPlay.show();
-				this._settings.els.loadingIcon.hide();
-			
+                
+                this.$_elements.loadingIcon.hide();
+                this.$_elements.btnPlay.show();
+
 			}
 		},
-		
-		_showArtistPanel: function() {
-			var _this = this;
-			// console.log(this._settings.els.artistPlayer);
-			
-			this._settings.els.btnPlay.hide();
+        
+        // Here we add markup for the playlist
+        _buildPlaylist: function() {
+            // console.log(trackDataObj[0]);
+            
+            this._currentTrackIndex;
+            
+            var list = $('<ul/>', {class: 'playlist', id: 'playlist-list'});
+            
+            $.each(this._settings.tracks, function(key, value) {
+                list.append(
+                    $('<li/>').append($('<a/>', {
+						href: value.audioUrl,
+						'data-track': key,
+						text: value.name,
+						click: function(e) {
+							e.preventDefault();
+							console.log('Click on track');
+                            
+                            plugin.$_playlistEl = $(this);
+                            plugin._onClickTrack(key);
+						}
+					})
+                        .append($('<span/>', { class: 'dot-pulse-container' })
+                            .append($('<span/>', { class: 'dot-pulse'}))
+                        )
+                    )
+                );
+            });
+            
+            this.$_element.append(list);
+        },
+        
+        // Event after click on track on playlist.
+        _onClickTrack: function(trackIndex) {
+            
+            this._areMediasReady = false;
+			this._videoReady = false;
+			this._audioReady = false;
+            
+            this._oldTrackIndex = this._currentTrackIndex;
+            this._currentTrackIndex = trackIndex;
+            
+            if (this._oldTrackIndex != this._currentTrackIndex) {
+                
+                this.$_elements.btnPlay.hide();
+                this.$_elements.btnStop.hide();
+                this.$_elements.loadingIcon.show();
+                
+                this.$_elements.trackDuration.show();
+                this.$_elements.btnNext.hide();
+                this.$_elements.playerProgressBarContainer.hide();
 
-			this._settings.els.html.addClass('show-artistPanel');
-			
-			this._settings.els.btnToggleCollapsePlayer.fadeOut(300);
-			
-			this._settings.parentContainer.fadeOut(300, function() {
-				
-				_this._settings.els.player.fadeIn(300, function() {
+                this.$_elements.html.removeClass('song-is-playing');
+                this.$_elements.ul_playlist.find('a').removeClass('is-playing');
+                
+            }
+            
+            this.updateArtistPanel(plugin._currentTrackIndex);
+            this.openArtistPanel();
+            
+        },
 
-				});
-			});
+        //
+        _onClickPlayButton: function() {
+            
+            this.$_elements.btnPlay.hide();
+            this.$_elements.btnStop.show();
 
-		},
-		
-		_hideArtistPanel: function() {
-			var _this = this;
+            this.$_elements.html.addClass('song-is-playing');
+            this.$_elements.ul_playlist.find('a').removeClass('is-playing');
+            this.$_playlistEl.addClass('is-playing');
+            
+            this.$_elements.btnToggleCollapsePlayer.fadeIn(300);
+			this.$_elements.playerProgressBarContainer.fadeIn(300);
 			
-			this._settings.els.html.removeClass('show-artistPanel');
-			this._settings.els.html.removeClass('song-is-playing');
-			
-
-			this._settings.els.player.fadeOut(300, function() {
-
-				_this._settings.parentContainer.fadeIn(300, function() {
-
-				});
-			});
-			
-		},
-		
-		playSound: function() {
-			var _this = this;
-			
-			console.log('Play sound');
-			this.isSongPlaying = true;
-		
-			// this._settings.els.html.addClass('song-is-playing');
+			this.$_elements.trackDuration.hide();
+			this.$_elements.btnNext.show();
+            
+            this.playSong();
+        },
+        
+        _onClickStopButton: function() {
+            
+            this.$_elements.btnStop.hide();
+            this.$_elements.btnPlay.show();
+            
+            this.$_elements.html.removeClass('song-is-playing');
+            this.$_elements.ul_playlist.find('a').removeClass('is-playing');
+            
+            this.$_elements.btnToggleCollapsePlayer.hide();
+			this.$_elements.playerProgressBarContainer.hide();
+			this.$_elements.trackDuration.show();
+			this.$_elements.btnNext.hide();
+            
+            this.stopSong();
+        },
+        
+        //
+        updateArtistPanel: function(trackIndex) {
+            
+            if (this._oldTrackIndex == this._currentTrackIndex) {
+                console.log('same track');
+                
+            } else {
+            
+                // Assign Current track values
+                this.$_elements.trackName.text(this._settings.tracks[trackIndex].name);
+                this.$_elements.trackCredits.text(this._settings.tracks[trackIndex].credits);
+                this.$_elements.trackDesc.text(this._settings.tracks[trackIndex].desc);
+                this.$_elements.trackDuration.text(this._settings.tracks[trackIndex].tracktime);
+                
+                // Video
+                this._newVideo.src = this._settings.tracks[trackIndex].videoUrl;
+                this._newVideo.load();
+                
+                $(this._newVideo).on('canplaythrough', function() {
+                    console.log('video is loaded');
+                    plugin._videoReady = true;
+                    $(plugin._newVideo).off('canplaythrough');
+                    plugin._checkIfMediasAreReady();
+                });
+                
+                // Audio
+                this._newAudio.src = this._settings.tracks[trackIndex].audioUrl;
+                this._newAudio.load();
+                
+                $(this._newAudio).on('canplay', function() {
+                    console.log('audio is loaded');
+                    plugin._audioReady = true;
+                    $(plugin._newAudio).off('canplay');
+                    plugin._checkIfMediasAreReady();
+                });
+                
+                // Player
+                this.$_elements.playerSongName.text(this._settings.tracks[trackIndex].name);
+                this.$_elements.playerTime_Now.css({'width': '0%'});
+            }   
+        },
+        
+        //
+        skipTo: function() {
+            console.log('skip song to ' + (this._currentTrackIndex));
+            
+            var skipToSong;
+            
+            if ((this._currentTrackIndex + 1) > this._settings.tracks.length) {
+                skipToSong = 0;
+            }
+            console.log(this._settings.tracks[skipToSong])
+            // if (this._settings.tracks[trackIndex] == )
+            // this.updateArtistPanel(trackIndex);
+        },
+        
+        //
+        playSong() {
+            
+            this.isSongPlaying = true;
 			
 			this._newVideo.play();
 			this._newAudio.play();
 
-			this._hidePlayBtn();
-		},
-		
-		_handlePlaySound: function() {
-			var _this = this;
-
-			this._settings.els.html.addClass('song-is-playing');
-			
-			this._settings.els.btnToggleCollapsePlayer.fadeIn(300);
-			this._settings.els.playerProgressBarContainer.fadeIn(300);
-			
-			this._settings.els.trackDuration.hide();
-			this._settings.els.btnNext.show();
-			
-			this.playSound();
-			
-		},
-		
-		stopSound: function() {
-			
-			console.log('Stop sound');
-			this.isSongPlaying = false;
+        },
+        
+        //
+        stopSong() {
+            
+            this.isSongPlaying = false;
 			
 			this._newVideo.pause();
 			this._newAudio.pause();
+            
+        },
+        
+        //
+        openArtistPanel: function() {
+            
+            console.log('Open artist panel');
+            this.$_elements.html.addClass('show-artistPanel');
+            
+            this._settings.parentContainer.fadeOut(300, function() {
+				plugin.$_elements.player.fadeIn(300);
+			});
+        
+        },
+        
+        hideArtistPanel: function() {
+            
+            console.log('Close artist panel');
+            this.$_elements.html.removeClass('show-artistPanel');
 			
-			this._hideStopBtn();
-		},
+			this.$_elements.player.fadeOut(300, function() {
+				plugin._settings.parentContainer.fadeIn(300);
+			});
+            
+        },
 		
-		_handleStopSound: function() {
-			var _this = this;
-			
-			this._settings.els.html.removeClass('song-is-playing');
-			this._settings.els.html.removeClass('player-is-collapse');
-			
-			this._settings.els.btnToggleCollapsePlayer.hide();
-			this._settings.els.playerProgressBarContainer.hide();
-			
-			this._settings.els.trackDuration.show();
-			this._settings.els.btnNext.hide();
-			
-			this.stopSound();
-			
-		},
-		
-		_hidePlayBtn: function() {
-			this._settings.els.btnPlay.hide();
-			this._settings.els.btnStop.show();
-		},
-		
-		_hideStopBtn: function() {
-			this._settings.els.btnStop.hide();
-			this._settings.els.btnPlay.show();
-		},
-		
-		toggleCollapsePlayer: function() {
-			var _this = this;
-			
-			this._settings.els.html.toggleClass('player-is-collapse');
-		},
-		
-		// skip: function() {
-		// 	var _this = this;
-			
-		// 	var currentTrack = this._settings._currentTrack.id;
-		// 	currentTrack + 1;
-			
-		// 	const output = Object.entries(_this._tracks['track'+currentTrack])
-		// 	.filter(([k, v]) => {
-		// 		return true; // some irrelevant conditions here
-		// 	})
-		// 	.reduce((accum, [k, v]) => {
-		// 		accum[k] = v;
-		// 		return accum;
-		// 	}, {});
-		// 	console.log(output);
-			
-		// },
-		
-		// Bind events that trigger methods
-		_bindEvents: function () {
-            /*
-				Bind event(s) handlers that trigger other functions, ie: "plugin.$_element.on('click', function() {});".
-				Note the use of the cached variable we created in the _build method.
-                All events are namespaced, ie: ".on('click'+'.'+this._pluginName', function() {});".
-                This allows us to unbind plugin-specific events using the _unbindEvents method below.
-            */
-			// plugin.$_element.on('click' + '.' + plugin._pluginName, function () {
-            //     /*
-            //         Use the "call" method to call the function. ie: "_someOtherFunction", the "this" keyword refers to the plugin instance, not the event handler.
-            //         More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
-            //     */
-			// 	plugin._someOtherFunction.call(plugin);
-			// });
-		},
-		// Unbind events that trigger methods
-		_unbindEvents: function () {
-            /*
-                Unbind all events in our plugin's namespace that are attached to "this.$_element".
-            */
-			this.$_element.off('.' + this._pluginName);
-		},
-		// Remove plugin instance completely
-		_destroy: function () {
-            /*
-                The _destroy method unbinds all events for the specific instance of the plugin, then removes all plugin data that was stored in the plugin instance using jQuery's .removeData method.
-                Since we store data for each instance of the plugin in its instantiating element using the $.data method (as explained in the plugin wrapper below), we can call methods directly on the instance outside of the plugin initialization, ie: $('selector').data('plugin_myPluginName')._someOtherFunction();
-                Consequently, the _destroy method can be called using: $('selector').data('plugin_myPluginName')._destroy();
-            */
-			this._unbindEvents();
-			this.$_element.removeData();
-		},
-        /*
-			"_someOtherFunction" is an example of a custom method in your plugin. Each method should perform a specific task. For example, the _build method exists only to create variables for other methods to access. The _bindEvents method exists only to bind events to event handlers that trigger other methods.
-			Creating custom plugin methods this way is less confusing (separation of concerns) and makes your code easier to test.
-        */
-		// Create custom methods
-		_someOtherFunction: function () {
-			console.log('Function is called.');
-			this._callback();
-		},
-		// Callback methods
-		_callback: function () {
-			// Cache onComplete option
-			let onComplete = this._settings.onComplete;
-			if (typeof onComplete === "function") {
-                /*
-                    Use the "call" method so that the onComplete callback function the "this" keyword refers to the
-                    specific DOM node that called the plugin.
-                    More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
-                */
-				onComplete(this._element);
-			}
-		}
 	});
-    /*
-        Create a lightweight plugin wrapper around the "Plugin" constructor, preventing against multiple instantiations.
-        More: http://learn.jquery.com/plugins/basic-plugin-creation/
-    */
+	//Plugin wrapper
 	$.fn[PLUGIN_NAME] = function (options) {
 		this.each(function () {
 			if (!$.data(this, "plugin_" + PLUGIN_NAME)) {
-                /*
-                    Use "$.data" to save each instance of the plugin in case the user wants to modify it. Using "$.data" in this way ensures the data is removed when the DOM element(s) are
-                    removed via jQuery methods, as well as when the user leaves the page. It's a smart way to prevent memory leaks.
-                    More: http://api.jquery.com/jquery.data/
-                */
 				$.data(this, "plugin_" + PLUGIN_NAME, new Plugin(this, options));
 			}
 		});
-        /*
-            "return this;" returns the original jQuery object. This allows additional jQuery methods to be chained.
-        */
 		return this;
 	};
-    /*
-        Attach the default plugin options directly to the plugin object. This allows users to override default plugin options globally, instead of passing the same option(s) every time the plugin is initialized.
-        For example, the user could set the "property" value once for all instances of the plugin with
-        "$.fn.PLUGIN_NAME.defaults.property = 'myValue';". Then, every time plugin is initialized, "property" will be set to "myValue".
-        More: http://learn.jquery.com/plugins/advanced-plugin-concepts/
-    */
 	$.fn[PLUGIN_NAME].defaults = {
 		property  : 'value',
 		onComplete: null

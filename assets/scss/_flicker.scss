@@ -266,6 +266,26 @@
     100% {}
 }
 
+@-webkit-keyframes moveBack {
+    0% {
+        webkit-transform: translateY(-100vh);
+    }
+
+    100% {
+        webkit-transform: translateY(0vh);
+    }
+}
+
+@keyframes moveBack {
+    0% {
+        transform: translateY(100vh);
+    }
+    
+    100% {
+        transform: translateY(0vh);
+    }
+}
+
 .page-loaded {
     
     .text-anim-wrapper {
@@ -279,6 +299,7 @@
         :nth-child(8) {
             -webkit-animation: text-flicker-out-glow 2.2s linear;
             animation: text-flicker-out-glow 2.2s linear;
+            animation-delay: 1s;
         }
         
         :nth-child(10),
@@ -292,17 +313,17 @@
             animation: text-flicker-out-glow 1.5s linear;
             
             -webkit-animation-delay: 1s;
-            animation-delay: 1s;
+            animation-delay: 2s;
         }
         
         :nth-child(17),
         :nth-child(18),
         :nth-child(19) {
-            -webkit-animation: text-flicker-out-glow 1.2s linear;
-            animation: text-flicker-out-glow 1.2s linear;
+            -webkit-animation: moveBack 1.9s ease-out, text-flicker-out-glow 1.2s linear;
+            animation: moveBack 1.9s ease-out, text-flicker-out-glow 1.2s linear;
 
-            -webkit-animation-delay: 1.4s;
-            animation-delay: 1.4s;
+            -webkit-animation-delay: 0s, 1.4s;
+            animation-delay: 0s, 2.4s;
         }
     }
 }
