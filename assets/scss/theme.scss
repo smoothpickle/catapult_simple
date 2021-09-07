@@ -17,6 +17,8 @@ body {
     font-family: 'Gramatika', sans-serif;
     overflow-x: hidden;
     position: relative;
+    
+    -webkit-backface-visibility: hidden;
 
     &.menu-is-active,
     &.page-loading {
@@ -29,7 +31,11 @@ body {
     
     &.zone-rouge {
         background: rgb(229, 154, 112);
-        background: linear-gradient(0deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
+        background: linear-gradient(320deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
+        
+        background-size: 400% 400%;
+        -webkit-animation: gradient 25s ease-in-out infinite;
+        animation: gradient 25s ease-in-out infinite;
     }
     
     &.zone-orange {
@@ -79,8 +85,9 @@ h2 {
 
 p {
     color: $red;
-    font-size: 1.6em;
-    // margin: 0 20px;
+    font-size: 1.5em;
+    line-height: 115%;
+    letter-spacing: 0.02em;
 }
 
 main {
@@ -113,6 +120,12 @@ button {
     color: $green2;
     font-size: 1em;
     margin: 1em 0;
+    text-transform: uppercase;
+    
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 110%;
+    letter-spacing: 0.085em;
     text-transform: uppercase;
 }
 
@@ -214,7 +227,7 @@ video {
 
 #top-menu {
     position: fixed;
-    right: 15px;
+    right: 10px;
     top: 10px;
     z-index: 12;
     
@@ -280,14 +293,10 @@ video {
         transition: color 200ms ease;
 
         &:hover {
-            // color: white;
-            font-family: 'Gramatika Slanted';
-            font-weight: normal;
-            font-style: italic;
+            color: white;
         }
     }
 }
-
 
 // Menu icon animation
 .hamburger .line {
@@ -308,7 +317,7 @@ video {
         }
     }
     
-    .song-is-playing & {
+    .song-is-playing.show-artistPanel & {
         .line {
             background-color: white;
         }
@@ -356,7 +365,7 @@ video {
     padding-bottom: 10px;
     font-size: 15px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     z-index: 10;
 
     &__line {

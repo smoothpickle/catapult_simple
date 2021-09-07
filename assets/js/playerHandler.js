@@ -126,9 +126,13 @@
 						id: 'btnPlaylist',
 						text: 'Retour à la liste de lecture',
 						click: function(e) {
-							e.preventDefault();
-							console.log('Click back to playlist');
-							plugin.hideArtistPanel();
+                            e.preventDefault();
+                             if(!e.detail || e.detail == 1) { 
+                                console.log('Click back to playlist');
+							    plugin.hideArtistPanel();
+                            } else { 
+                                return false; 
+                            }	
 						}
 					}))
 					.append($('<button/>', { 
@@ -136,8 +140,12 @@
 						text: 'Jouer la balado',
 						click: function(e) {
                             e.preventDefault();
-                            console.log('Click play button');
-							plugin._onClickPlayButton();
+                             if(!e.detail || e.detail == 1) { 
+                                console.log('Click play button');
+							    plugin._onClickPlayButton();
+                            } else { 
+                                return false; 
+                            }
 						}
 					}))
 					.append($('<button/>', { 
@@ -161,7 +169,7 @@
 						id: 'btnNext',
 						text: 'Jouer la prochaine la balado',
 						click: function() {
-							plugin.skipTo();
+							plugin.skip();
 						}
 					}))
 					.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
@@ -170,7 +178,7 @@
 					id: 'btnToggleCollapsePlayer',
 					click: function() {
                         console.log('toggleCollapsePlayer');
-						// plugin.toggleCollapsePlayer();
+						plugin.toggleCollapsePlayer();
 					}
 				}))
 			));
@@ -238,10 +246,17 @@
             // Audio
             this._newAudio = new Audio();
 			$(this._newAudio).on('ended', function() {
-				plugin.$_playlistEl.closest('li').addClass('listened');
-                plugin._onClickStopButton();
+                plugin.$_playlistEl.closest('li').addClass('listened');
+                plugin.skip();
 			});
 
+        },
+        
+        //
+        _songListened: function(trackIndex) {
+            
+            this.$_elements.ul_playlist.find('li').eq(trackIndex).addClass('listened');
+            
         },
         
         _checkIfMediasAreReady: function() {
@@ -262,6 +277,7 @@
             // console.log(trackDataObj[0]);
             
             this._currentTrackIndex;
+            this._clickcount = 0;
             
             var list = $('<ul/>', {class: 'playlist', id: 'playlist-list'});
             
@@ -272,11 +288,15 @@
 						'data-track': key,
 						text: value.name,
 						click: function(e) {
-							e.preventDefault();
-							console.log('Click on track');
+                            e.preventDefault();
+                            plugin._clickcount++;
+                            if (plugin._clickcount == 1) {
+                                console.log('Click on track');
+                                plugin.$_playlistEl = $(this);
+                                plugin._onClickTrack(key);
+                            }
                             
-                            plugin.$_playlistEl = $(this);
-                            plugin._onClickTrack(key);
+                            
 						}
 					})
                         .append($('<span/>', { class: 'dot-pulse-container' })
@@ -307,6 +327,7 @@
                 
                 this.$_elements.trackDuration.show();
                 this.$_elements.btnNext.hide();
+                this.$_elements.btnToggleCollapsePlayer.hide();
                 this.$_elements.playerProgressBarContainer.hide();
 
                 this.$_elements.html.removeClass('song-is-playing');
@@ -314,6 +335,7 @@
                 
             }
             
+            this.showPlayer();
             this.updateArtistPanel(plugin._currentTrackIndex);
             this.openArtistPanel();
             
@@ -327,7 +349,7 @@
 
             this.$_elements.html.addClass('song-is-playing');
             this.$_elements.ul_playlist.find('a').removeClass('is-playing');
-            this.$_playlistEl.addClass('is-playing');
+            this.$_elements.ul_playlist.find('a').eq(plugin._currentTrackIndex).addClass('is-playing');
             
             this.$_elements.btnToggleCollapsePlayer.fadeIn(300);
 			this.$_elements.playerProgressBarContainer.fadeIn(300);
@@ -397,17 +419,18 @@
         },
         
         //
-        skipTo: function() {
-            console.log('skip song to ' + (this._currentTrackIndex));
+        skip: function() {
+
+            var skipToSongIndex = parseInt(this._currentTrackIndex) + 1;
             
-            var skipToSong;
-            
-            if ((this._currentTrackIndex + 1) > this._settings.tracks.length) {
-                skipToSong = 0;
+            if (skipToSongIndex == parseInt(this._settings.tracks.length)) {
+                // If we reach end of tracks, go back to first.
+                skipToSongIndex = 0;
             }
-            console.log(this._settings.tracks[skipToSong])
-            // if (this._settings.tracks[trackIndex] == )
-            // this.updateArtistPanel(trackIndex);
+            
+            this._songListened(this._currentTrackIndex);
+            this._onClickTrack(skipToSongIndex);
+            
         },
         
         //
@@ -444,6 +467,8 @@
         
         hideArtistPanel: function() {
             
+            this._clickcount = 0;
+            
             console.log('Close artist panel');
             this.$_elements.html.removeClass('show-artistPanel');
 			
@@ -451,6 +476,18 @@
 				plugin._settings.parentContainer.fadeIn(300);
 			});
             
+        },
+        
+        toggleCollapsePlayer: function() {
+            this.$_elements.html.toggleClass('player-is-collapse');
+        },
+        
+        hidePlayer: function() {
+            this.$_elements.html.addClass('player-is-collapse');
+        },
+        
+        showPlayer: function() {
+            this.$_elements.html.removeClass('player-is-collapse');
         },
 		
 	});
