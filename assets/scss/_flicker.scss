@@ -268,7 +268,7 @@
 
 @-webkit-keyframes moveBack {
     0% {
-        webkit-transform: translateY(-100vh);
+        webkit-transform: translateY(100vh);
     }
 
     100% {
@@ -319,6 +319,7 @@
         :nth-child(17),
         :nth-child(18),
         :nth-child(19) {
+            
             -webkit-animation: moveBack 1.9s ease-out, text-flicker-out-glow 1.2s linear;
             animation: moveBack 1.9s ease-out, text-flicker-out-glow 1.2s linear;
 

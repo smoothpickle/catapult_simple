@@ -106,7 +106,10 @@
 				})
 				.append($('<div/>', {class: 'inner'})
 				.append($('<h2/>'))
-				.append($('<p/>', { id: 'player_credits', class: 'text-theme-a' }))
+				.append($('<p/>', { id: 'player_trackname_part', class: 'text-theme-a' }))
+				.append($('<p/>', { id: 'player_credits_place', class: 'text-theme-a' }))
+				.append($('<p/>', { id: 'player_credits_text', class: 'text-theme-a' }))
+				.append($('<p/>', { id: 'player_credits_voiceActor', class: 'text-theme-a' }))
 				.append($('<p/>', { id: 'player_desc', class: 'text-theme-b' }))
 				)
 			)
@@ -196,7 +199,10 @@
             
 			this.$_elements.player = $('#player');
 			this.$_elements.trackName = this.$_elements.player.find('h2');
-			this.$_elements.trackCredits = this.$_elements.player.find('#player_credits');
+			this.$_elements.trackNamePart = this.$_elements.player.find('#player_trackname_part');
+			this.$_elements.trackCreditsPlace = this.$_elements.player.find('#player_credits_place');
+			this.$_elements.trackCreditsText = this.$_elements.player.find('#player_credits_text');
+			this.$_elements.trackCreditsVoiceActor = this.$_elements.player.find('#player_credits_voiceActor');
 			this.$_elements.trackDesc = this.$_elements.player.find('#player_desc');
 			this.$_elements.trackDuration = this.$_elements.player.find('#player_duration');
 			
@@ -236,10 +242,14 @@
             
             // Video
             this._newVideo = document.createElement('video');
+			this._newVideoSrc = document.createElement('source');
 			this._newVideo.loop = true;
 			this._newVideo.controls = false;
 			this._newVideo.setAttribute('playsinline', true);
 			this._newVideo.setAttribute('muted', true);
+			
+			this._newVideo.appendChild(plugin._newVideoSrc);
+			// this._newVideo.setAttribute('preload', true);
             
             this.$_elements.artistVideo.append(this._newVideo);
 
@@ -295,13 +305,12 @@
                                 plugin.$_playlistEl = $(this);
                                 plugin._onClickTrack(key);
                             }
-                            
-                            
 						}
 					})
                         .append($('<span/>', { class: 'dot-pulse-container' })
                             .append($('<span/>', { class: 'dot-pulse'}))
                         )
+						.append($('<span/>', { class: 'text-theme-a', text: value.name_part }))
                     )
                 );
             });
@@ -386,14 +395,18 @@
             
                 // Assign Current track values
                 this.$_elements.trackName.text(this._settings.tracks[trackIndex].name);
-                this.$_elements.trackCredits.text(this._settings.tracks[trackIndex].credits);
+				this.$_elements.trackNamePart.text(this._settings.tracks[trackIndex].name_part);
+                this.$_elements.trackCreditsPlace.text(this._settings.tracks[trackIndex].credits_place);
+				this.$_elements.trackCreditsText.text(this._settings.tracks[trackIndex].credits_text);
+				this.$_elements.trackCreditsVoiceActor.text(this._settings.tracks[trackIndex].credits_voiceActor);
                 this.$_elements.trackDesc.text(this._settings.tracks[trackIndex].desc);
                 this.$_elements.trackDuration.text(this._settings.tracks[trackIndex].tracktime);
                 
                 // Video
-                this._newVideo.src = this._settings.tracks[trackIndex].videoUrl;
+                this._newVideoSrc.setAttribute('src', this._settings.tracks[trackIndex].videoUrl);
                 this._newVideo.load();
-                
+                console.log(this._newVideoSrc);
+				
                 $(this._newVideo).on('canplaythrough', function() {
                     console.log('video is loaded');
                     plugin._videoReady = true;

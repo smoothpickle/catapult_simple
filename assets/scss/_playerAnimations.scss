@@ -5,18 +5,44 @@
  */
 
 @keyframes gradient {
+    from {
+        background-position: 100% 0%;
+    }
+
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes zoneRougeChangeBgcolor {
     0% {
-        background-position: 0% 50%;
+        background-color: #fa748c;
     }
 
     50% {
-        background-position: 100% 50%;
+        background-color: #e59a70;
+    }
+    
+    100% {
+        background-color: #fa748c;
+    }
+}
+
+@-webkit-keyframes zoneRougeChangeBgcolor {
+    0% {
+        background-color: #fa748c;
+    }
+
+    50% {
+        background-color: #e59a70;
     }
 
     100% {
-        background-position: 0% 50%;
+        background-color: #fa748c;
     }
 }
+
+
 
 /**
  * ==============================================

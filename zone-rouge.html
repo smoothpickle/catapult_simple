@@ -66,7 +66,7 @@
         <ul>
             <li><a href="./index.html">Accueil</a></li>
             <li><a href="./a-propos.html">À propos</a></li>
-            <li><a href="./participants.html">Participants</a></li>
+            <li><a href="./credits.html">Crédits</a></li>
             <li><a href="./mediation.html">Médiation</a></li>
         </ul>
     </nav>
@@ -86,83 +86,184 @@
     <!-- jQuery --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-    <script type="text/javascript" src="./assets/js/playerHandler.js?v=12"></script>
+    <script type="text/javascript" src="./assets/js/playerHandler.js?v=13"></script>
     <script type="text/javascript" src="./assets/js/app.js"></script>
 
     <script>
         
         $('.playerizer').playerizer({
             
+            // tracks: [
+            //     {
+            //         id: 1,
+            //         name: "Le chemin du retour",
+            //         name_part: "Partie 5: Le feu qui brûle en nous",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-1.mp3",
+            //         tracktime: "2 MIN",
+            //         credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+            //         credits_text: "Texte : Kamé Walker",
+            //         credits_voiceActor: "Voix : Maxine Turcotte",
+            //         desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+            //         videoUrl: "./assets/videos/zone-rouge/3-1_VID.mp4"
+            //     },
+            //     {
+            //         id: 2,
+            //         name: "Le trajet",
+            //         name_part: "Partie 4: Le colis",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-2.mp3",
+            //         tracktime: "4 MIN",
+            //         credits_place: "Lieu : O-Train, direction Tunney’s pasture",
+            //         credits_text: "Texte : Amel Amrouche",
+            //         credits_voiceActor: "Voix : Sarah Komendat",
+            //         desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci. ",
+            //         videoUrl: "./assets/videos/zone-rouge/3-2_VID.mp4"
+            //     },
+            //     {
+            //         id: 3,
+            //         name: "Loutre de mer",
+            //         name_part: "",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-3.mp3",
+            //         tracktime: "6 MIN",
+            //         credits_place: "Lieu : Piscine de la Basse-Ville, rue Cobourg",
+            //         credits_text: "Texte : Savana Renaud-Usami",
+            //         credits_voiceActor: "Voix : Nicole Grant",
+            //         desc: "ICI, on se transporte dans le regard de la sauveteuse qui observe le monde autour d’elle, des enfants qui se baignent au collègue qui lui ferait peut-être de l'œil. Rien n’est parfait, mais ce qu’elle observe c’est son quartier, le milieu auquel elle appartient. Ce voit c’est ni plus ni moins que la vie en action.",
+            //         videoUrl: "./assets/videos/zone-rouge/3-3_VID.mp4"
+            //     },
+            //     {
+            //         id: 4,
+            //         name: "Souvenirs de papier",
+            //         name_part: "",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-4.mp3",
+            //         tracktime: "4 MIN",
+            //         credits_place: "Lieu : Bibliothèque de l’école secondaire DeLaSalle",
+            //         credits_text: "Texte : Luna Berniqué",
+            //         credits_voiceActor: "Voix : Alex Brisebois Clyne",
+            //         desc: "ICI, on retrace les lectures marquantes d’un parcours de lectrice, ces lectures où on trouve des morceaux bien réels de son existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",
+            //         videoUrl: "./assets/videos/zone-rouge/3-4_VID.mp4"
+            //     },
+            //     {
+            //         id: 5,
+            //         name: "Les Invisibles",
+            //         name_part: "",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-5.mp3",
+            //         tracktime: "6 MIN",
+            //         credits_place: "Lieu : Église du 501 rue Bank",
+            //         credits_text: "Benjamin Lévesque-Kinder",
+            //         credits_voiceActor: "Voix : Dana Leclerc",
+            //         desc: "ICI, on entre dans la question de ce qu’on choisit individuellement ou collectivement de ne pas voir. À travers le prisme d’une relation père-fils, on assiste à un éveil qui mène au constat que parfois il faut apprendre à ne pas détourner le regard.",
+            //         videoUrl: "./assets/videos/zone-rouge/3-5_VID.mp4"
+            //     },
+            //     {
+            //         id: 6,
+            //         name: "La vie des autres",
+            //         name_part: "",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-6.mp3",
+            //         tracktime: "2 MIN",
+            //         credits_place: "Lieu : Parc Major’s Hill",
+            //         credits_text: "Texte : Aucéanne Tardif-Plante",
+            //         credits_voiceActor: "Voix : Chloé Boivin",
+            //         desc: "ICI, on redécouvre un lieu familier où pourtant tout semble avoir changé… Et si la transformation s’était opérée dans l'œil et dans le cœur qui regardent plutôt que dans l’objet de leurs observations?",
+            //         videoUrl: "./assets/videos/zone-rouge/3-6_VID.mp4"
+            //     },
+            //     {
+            //         id: 7,
+            //         name: "Le chemin du retour",
+            //         name_part: "Partie 6 : Où sont allés tous nos champs dorés?",
+            //         audioUrl: "./assets/mp3/zone-rouge/3-7.mp3",
+            //         tracktime: "4 MIN",
+            //         credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+            //         credits_text: "Texte : Kamé Walker",
+            //         credits_voiceActor: "Voix : Maxine Turcotte",
+            //         desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+            //         videoUrl: "./assets/videos/zone-rouge/3-7_VID.mp4"
+            //     }
+            // ]
+            
             tracks: [
                 {
                     id: 1,
-                    name: "Kamé",
-                    location: "St-Laurent Station - Station St-Laurent",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720655/audio/zone-rouge/3-1_xyfshg.mp3", // See if we can host them elsewhere.
-                    tracktime: "6 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Demain, voici un court paragraphe descriptif. Cette experience voici un court paragraphe descriptif. Cette experience Demain, voici un court para graphe descriptif. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720775/video/zone-rouge/3-1_VID_dhdoev.mp4"
+                    name: "Le chemin du retour",
+                    name_part: "Partie 5: Le feu qui brûle en nous",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-1.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+                    credits_text: "Texte : Kamé Walker",
+                    credits_voiceActor: "Voix : Maxine Turcotte",
+                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-1_VID.mp4"
                 },
                 {
                     id: 2,
-                    name: "Piste 2",
-                    location: "None",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720665/audio/zone-rouge/3-2_zth7qo.mp3", // See if we can host them elsewhere.
-                    tracktime: "7 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720777/video/zone-rouge/3-2_VID_ullbg8.mp4"
+                    name: "Le trajet",
+                    name_part: "Partie 4: Le colis",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-2.mp3",
+                    tracktime: "4 MIN",
+                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
+                    credits_text: "Texte : Amel Amrouche",
+                    credits_voiceActor: "Voix : Sarah Komendat",
+                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci. ",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-2_VID.mp4"
                 },
                 {
                     id: 3,
-                    name: "Piste 3",
-                    location: "Arch St.",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720670/audio/zone-rouge/3-3_wh8d6z.mp3", // See if we can host them elsewhere.
-                    tracktime: "2 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720760/video/zone-rouge/3-3_VID_zs7uls.mp4"
+                    name: "Loutre de mer",
+                    name_part: "",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-3.mp3",
+                    tracktime: "6 MIN",
+                    credits_place: "Lieu : Piscine de la Basse-Ville, rue Cobourg",
+                    credits_text: "Texte : Savana Renaud-Usami",
+                    credits_voiceActor: "Voix : Nicole Grant",
+                    desc: "ICI, on se transporte dans le regard de la sauveteuse qui observe le monde autour d’elle, des enfants qui se baignent au collègue qui lui ferait peut-être de l'œil. Rien n’est parfait, mais ce qu’elle observe c’est son quartier, le milieu auquel elle appartient. Ce voit c’est ni plus ni moins que la vie en action.",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-3_VID.mp4"
                 },
                 {
                     id: 4,
-                    name: "Simon Gagné",
-                    location: "Arch St.",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720668/audio/zone-rouge/3-4_n94mnt.mp3", // See if we can host them elsewhere.
+                    name: "Souvenirs de papier",
+                    name_part: "",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-4.mp3",
                     tracktime: "4 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720776/video/zone-rouge/3-4_VID_p44lsm.mp4"
+                    credits_place: "Lieu : Bibliothèque de l’école secondaire DeLaSalle",
+                    credits_text: "Texte : Luna Berniqué",
+                    credits_voiceActor: "Voix : Alex Brisebois Clyne",
+                    desc: "ICI, on retrace les lectures marquantes celles où on y trouve des morceaux bien réels de notre existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-4_VID.mp4"
                 },
                 {
                     id: 5,
-                    name: "Jonas",
-                    location: "Arch St.",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720673/audio/zone-rouge/3-5_sfmr0u.mp3", // See if we can host them elsewhere.
-                    tracktime: "5 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "./assets/videos/zone-rouge/3-5_VID.mp4"
+                    name: "Les Invisibles",
+                    name_part: "",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-5.mp3",
+                    tracktime: "6 MIN",
+                    credits_place: "Lieu : Église du 501 rue Bank",
+                    credits_text: "Benjamin Lévesque-Kinder",
+                    credits_voiceActor: "Voix : Dana Leclerc",
+                    desc: "ICI, on entre dans la question de ce qu’on choisit individuellement ou collectivement de ne pas voir. À travers le prisme d’une relation père-fils, on assiste à un éveil qui mène au constat que parfois il faut apprendre à ne pas détourner le regard.",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-5_VID.mp4"
                 },
                 {
                     id: 6,
-                    name: "Sophie",
-                    location: "Cameron-King",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720658/audio/zone-rouge/3-6_liqr5l.mp3", // See if we can host them elsewhere.
-                    tracktime: "5 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720753/video/zone-rouge/3-6_VID_uzyvjl.mp4"
+                    name: "La vie des autres",
+                    name_part: "",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-6.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Parc Major’s Hill",
+                    credits_text: "Texte : Aucéanne Tardif-Plante",
+                    credits_voiceActor: "Voix : Chloé Boivin",
+                    desc: "ICI, on redécouvre un lieu familier où pourtant tout semble avoir changé… Et si la transformation s’était opérée dans l'œil et dans le cœur qui regardent plutôt que dans l’objet de leurs observations?",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-6_VID.mp4"
                 },
                 {
                     id: 7,
-                    name: "Piste 7",
-                    location: "Cameron-King",
-                    audioUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720663/audio/zone-rouge/3-7_hgafie.mp3", // See if we can host them elsewhere.
-                    tracktime: "5 MIN",
-                    credits: "Ludovic Longprés Roxane Myre",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa rutrum, condimentum erat id, lacinia quam. Duis et tincidunt metus. Sed semper urna nisi.",
-                    videoUrl: "https://res.cloudinary.com/dgzfnryak/video/upload/v1630720779/video/zone-rouge/3-7_VID_otqko2.mp4"
+                    name: "Le chemin du retour",
+                    name_part: "Partie 6 : Où sont allés tous nos champs dorés?",
+                    audioUrl: "https://catapulte.b-cdn.net/audio/zone-rouge/3-7.mp3",
+                    tracktime: "4 MIN",
+                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+                    credits_text: "Texte : Kamé Walker",
+                    credits_voiceActor: "Voix : Maxine Turcotte",
+                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+                    videoUrl: "https://catapulte.b-cdn.net/videos/zone-rouge/3-7_VID.mp4"
                 }
             ]
         });

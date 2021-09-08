@@ -25,18 +25,18 @@ body {
         overflow: hidden;
     }
     
-    &.zone-page {
-        min-height: 100%;
+    &.zone-rouge {
+        background-color: #fa748c;
+        
+        -webkit-animation: zoneRougeChangeBgcolor 30s ease infinite;
+        animation: zoneRougeChangeBgcolor 30s ease infinite;
+        
+        .song-is-playing & {
+            -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+        }
     }
     
-    &.zone-rouge {
-        background: rgb(229, 154, 112);
-        background: linear-gradient(320deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
-        
-        background-size: 400% 400%;
-        -webkit-animation: gradient 25s ease-in-out infinite;
-        animation: gradient 25s ease-in-out infinite;
-    }
     
     &.zone-orange {
         background: rgb(250, 228, 116);
@@ -51,10 +51,6 @@ body {
 
 h1, h2 {
     
-    .generic-page & {
-        text-transform: uppercase;
-    }
-
     .index-page & {
         color: $green;
         filter: opacity(8);
@@ -78,9 +74,14 @@ h1, h2 {
 }
 
 h2 {
-    .zone-page & {
-        width: 200px;
-    }
+    font-size: 1.8em;
+    text-transform: none;
+    letter-spacing: 0.02em;
+}
+
+h3 { 
+    font-size: 1.65em;
+    letter-spacing: 0.02em;
 }
 
 p {
@@ -88,12 +89,19 @@ p {
     font-size: 1.5em;
     line-height: 115%;
     letter-spacing: 0.02em;
+    margin: 1em 0;
+    
+    span.text-slanted {
+        font-family: 'Gramatika Slanted'm sans-serif;
+        font-weight: normal;
+        font-style: italic;
+    }
 }
 
 main {
     
     .inner {
-        padding: 80px 20px 40px;
+        padding: 80px 20px;
         
         .zone-page & {
             padding: 80px 0 20px;
@@ -200,6 +208,7 @@ button {
     background-color: #f8ffe4;
     height: 100vh;
     margin-top: 100vh;
+    min-height: 100%;
     // padding: 80px 20px 40px;
     position: relative;
     z-index: 2;
@@ -292,7 +301,7 @@ video {
         text-decoration: none;
         transition: color 200ms ease;
 
-        &:hover {
+        &:hover, &.active {
             color: white;
         }
     }
@@ -584,7 +593,7 @@ $main-width: 70px;
 
             &.zone-locked>a {
 
-                opacity: 0.7;
+                opacity: 1;
                 transition: opacity 255ms ease;
 
                 &::after {
@@ -594,7 +603,7 @@ $main-width: 70px;
                     content: "";
                     display: block;
                     height: 24px;
-                    opacity: 0.7;
+                    opacity: 1;
                     position: absolute;
                     right: -10px;
                     top: 10px;
@@ -629,13 +638,13 @@ $main-width: 70px;
                     font-size: 0.4em;
                     opacity: 0;
                     position: absolute;
-                    right: -120px;
+                    right: -145px;
                     text-transform: none;
                     top: 2px;
                     -webkit-transform: translateX(-10px);
                     transform: translateX(-10px);
                     transition: transform 500ms ease, opacity 500ms ease;
-                    width: 100px;
+                    width: 120px;
                 }
             }
         }
@@ -780,13 +789,19 @@ $main-width: 70px;
                     color: $green2;
                     display: block;
                     font-size: 1.3em;
-                    padding: 12px 20px;
+                    padding: 12px 80px 12px 20px;
                     position: relative;
                     text-decoration: none;
                     transition: padding 300ms ease;
                     
                     &:hover {
                         padding-left: 35px;
+                    }
+                    
+                    .text-theme-a {
+                        display: block;
+                        margin: 2px 0 0;
+                        text-transform: none;
                     }
                 }
                 
@@ -801,6 +816,10 @@ $main-width: 70px;
                             position: absolute;
                             right: 20px;
                             width: 21px;
+                            
+                            top: 50%;
+                            -webkit-transform: translateY(-50%);
+                            transform: translateY(-50%);
                         }
                     }
                 }
@@ -867,8 +886,7 @@ $main-width: 70px;
     // transition: opacity 255 ease-out;
     
     .zone-rouge & {
-        background: rgb(229, 154, 112);
-        background: linear-gradient(0deg, rgba(229, 154, 112, 1) 0%, rgba(250, 116, 140, 1) 100%);
+        background-color: #fa748c;
     }
     
     .zone-orange & {
@@ -898,6 +916,14 @@ $main-width: 70px;
 
     #intro-video .text-anim-wrapper span {
         font-size: 5em;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    #intro-text {
+        height: 130vh;
     }
 
 }
