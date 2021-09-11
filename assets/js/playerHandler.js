@@ -264,6 +264,13 @@
 
             // Audio
             this._newAudio = new Audio();
+			
+			$(this._newAudio).on('ended', function() {
+				// plugin.$_playlistEl.closest('li').addClass('listened');
+				// $(plugin._newAudio).off('ended');
+				plugin.skip();
+				
+			});
 
         },
         
@@ -411,7 +418,7 @@
 					// Video
 					this._newVideoSrc.setAttribute('src', this._settings.tracks[trackIndex].videoUrl);
 					this._newVideo.load();
-					console.log(this._newVideoSrc);
+					// console.log(this._newVideoSrc);
 					
 					$(this._newVideo).on('canplaythrough', function() {
 						console.log('video is loaded');
@@ -430,11 +437,7 @@
 						$(plugin._newAudio).off('canplay');
 						plugin._checkIfMediasAreReady();
 					});
-					
-					$(this._newAudio).on('ended', function() {
-						plugin.$_playlistEl.closest('li').addClass('listened');
-						plugin.skip();
-					});
+
 				}
                 
                 
@@ -454,6 +457,8 @@
                 // If we reach end of tracks, go back to first.
                 skipToSongIndex = 0;
             }
+			
+			console.log(skipToSongIndex)
             
             this._songListened(this._currentTrackIndex);
             this._onClickTrack(skipToSongIndex);
