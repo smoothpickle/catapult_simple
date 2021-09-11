@@ -906,7 +906,7 @@ button {
 }
 
 .list-theme-a figcaption {
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 .list-theme-a img {
@@ -1022,7 +1022,7 @@ button {
 }
 
 #intro-text {
-  background-color: #f8ffe4;
+  background-color: #fdfff5;
   height: 100vh;
   margin-top: 100vh;
   min-height: 100%;
