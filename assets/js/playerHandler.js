@@ -14,6 +14,7 @@
             
             tracks: [],
             parentContainer: $(this._element).parent(),
+			isLocked: false
             
         }, this._defaults, options);
 		this._init();
@@ -43,8 +44,13 @@
             
             this._buildPlaylist();
             this._buildArtistPanel();
-            this._buildMediasElement();
-            this._buildProgressBar();
+
+			if (this._settings.isLocked == false) {
+				this._buildMediasElement();
+            	this._buildProgressBar();
+			} else {
+				this.lockPlayer();
+			}
 		},
         
         //
@@ -175,6 +181,7 @@
 							plugin.skip();
 						}
 					}))
+					.append($('<div/>', { id: 'songLock' }))
 					.append($('<p/>', { id: 'player_duration', class: 'text-theme-a' }))
 				)
 				.append($('<button/>', { 
@@ -195,6 +202,7 @@
             this.$_elements = {};
 			
 			this.$_elements.html = $('html');
+			this.$_elements.body = $('body');
             this.$_elements.ul_playlist = $('#playlist-list'); // list of songs
             
 			this.$_elements.player = $('#player');
@@ -226,6 +234,7 @@
 			this.$_elements.btnPlay = this.$_elements.player.find('#btnPlay');
 			this.$_elements.btnStop = this.$_elements.player.find('#btnStop');
 			this.$_elements.btnNext = this.$_elements.player.find('#btnNext');
+			this.$_elements.songLock = this.$_elements.player.find('#songLock');
 			
 			this.$_elements.btnToggleCollapsePlayer = this.$_elements.player.find('#btnToggleCollapsePlayer');
 			
@@ -234,7 +243,7 @@
 			this.$_elements.loadingIcon.hide();
 			this.$_elements.btnStop.hide();
 			this.$_elements.btnNext.hide();
-			
+
 		},
         
         //
@@ -255,10 +264,6 @@
 
             // Audio
             this._newAudio = new Audio();
-			$(this._newAudio).on('ended', function() {
-                plugin.$_playlistEl.closest('li').addClass('listened');
-                plugin.skip();
-			});
 
         },
         
@@ -402,32 +407,41 @@
                 this.$_elements.trackDesc.text(this._settings.tracks[trackIndex].desc);
                 this.$_elements.trackDuration.text(this._settings.tracks[trackIndex].tracktime);
                 
-                // Video
-                this._newVideoSrc.setAttribute('src', this._settings.tracks[trackIndex].videoUrl);
-                this._newVideo.load();
-                console.log(this._newVideoSrc);
-				
-                $(this._newVideo).on('canplaythrough', function() {
-                    console.log('video is loaded');
-                    plugin._videoReady = true;
-                    $(plugin._newVideo).off('canplaythrough');
-                    plugin._checkIfMediasAreReady();
-                });
+				if (this._settings.isLocked == false) {
+					// Video
+					this._newVideoSrc.setAttribute('src', this._settings.tracks[trackIndex].videoUrl);
+					this._newVideo.load();
+					console.log(this._newVideoSrc);
+					
+					$(this._newVideo).on('canplaythrough', function() {
+						console.log('video is loaded');
+						plugin._videoReady = true;
+						$(plugin._newVideo).off('canplaythrough');
+						plugin._checkIfMediasAreReady();
+					});
+					
+					// Audio
+					this._newAudio.src = this._settings.tracks[trackIndex].audioUrl;
+					this._newAudio.load();
+					
+					$(this._newAudio).on('canplay', function() {
+						console.log('audio is loaded');
+						plugin._audioReady = true;
+						$(plugin._newAudio).off('canplay');
+						plugin._checkIfMediasAreReady();
+					});
+					
+					$(this._newAudio).on('ended', function() {
+						plugin.$_playlistEl.closest('li').addClass('listened');
+						plugin.skip();
+					});
+				}
                 
-                // Audio
-                this._newAudio.src = this._settings.tracks[trackIndex].audioUrl;
-                this._newAudio.load();
-                
-                $(this._newAudio).on('canplay', function() {
-                    console.log('audio is loaded');
-                    plugin._audioReady = true;
-                    $(plugin._newAudio).off('canplay');
-                    plugin._checkIfMediasAreReady();
-                });
                 
                 // Player
                 this.$_elements.playerSongName.text(this._settings.tracks[trackIndex].name);
                 this.$_elements.playerTime_Now.css({'width': '0%'});
+
             }   
         },
         
@@ -502,6 +516,10 @@
         showPlayer: function() {
             this.$_elements.html.removeClass('player-is-collapse');
         },
+		
+		lockPlayer: function() {
+			this.$_elements.body.addClass('zone-locked');
+		}
 		
 	});
 	//Plugin wrapper

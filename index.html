@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="full-height">
+<html lang="fr" class="full-height">
 
 <head>
 
@@ -14,20 +14,20 @@
     <!--meta name="keywords" content=""-->
     <meta name="description" content="">
     
-    <meta itemprop="name" content="Project">
-    <meta itemprop="description" content="Content description less than 200 characters">
+    <meta itemprop="name" content="Demain, j'étais ici.">
+    <meta itemprop="description" content="Écoutez bien, c’est demain qui vous parle.">
     <meta itemprop="image" content="http://yourawesomeproject.com/image.jpg">
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Project">
+    <meta name="apple-mobile-web-app-title" content="Demain, j'étais ici.">
     
-    <meta property="og:url" content="http://yourawesomeproject.com">
+    <meta property="og:url" content="https://demain.catapulte.ca/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Your Next Awesome Project">
+    <meta property="og:title" content="Demain, j'étais ici.">
     <meta property="og:image" content="http://yourawesomeproject.com/image.jpg">
-    <meta property="og:description" content="Description Here">
-    <meta property="og:site_name" content="Site Name">
+    <meta property="og:description" content="Écoutez bien, c’est demain qui vous parle.">
+    <meta property="og:site_name" content="Demain, j'étais ici.">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@site_account">
@@ -36,17 +36,15 @@
     <meta name="twitter:title" content="Project">
     <meta name="twitter:description" content="Content description less than 200 characters">
     <meta name="twitter:image" content="http://yourawesomeproject.com/image.jpg">
-    
-    <link href="https://plus.google.com/+YourPage" rel="publisher">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  
+    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
     <!-- Place favicon.ico in the root directory -->
-    <link rel="alternate" hreflang="en" href="http://yourawesomeproject.com/en">
     <link type="text/plain" rel="author" href="humans.txt">
     
     <!-- Normalise.css -->
     <link rel="stylesheet" href="./assets/scss/app.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./assets/scss/theme.css">
+    <link rel="stylesheet" href="./assets/scss/theme.css?v=1">
 
 </head>
 
@@ -77,8 +75,9 @@
 
         <div class="inner">
             <p>Ottawa. 2021.</p>
-            <p>Des adolescents prennent plume, prennent parole. Alors qu’une pandémie les isole, les confine à la maison, ils revisitent leur ville, les lieux témoins de leur existence. Ils interrogent leur place dans cet espace donné, mais surtout ils ouvrent grand la porte et partagent leurs rêves, peurs et imaginaires. Dans une langue qui est la leur, ils nous convient chez eux et nous offrent ces fragments d’histoires où se côtoient l’imaginaire, celle qui nous préserve et nous élève, et la réalité, parfois dure, parfois tendre.</p>
+            <p>Des adolescents prennent plume, prennent parole. Alors qu’une pandémie les isole, les confine à la maison, ils revisitent leur ville, les lieux témoins de leur existence. Ils interrogent leur place dans cet espace donné, mais surtout ils ouvrent grand la porte et partagent leurs rêves, peurs et imaginaires. Dans une langue qui est la leur, ils nous convient chez eux et nous offrent ces fragments d’histoires où se côtoient l’imaginaire, celui qui nous préserve et nous élève, et la réalité, parfois dure, parfois tendre.</p>
             <p>Écoutez bien, c’est demain qui vous parle.</p>
+            <p>La Zone rouge sera accessible à 14h le lundi 13 septembre. La Zone orange, le mercredi 15 à 14h, et la Zone verte, le vendredi 17 à 14h.</p>
         </div>
 
     </main> <!-- end #intro-text -->
@@ -88,21 +87,24 @@
             
             <div class="inner">
                 <ul class="zone-list">
-                    <li>
-                        <a href="./zone-rouge.html">Zone rouge</a>
+                    <li class="zone-locked">
+                        <a href="./zone-rouge.html" class="cantClick">
+                            <span>Zone rouge</span>
+                            <span class="text-theme-a">13 sept. 2021</span>
+                        </a>
                         <div class="curved-line"></div>
                     </li>
                     <li class="zone-locked">
                         <a href="#" class="cantClick">
                             <span>Zone orange</span>
-                            <span class="text-theme-a">21 sept. 2021</span>
+                            <span class="text-theme-a">15 sept. 2021</span>
                         </a>
                         <div class="curved-line"></div>
                     </li>
                     <li class="zone-locked">
                         <a href="#" class="cantClick">
                             <span>Zone verte</span>
-                            <span class="text-theme-a">21 sept. 2021</span>
+                            <span class="text-theme-a">17 sept. 2021</span>
                         </a>
                         <div class="curved-line"></div>
                     </li>
@@ -123,7 +125,7 @@
         <ul>
             <li><a href="#" class="active">Accueil</a></li>
             <li><a href="./a-propos.html">À propos</a></li>
-            <li><a href="./credits.html">Crédits</a></li>
+            <li><a href="./equipe.html">Équipe</a></li>
             <li><a href="./mediation.html">Médiation</a></li>
         </ul>
     </nav>
@@ -136,7 +138,7 @@
     
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="./assets/js/app.js?v=3"></script>
+    <script type="text/javascript" src="./assets/js/app.js?v=4"></script>
     
     <script>
         
@@ -254,9 +256,13 @@
             // let videoElem = document.getElementById("video");
             // videoElem.play();
             
-            $('.cantClick').on('click', function(e) {
-               e.preventDefault(); 
-            });
+            // $('.cantClick').on('click', function(e) {
+            //    e.preventDefault(); 
+            // });
+            
+            // $('.cantClick').on('click', function(e) {
+            //     e.preventDefault();
+            // });
             
         });
         

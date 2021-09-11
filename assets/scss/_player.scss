@@ -1,13 +1,13 @@
 @import "_playerAnimations";
 
 html {
-    &.song-is-playing {
+    &.song-is-playing.show-artistPanel {
         height: 100%;
     }
 }
 
 body {
-    .song-is-playing & {
+    .song-is-playing.show-artistPanel & {
         height: 100%;
         overflow: hidden;
     }
@@ -343,6 +343,22 @@ body {
     .text-theme-a {
         margin: 0;
     }
+    
+    #songLock {
+        background: transparent url('../images/ico-lock.svg') no-repeat center;
+        background-size: cover;
+        display: none;
+        height: 26px;
+        width: 20px;
+    }
+    
+    .zone-locked & {
+        
+        #playerLoadingIcon { display: none !important; }
+        #songLock { display: block !important; }
+    }
+    
+    
 }
 
 

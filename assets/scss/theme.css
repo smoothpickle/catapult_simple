@@ -210,11 +210,11 @@
   }
 }
 
-html.song-is-playing {
+html.song-is-playing.show-artistPanel {
   height: 100%;
 }
 
-.song-is-playing body {
+.song-is-playing.show-artistPanel body {
   height: 100%;
   overflow: hidden;
 }
@@ -498,6 +498,22 @@ body.zone-page::-webkit-scrollbar {
   margin: 0;
 }
 
+#player #songLock {
+  background: transparent url("../images/ico-lock.svg") no-repeat center;
+  background-size: cover;
+  display: none;
+  height: 26px;
+  width: 20px;
+}
+
+.zone-locked #player #playerLoadingIcon {
+  display: none !important;
+}
+
+.zone-locked #player #songLock {
+  display: block !important;
+}
+
 /*
  *******************
  *  MEDIA QUERIES  *
@@ -777,7 +793,7 @@ body.zone-verte {
 }
 
 .index-page h1, .index-page h2 {
-  color: #a8e07d;
+  color: #75DC93;
   -webkit-filter: opacity(8);
           filter: opacity(8);
   font-size: 5.3em;
@@ -910,7 +926,7 @@ button {
 }
 
 #intro-video .text-anim-wrapper span {
-  color: #a8e07d;
+  color: #75DC93;
   display: inline-block;
   padding: 0 1px;
   font-size: 5.6em;
@@ -1520,6 +1536,7 @@ video {
 .zone-page main .playlist li a {
   color: #365151;
   display: block;
+  letter-spacing: 0.02em;
   font-size: 1.3em;
   padding: 12px 80px 12px 20px;
   position: relative;
