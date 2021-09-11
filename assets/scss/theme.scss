@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background-color: #f8ffe4;
+    background-color: #fdfff5;
     font-family: 'Gramatika', sans-serif;
     overflow-x: hidden;
     position: relative;
@@ -51,6 +51,10 @@ body {
 
 h1, h2 {
     
+    font-family: 'Gramatika';
+    font-weight: bold;
+    font-style: normal;
+    
     .index-page & {
         color: $green;
         filter: opacity(8);
@@ -73,10 +77,24 @@ h1, h2 {
     }
 }
 
+h1 {
+    .generic-page & {
+        color: $green2;
+        font-size: 3em;
+        margin: 0.4em 0 0.6em;
+    }
+}
+
 h2 {
-    font-size: 1.8em;
-    text-transform: none;
-    letter-spacing: 0.02em;
+    // font-size: 1.8em;
+    // text-transform: none;
+    // letter-spacing: 0.02em;
+    
+    .generic-page & {
+        color: $green2;
+        font-size: 1.25em;
+        margin: 1em 0;
+    }
 }
 
 h3 { 
@@ -85,8 +103,8 @@ h3 {
 }
 
 p {
-    color: $red;
-    font-size: 1.5em;
+    color: $green2;
+    font-size: 1.25em;
     line-height: 115%;
     letter-spacing: 0.02em;
     margin: 1em 0;
@@ -120,6 +138,64 @@ button {
 
 // UTILS
 
+.mt-20 {
+    margin-top: 20px;
+}
+
+.list-theme-a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    
+    li {
+        color: $green2;
+        font-size: 0.875em;
+        font-weight: bold;
+        letter-spacing: .3px;
+        margin-bottom: 20px;
+        width: 31%;
+        
+        span {
+            display: block;
+            
+            &.text-theme-c {
+                margin-top: 2px;
+            }
+        }
+        
+        &.full-row {
+            width: 100%;
+        }
+    }
+    
+    figure {
+        margin: 0;
+        // padding: 10px;
+    }
+    
+    figcaption {
+        margin-top: 5px;
+    }
+    
+    img {
+        width: 100%;
+    }
+}
+
+.list-theme-b {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0;
+    
+    li { 
+        text-align: center;
+        width: 30%;
+    }
+}
+
 .full-height {
     height: 100%;
 }
@@ -140,6 +216,10 @@ button {
 .text-theme-b {
     color: $green2;
     margin: 1em 0;
+}
+
+.text-theme-c {
+    font-weight: normal;
 }
 
 .overflow-hidden { overflow: hidden; }
@@ -901,6 +981,8 @@ $main-width: 70px;
     }
 }
 
+
+
 /*
  *******************
  *  MEDIA QUERIES  *
@@ -910,13 +992,19 @@ $main-width: 70px;
 @media (max-width: 321px) {
 
     #intro-video .text-anim-wrapper span { font-size: 4em; }
-
 }
 
 @media (max-width: 376px) {
 
     #intro-video .text-anim-wrapper span {
         font-size: 5em;
+    }
+    
+    .list-theme-a {
+
+        li {
+            width: 100% !important;
+        }
     }
 
 }
@@ -926,7 +1014,34 @@ $main-width: 70px;
     #intro-text {
         height: 130vh;
     }
+    
+    .list-theme-a {
+        
+        li {
+            width: 48%;
+        }
+    }
+    
+    .list-theme-b {
 
+        li {
+            margin: 40px 0 !important;
+            width: 100% !important;
+        }
+    }
+
+}
+
+@media (max-width: 992px) {
+    
+    .list-theme-b {
+
+        li {
+            margin: 20px 0;
+            width: 50%;
+        }
+    }
+    
 }
 
 // Small devices (landscape phones, 576px and up)

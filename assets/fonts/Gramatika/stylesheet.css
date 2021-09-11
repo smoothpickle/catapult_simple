@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'Gramatika';
+    src: url('Gramatika-Bold.woff2') format('woff2'),
+        url('Gramatika-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Gramatika Slanted';
     src: url('Gramatika-Slanted.woff2') format('woff2'),
         url('Gramatika-Slanted.woff') format('woff');
@@ -15,3 +24,4 @@
     font-style: normal;
     font-display: swap;
 }
+
