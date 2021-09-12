@@ -20,6 +20,18 @@
   }
 }
 
+@-webkit-keyframes zoneRougeChangeBgcolor {
+  0% {
+    background-color: #fa748c;
+  }
+  50% {
+    background-color: #e59a70;
+  }
+  100% {
+    background-color: #fa748c;
+  }
+}
+
 @keyframes zoneRougeChangeBgcolor {
   0% {
     background-color: #fa748c;
@@ -32,15 +44,51 @@
   }
 }
 
-@-webkit-keyframes zoneRougeChangeBgcolor {
+@-webkit-keyframes zoneOrangeChangeBgcolor {
   0% {
-    background-color: #fa748c;
+    background-color: #ff7f57;
   }
   50% {
-    background-color: #e59a70;
+    background-color: #fae474;
   }
   100% {
-    background-color: #fa748c;
+    background-color: #ff7f57;
+  }
+}
+
+@keyframes zoneOrangeChangeBgcolor {
+  0% {
+    background-color: #ff7f57;
+  }
+  50% {
+    background-color: #fae474;
+  }
+  100% {
+    background-color: #ff7f57;
+  }
+}
+
+@-webkit-keyframes zoneVerteChangeBgcolor {
+  0% {
+    background-color: #6EDC93;
+  }
+  50% {
+    background-color: #BFE574;
+  }
+  100% {
+    background-color: #6EDC93;
+  }
+}
+
+@keyframes zoneVerteChangeBgcolor {
+  0% {
+    background-color: #6EDC93;
+  }
+  50% {
+    background-color: #BFE574;
+  }
+  100% {
+    background-color: #6EDC93;
   }
 }
 
@@ -223,6 +271,47 @@ body.zone-page::-webkit-scrollbar {
   display: none;
 }
 
+.prev-next-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+  max-width: 764px;
+  padding: 24px 15px;
+}
+
+.prev-next-wrapper.flex-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.prev-zone, .next-zone {
+  color: #365151;
+  display: inline-block;
+  font-size: 0.875em;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  padding: 5px;
+  text-decoration: none;
+  -webkit-transition: transform 300ms ease;
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+}
+
+.prev-zone span, .next-zone span {
+  position: relative;
+}
+
+.next-zone {
+  text-align: right;
+}
+
 #player {
   -ms-flex-line-pack: justify;
       align-content: space-between;
@@ -241,8 +330,9 @@ body.zone-page::-webkit-scrollbar {
 #player h2 {
   color: #365151;
   font-size: 2.5em;
-  line-height: 105%;
-  margin: 0.5em 0;
+  letter-spacing: 0.02em;
+  line-height: 36px;
+  margin: 0.5em 0 0;
   width: auto;
 }
 
@@ -296,15 +386,25 @@ body.zone-page::-webkit-scrollbar {
 }
 
 .zone-orange #player #artistInfoPanel {
-  background: #fae474;
-  background: -webkit-gradient(linear, left bottom, left top, from(#fae474), to(#e59370));
-  background: linear-gradient(0deg, #fae474 0%, #e59370 100%);
+  background-color: #ff7f57;
+  -webkit-animation: zoneOrangeChangeBgcolor 30s ease infinite;
+  animation: zoneOrangeChangeBgcolor 30s ease infinite;
+}
+
+.song-is-playing .zone-orange #player #artistInfoPanel {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .zone-verte #player #artistInfoPanel {
-  background: #6edc93;
-  background: -webkit-gradient(linear, left bottom, left top, from(#6edc93), to(#bfe574));
-  background: linear-gradient(0deg, #6edc93 0%, #bfe574 100%);
+  background-color: #6EDC93;
+  -webkit-animation: zoneVerteChangeBgcolor 30s ease infinite;
+  animation: zoneVerteChangeBgcolor 30s ease infinite;
+}
+
+.song-is-playing .zone-verte #player #artistInfoPanel {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .hide-artistInfo #player #artistInfoPanel,
@@ -351,8 +451,20 @@ body.zone-page::-webkit-scrollbar {
 
 .zone-rouge #player #artistPlayer::before {
   background: #fa748c;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #fa748c), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(0deg, #fa748c 25%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #fa748c), to(rgba(250, 116, 140, 0)));
+  background: linear-gradient(0deg, #fa748c 25%, rgba(250, 116, 140, 0) 100%);
+}
+
+.zone-orange #player #artistPlayer::before {
+  background: #ff7f57;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #ff7f57), to(rgba(255, 127, 87, 0)));
+  background: linear-gradient(0deg, #ff7f57 25%, rgba(255, 127, 87, 0) 100%);
+}
+
+.zone-verte #player #artistPlayer::before {
+  background: #6edc93;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #6edc93), to(rgba(110, 220, 147, 0)));
+  background: linear-gradient(0deg, #6edc93 25%, rgba(110, 220, 147, 0) 100%);
 }
 
 .song-is-playing #player #artistPlayer::before {
@@ -361,7 +473,20 @@ body.zone-page::-webkit-scrollbar {
 }
 
 #player #player_trackname_part {
-  margin-bottom: 10px;
+  color: #365151;
+  font-size: 2.5em;
+  letter-spacing: 0.02em;
+  line-height: 36px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+#player #player_credits_text {
+  top: -1px;
+}
+
+#player #player_credits_voiceActor {
+  top: -2px;
 }
 
 #player #player_desc {
@@ -378,6 +503,7 @@ body.zone-page::-webkit-scrollbar {
 #player #playerProgressBarContainer #playerSongName {
   color: white;
   font-size: 1.3em;
+  letter-spacing: 0.04em;
   margin: 16px 0;
 }
 
@@ -781,15 +907,38 @@ body.zone-rouge {
 }
 
 body.zone-orange {
-  background: #fae474;
-  background: -webkit-gradient(linear, left bottom, left top, from(#fae474), to(#e59370));
-  background: linear-gradient(0deg, #fae474 0%, #e59370 100%);
+  background-color: #ff7f57;
+  -webkit-animation: zoneOrangeChangeBgcolor 30s ease infinite;
+  animation: zoneOrangeChangeBgcolor 30s ease infinite;
+}
+
+.song-is-playing body.zone-orange {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 body.zone-verte {
+  background-color: #6EDC93;
+  -webkit-animation: zoneVerteChangeBgcolor 30s ease infinite;
+  animation: zoneVerteChangeBgcolor 30s ease infinite;
+}
+
+.song-is-playing body.zone-verte {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+body.generic-page::before {
   background: #6edc93;
-  background: -webkit-gradient(linear, left bottom, left top, from(#6edc93), to(#bfe574));
-  background: linear-gradient(0deg, #6edc93 0%, #bfe574 100%);
+  background: -webkit-gradient(linear, left bottom, left top, from(#6edc93), to(rgba(110, 220, 147, 0)));
+  background: linear-gradient(0deg, #6edc93 0%, rgba(110, 220, 147, 0) 100%);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 140px;
+  left: 0;
+  position: fixed;
+  right: 0;
 }
 
 h1, h2 {
@@ -812,23 +961,25 @@ h1, h2 {
   z-index: 2;
 }
 
-.zone-page h1, .zone-page h2 {
-  color: #365151;
-  font-size: 2.5em;
-  line-height: 0.8;
-  margin: 0.5em 0.5em 0;
-  width: 150px;
-}
-
 .generic-page h1 {
   color: #365151;
   font-size: 3em;
   margin: 0.4em 0 0.6em;
 }
 
+.zone-page h1 {
+  color: #365151;
+  font-size: 2.5em;
+  font-weight: normal;
+  line-height: 0.9;
+  margin: 0.5em 0.5em 0;
+  width: 150px;
+}
+
 .generic-page h2 {
   color: #365151;
-  font-size: 1.25em;
+  font-size: 1.5em;
+  letter-spacing: 0.02em;
   margin: 1em 0;
 }
 
@@ -846,7 +997,7 @@ p {
 }
 
 p span.text-slanted {
-  font-family: 'Gramatika Slanted'm sans-serif;
+  font-family: 'Gramatika Slanted', sans-serif;
   font-weight: normal;
   font-style: italic;
 }
@@ -856,12 +1007,24 @@ main .inner {
 }
 
 .zone-page main .inner {
-  padding: 80px 0 20px;
+  padding: 80px 0 24px;
+}
+
+.generic-page main .inner {
+  padding-bottom: 100px;
 }
 
 button {
   background: none;
   border: 0;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .mt-20 {
@@ -884,7 +1047,7 @@ button {
   color: #365151;
   font-size: 0.875em;
   font-weight: bold;
-  letter-spacing: .3px;
+  letter-spacing: 0.04em;
   margin-bottom: 20px;
   width: 31%;
 }
@@ -958,6 +1121,34 @@ button {
   font-weight: normal;
 }
 
+.text-theme-d {
+  font-weight: bold;
+  font-size: 0.8em;
+  letter-spacing: 0.04em;
+}
+
+.text-theme-e {
+  font-size: 0.8em;
+  letter-spacing: 0.04em;
+}
+
+.text-theme-f {
+  color: #365151;
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  margin: 0;
+  position: relative;
+}
+
+.text-theme-f span {
+  border: 1px solid #365151;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 7px 16px;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -968,6 +1159,22 @@ button {
 
 .min-height-100 {
   min-height: 100%;
+}
+
+#logos-list img {
+  width: 100%;
+}
+
+#logos-list li:nth-child(1) img {
+  max-width: 200px;
+}
+
+#logos-list li:nth-child(2) img {
+  max-width: 200px;
+}
+
+#logos-list li:nth-child(3) img {
+  max-width: 100px;
 }
 
 #intro-video {
@@ -1013,7 +1220,6 @@ button {
 #intro-video .text-anim-wrapper span {
   color: #75DC93;
   display: inline-block;
-  padding: 0 1px;
   font-size: 5.6em;
 }
 
@@ -1049,7 +1255,7 @@ video {
   position: fixed;
   top: 8px;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 #top-menu {
@@ -1623,7 +1829,7 @@ video {
   display: block;
   letter-spacing: 0.02em;
   font-size: 1.3em;
-  padding: 12px 80px 12px 20px;
+  padding: 15px 80px 15px 20px;
   position: relative;
   text-decoration: none;
   -webkit-transition: padding 300ms ease;
@@ -1638,6 +1844,14 @@ video {
   display: block;
   margin: 2px 0 0;
   text-transform: none;
+}
+
+.zone-page main .playlist li a .songName, .zone-page main .playlist li a .name_part {
+  display: block;
+}
+
+.zone-page main .playlist li a .songName {
+  margin-bottom: 3px;
 }
 
 .zone-page main .playlist li.listened a::before {
@@ -1732,15 +1946,11 @@ video {
 }
 
 .zone-orange #loading_screen {
-  background: #fae474;
-  background: -webkit-gradient(linear, left bottom, left top, from(#fae474), to(#e59370));
-  background: linear-gradient(0deg, #fae474 0%, #e59370 100%);
+  background-color: #ff7f57;
 }
 
 .zone-verte #loading_screen {
-  background: #6edc93;
-  background: -webkit-gradient(linear, left bottom, left top, from(#6edc93), to(#bfe574));
-  background: linear-gradient(0deg, #6edc93 0%, #bfe574 100%);
+  background-color: #6EDC93;
 }
 
 /*
@@ -1757,9 +1967,6 @@ video {
 @media (max-width: 376px) {
   #intro-video .text-anim-wrapper span {
     font-size: 5em;
-  }
-  .list-theme-a li {
-    width: 100% !important;
   }
 }
 

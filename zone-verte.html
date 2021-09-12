@@ -9,42 +9,49 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <meta name="author" content="Théâtre Catapulte">
     <!--meta name="keywords" content=""-->
     <meta name="description" content="">
-
-    <meta itemprop="name" content="Demain, j'étais ici.">
-    <meta itemprop="description" content="Écoutez bien, c’est demain qui vous parle.">
-    <meta itemprop="image" content="http://yourawesomeproject.com/image.jpg">
-
+    
+    <meta itemprop="name" content="Demain, j’étais ici : une ville en récits">
+    <meta itemprop="description" content="Une oeuvre audionumérique écrite et interprétée par des adolescents.">
+    <meta itemprop="image" content="https://demain.catapulte.ca/meta-facebook.jpg">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Demain, j'étais ici.">
-
+    <meta name="apple-mobile-web-app-title" content="Demain">
+    
     <meta property="og:url" content="https://demain.catapulte.ca/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Demain, j'étais ici.">
-    <meta property="og:image" content="http://yourawesomeproject.com/image.jpg">
-    <meta property="og:description" content="Écoutez bien, c’est demain qui vous parle.">
-    <meta property="og:site_name" content="Demain, j'étais ici.">
-
+    <meta property="og:title" content="Demain, j’étais ici : une ville en récits">
+    <meta property="og:image" content="https://demain.catapulte.ca/meta-facebook.jpg">
+    <meta property="og:description" content="Une oeuvre audionumérique écrite et interprétée par des adolescents.">
+    <meta property="og:site_name" content="Demain, j’étais ici">
+    
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@site_account">
-    <meta name="twitter:creator" content="@individual_account">
-    <meta name="twitter:url" content="http://yourawesomeproject.com">
-    <meta name="twitter:title" content="Project">
-    <meta name="twitter:description" content="Content description less than 200 characters">
-    <meta name="twitter:image" content="http://yourawesomeproject.com/image.jpg">
-
-    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-    <!-- Place favicon.ico in the root directory -->
+    <meta name="twitter:site" content="@LaCatapulte">
+    <!-- <meta name="twitter:creator" content="@individual_account"> -->
+    <meta name="twitter:url" content="https://demain.catapulte.ca/">
+    <meta name="twitter:title" content="Demain, j’étais ici : une ville en récits">
+    <meta name="twitter:description" content="Une oeuvre audionumérique écrite et interprétée par des adolescents.">
+    <meta name="twitter:image" content="https://demain.catapulte.ca/meta-twitter.jpg">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
     <link type="text/plain" rel="author" href="humans.txt">
-
+    
     <!-- Normalise.css -->
     <link rel="stylesheet" href="./assets/scss/app.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./assets/scss/theme.css?v=1">
+    <link rel="stylesheet" href="./assets/scss/theme.css?v=2">
 
 </head>
 
@@ -71,13 +78,14 @@
     </nav>
 
     <main class="container">
-
         <div class="inner">
             <h1>Zone verte</h1>
             <p class="text-theme-a text-locked">Dès le 17 sept. 2021</p>
         </div>
         <div class="playerizer"></div>
-        
+        <div class="prev-next-wrapper">
+            <a href="./zone-orange.html" class="prev-zone">Passer à la zone précédente</a>
+        </div>
     </main>
 
     <div id="loading_screen"></div>
@@ -93,179 +101,179 @@
         $('.playerizer').playerizer({
             
             // isLocked: true,
-            tracks: [
-                {
-                    id: 1,
-                    name: "Le chemin du retour",
-                    name_part: "Partie 5: Le feu qui brûle en nous",
-                    audioUrl: "./assets/mp3/zone-verte/3-1.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
-                    credits_text: "Texte : Kamé Walker",
-                    credits_voiceActor: "Voix : Maxine Turcotte",
-                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-                    videoUrl: "./assets/videos/zone-verte/3-1_VID.mp4"
-                },
-                {
-                    id: 2,
-                    name: "Le trajet",
-                    name_part: "Partie 4: Le colis",
-                    audioUrl: "./assets/mp3/zone-verte/3-2.mp3",
-                    tracktime: "4 MIN",
-                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
-                    credits_text: "Texte : Amel Amrouche",
-                    credits_voiceActor: "Voix : Sarah Komendat",
-                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
-                    videoUrl: "./assets/videos/zone-verte/3-2_VID.mp4"
-                },
-                {
-                    id: 3,
-                    name: "Loutre de mer",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-verte/3-3.mp3",
-                    tracktime: "6 MIN",
-                    credits_place: "Lieu : Piscine de la Basse-Ville, rue Cobourg",
-                    credits_text: "Texte : Savana Renaud-Usami",
-                    credits_voiceActor: "Voix : Nicole Grant",
-                    desc: "ICI, on se transporte dans le regard de la sauveteuse qui observe le monde autour d’elle, des enfants qui se baignent au collègue qui lui ferait peut-être de l'œil. Rien n’est parfait, mais ce qu’elle observe c’est son quartier, le milieu auquel elle appartient. Ce qu’elle voit c’est ni plus ni moins que la vie en action.",
-                    videoUrl: "./assets/videos/zone-verte/3-3_VID.mp4"
-                },
-                {
-                    id: 4,
-                    name: "Souvenirs de papier",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-verte/3-4.mp3",
-                    tracktime: "4 MIN",
-                    credits_place: "Lieu : Bibliothèque de l’école secondaire DeLaSalle",
-                    credits_text: "Texte : Luna Berniqué",
-                    credits_voiceActor: "Voix : Alex Brisebois Clyne",
-                    desc: "ICI, on retrace les lectures marquantes d’un parcours de lectrice, ces lectures où on trouve des morceaux bien réels de son existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",
-                    videoUrl: "./assets/videos/zone-verte/3-4_VID.mp4"
-                },
-                {
-                    id: 5,
-                    name: "Les Invisibles",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-verte/3-5.mp3",
-                    tracktime: "6 MIN",
-                    credits_place: "Lieu : Église du 501 rue Bank",
-                    credits_text: "Texte : Benjamin Lévesque-Kinder",
-                    credits_voiceActor: "Voix : Dana Leclerc",
-                    desc: "ICI, on entre dans la question de ce qu’on choisit individuellement ou collectivement de ne pas voir. À travers le prisme d’une relation père-fils, on assiste à un éveil qui mène au constat que parfois il faut apprendre à ne pas détourner le regard.",
-                    videoUrl: "./assets/videos/zone-verte/3-5_VID.mp4"
-                },
-                {
-                    id: 6,
-                    name: "La vie des autres",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-verte/3-6.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : Parc Major’s Hill",
-                    credits_text: "Texte : Aucéanne Tardif-Plante",
-                    credits_voiceActor: "Voix : Chloé Boivin",
-                    desc: "ICI, on redécouvre un lieu familier où pourtant tout semble avoir changé… Et si la transformation s’était opérée dans l'œil et dans le cœur qui regardent plutôt que dans l’objet de leurs observations?",
-                    videoUrl: "./assets/videos/zone-verte/3-6_VID.mp4"
-                },
-                {
-                    id: 7,
-                    name: "Le chemin du retour",
-                    name_part: "Partie 6 : Où sont allés tous nos champs dorés?",
-                    audioUrl: "./assets/mp3/zone-verte/3-7.mp3",
-                    tracktime: "4 MIN",
-                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
-                    credits_text: "Texte : Kamé Walker",
-                    credits_voiceActor: "Voix : Maxine Turcotte",
-                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-                    videoUrl: "./assets/videos/zone-verte/3-7_VID.mp4"
-                }
-            ]
-            
             // tracks: [
             //     {
             //         id: 1,
             //         name: "Le chemin du retour",
             //         name_part: "Partie 5: Le feu qui brûle en nous",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-1.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-1.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
             //         credits_text: "Texte : Kamé Walker",
             //         credits_voiceActor: "Voix : Maxine Turcotte",
             //         desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-1_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-1_VID.mp4"
             //     },
             //     {
             //         id: 2,
             //         name: "Le trajet",
             //         name_part: "Partie 4: Le colis",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-2.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-2.mp3",
             //         tracktime: "4 MIN",
             //         credits_place: "Lieu : O-Train, direction Tunney’s pasture",
             //         credits_text: "Texte : Amel Amrouche",
             //         credits_voiceActor: "Voix : Sarah Komendat",
             //         desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-2_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-2_VID.mp4"
             //     },
             //     {
             //         id: 3,
             //         name: "Loutre de mer",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-3.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-3.mp3",
             //         tracktime: "6 MIN",
             //         credits_place: "Lieu : Piscine de la Basse-Ville, rue Cobourg",
             //         credits_text: "Texte : Savana Renaud-Usami",
             //         credits_voiceActor: "Voix : Nicole Grant",
             //         desc: "ICI, on se transporte dans le regard de la sauveteuse qui observe le monde autour d’elle, des enfants qui se baignent au collègue qui lui ferait peut-être de l'œil. Rien n’est parfait, mais ce qu’elle observe c’est son quartier, le milieu auquel elle appartient. Ce qu’elle voit c’est ni plus ni moins que la vie en action.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-3_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-3_VID.mp4"
             //     },
             //     {
             //         id: 4,
             //         name: "Souvenirs de papier",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-4.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-4.mp3",
             //         tracktime: "4 MIN",
-            //         credits_place: "Lieu : Bibliothèque de l’école secondaire DeLaSalle",
+            //         credits_place: "Lieu : Bibliothèque de l’école secondaire De La Salle",
             //         credits_text: "Texte : Luna Berniqué",
             //         credits_voiceActor: "Voix : Alex Brisebois Clyne",
             //         desc: "ICI, on retrace les lectures marquantes d’un parcours de lectrice, ces lectures où on trouve des morceaux bien réels de son existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-4_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-4_VID.mp4"
             //     },
             //     {
             //         id: 5,
             //         name: "Les Invisibles",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-5.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-5.mp3",
             //         tracktime: "6 MIN",
             //         credits_place: "Lieu : Église du 501 rue Bank",
             //         credits_text: "Texte : Benjamin Lévesque-Kinder",
             //         credits_voiceActor: "Voix : Dana Leclerc",
             //         desc: "ICI, on entre dans la question de ce qu’on choisit individuellement ou collectivement de ne pas voir. À travers le prisme d’une relation père-fils, on assiste à un éveil qui mène au constat que parfois il faut apprendre à ne pas détourner le regard.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-5_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-5_VID.mp4"
             //     },
             //     {
             //         id: 6,
             //         name: "La vie des autres",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-6.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-6.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : Parc Major’s Hill",
             //         credits_text: "Texte : Aucéanne Tardif-Plante",
             //         credits_voiceActor: "Voix : Chloé Boivin",
             //         desc: "ICI, on redécouvre un lieu familier où pourtant tout semble avoir changé… Et si la transformation s’était opérée dans l'œil et dans le cœur qui regardent plutôt que dans l’objet de leurs observations?",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-6_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-6_VID.mp4"
             //     },
             //     {
             //         id: 7,
             //         name: "Le chemin du retour",
             //         name_part: "Partie 6 : Où sont allés tous nos champs dorés?",
-            //         audioUrl: "https://demain.b-cdn.net/audio/3-7.mp3",
+            //         audioUrl: "./assets/mp3/zone-verte/3-7.mp3",
             //         tracktime: "4 MIN",
             //         credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
             //         credits_text: "Texte : Kamé Walker",
             //         credits_voiceActor: "Voix : Maxine Turcotte",
             //         desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/3-7_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-verte/3-7_VID.mp4"
             //     }
             // ]
+            
+            tracks: [
+                {
+                    id: 1,
+                    name: "Le chemin du retour",
+                    name_part: "Partie 5: Le feu qui brûle en nous",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-1.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+                    credits_text: "Texte : Kamé Walker",
+                    credits_voiceActor: "Voix : Maxine Turcotte",
+                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-1_VID.mp4"
+                },
+                {
+                    id: 2,
+                    name: "Le trajet",
+                    name_part: "Partie 4: Le colis",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-2.mp3",
+                    tracktime: "4 MIN",
+                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
+                    credits_text: "Texte : Amel Amrouche",
+                    credits_voiceActor: "Voix : Sarah Komendat",
+                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-2_VID.mp4"
+                },
+                {
+                    id: 3,
+                    name: "Loutre de mer",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-3.mp3",
+                    tracktime: "6 MIN",
+                    credits_place: "Lieu : Piscine de la Basse-Ville, rue Cobourg",
+                    credits_text: "Texte : Savana Renaud-Usami",
+                    credits_voiceActor: "Voix : Nicole Grant",
+                    desc: "ICI, on se transporte dans le regard de la sauveteuse qui observe le monde autour d’elle, des enfants qui se baignent au collègue qui lui ferait peut-être de l'œil. Rien n’est parfait, mais ce qu’elle observe c’est son quartier, le milieu auquel elle appartient. Ce qu’elle voit c’est ni plus ni moins que la vie en action.",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-3_VID.mp4"
+                },
+                {
+                    id: 4,
+                    name: "Souvenirs de papier",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-4.mp3",
+                    tracktime: "4 MIN",
+                    credits_place: "Lieu : Bibliothèque de l’école secondaire De La Salle",
+                    credits_text: "Texte : Luna Berniqué",
+                    credits_voiceActor: "Voix : Alex Brisebois Clyne",
+                    desc: "ICI, on retrace les lectures marquantes d’un parcours de lectrice, ces lectures où on trouve des morceaux bien réels de son existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-4_VID.mp4"
+                },
+                {
+                    id: 5,
+                    name: "Les Invisibles",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-5.mp3",
+                    tracktime: "6 MIN",
+                    credits_place: "Lieu : Église du 501 rue Bank",
+                    credits_text: "Texte : Benjamin Lévesque-Kinder",
+                    credits_voiceActor: "Voix : Dana Leclerc",
+                    desc: "ICI, on entre dans la question de ce qu’on choisit individuellement ou collectivement de ne pas voir. À travers le prisme d’une relation père-fils, on assiste à un éveil qui mène au constat que parfois il faut apprendre à ne pas détourner le regard.",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-5_VID.mp4"
+                },
+                {
+                    id: 6,
+                    name: "La vie des autres",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-6.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Parc Major’s Hill",
+                    credits_text: "Texte : Aucéanne Tardif-Plante",
+                    credits_voiceActor: "Voix : Chloé Boivin",
+                    desc: "ICI, on redécouvre un lieu familier où pourtant tout semble avoir changé… Et si la transformation s’était opérée dans l'œil et dans le cœur qui regardent plutôt que dans l’objet de leurs observations?",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-6_VID.mp4"
+                },
+                {
+                    id: 7,
+                    name: "Le chemin du retour",
+                    name_part: "Partie 6 : Où sont allés tous nos champs dorés?",
+                    audioUrl: "https://demain.b-cdn.net/audio/3-7.mp3",
+                    tracktime: "4 MIN",
+                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+                    credits_text: "Texte : Kamé Walker",
+                    credits_voiceActor: "Voix : Maxine Turcotte",
+                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+                    videoUrl: "https://demain.b-cdn.net/videos/3-7_VID.mp4"
+                }
+            ]
 
         });
 

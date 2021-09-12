@@ -21,6 +21,53 @@ body {
     
 }
 
+.prev-next-wrapper {
+    
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 764px;
+    padding: 24px 15px;
+    
+    &.flex-end {
+        justify-content: flex-end;
+    }
+}
+
+.prev-zone, .next-zone {
+    
+    color: $green2;
+    display: inline-block;
+    font-size: 0.875em;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    padding: 5px;
+    text-decoration: none;
+    -webkit-transition: transform 300ms ease;
+    transition: transform 300ms ease;
+    
+    span {
+        position: relative;
+    }
+}
+
+.prev-zone {
+    
+    &:hover {
+        // -webkit-transform: translateX(-30px);
+        // transform: translateX(-30px);
+    }
+}
+
+.next-zone {
+    text-align: right;
+    
+    &:hover {
+        // -webkit-transform: translateX(30px);
+        // transform: translateX(30px);
+    }
+}
+
 #player {
     align-content: space-between;
     display: flex;
@@ -36,8 +83,9 @@ body {
     h2 {
         color: $green2;
         font-size: 2.5em;
-        line-height: 105%;
-        margin: 0.5em 0;
+        letter-spacing: 0.02em;
+        line-height: 36px;
+        margin: 0.5em 0 0;
         width: auto;
     }
     
@@ -83,11 +131,8 @@ body {
         z-index: 2;
 
         .zone-rouge & {
-
             background-color: #fa748c;
-            // background: linear-gradient(-45deg, rgba(229, 154, 112, 1) 0%, rgba(233, 146, 118, 1) 25%, rgba(239, 136, 126, 1) 50%, rgba(245, 125, 134, 1) 75%, rgba(250, 116, 140, 1) 100%);
 
-            // background-size: 400% 400%;
             -webkit-animation: zoneRougeChangeBgcolor 30s ease infinite;
             animation: zoneRougeChangeBgcolor 30s ease infinite;
             
@@ -98,13 +143,27 @@ body {
         }
         
         .zone-orange & {
-            background: rgb(250, 228, 116);
-            background: linear-gradient(0deg, rgba(250, 228, 116, 1) 0%, rgba(229, 147, 112, 1) 100%);
+            background-color: #ff7f57;
+
+            -webkit-animation: zoneOrangeChangeBgcolor 30s ease infinite;
+            animation: zoneOrangeChangeBgcolor 30s ease infinite;
+
+            .song-is-playing & {
+                -webkit-animation-play-state: paused;
+                animation-play-state: paused;
+            }
         }
 
         .zone-verte & {
-            background: rgb(110, 220, 147);
-            background: linear-gradient(0deg, rgba(110, 220, 147, 1) 0%, rgba(191, 229, 116, 1) 100%);
+            background-color: #6EDC93;
+            
+            -webkit-animation: zoneVerteChangeBgcolor 30s ease infinite;
+            animation: zoneVerteChangeBgcolor 30s ease infinite;
+
+            .song-is-playing & {
+                -webkit-animation-play-state: paused;
+                animation-play-state: paused;
+            }
         }
         
         .hide-artistInfo &,
@@ -152,13 +211,21 @@ body {
             
             .zone-rouge & {
                 background: rgb(250, 116, 140);
-                background: -webkit-linear-gradient(0deg, rgba(250, 116, 140, 1) 25%, rgba(255, 255, 255, 0) 100%);
-                background: linear-gradient(0deg, rgba(250, 116, 140, 1) 25%, rgba(255, 255, 255, 0) 100%);
+                background: -webkit-linear-gradient(0deg, rgba(250, 116, 140, 1) 25%, rgba(250, 116, 140, 0) 100%);
+                background: linear-gradient(0deg, rgba(250, 116, 140, 1) 25%, rgba(250, 116, 140, 0) 100%);
             }
 
-            .zone-orange & {}
+            .zone-orange & {
+                background: rgb(255, 127, 87);
+                background: -webkit-linear-gradient(0deg, rgba(255, 127, 87, 1) 25%, rgba(255, 127, 87, 0) 100%);
+                background: linear-gradient(0deg, rgba(255, 127, 87, 1) 25%, rgba(255, 127, 87, 0) 100%);
+            }
 
-            .zone-verte & {}
+            .zone-verte & {
+                background: rgb(110, 220, 147);
+                background: -webkit-linear-gradient(0deg, rgba(110, 220, 147, 1) 25%, rgba(110, 220, 147, 0) 100%);
+                background: linear-gradient(0deg, rgba(110, 220, 147, 1) 25%, rgba(110, 220, 147, 0) 100%);
+            }
             
             .song-is-playing & {
                 opacity: 1;
@@ -170,7 +237,20 @@ body {
     }
     
     #player_trackname_part {
-        margin-bottom: 10px;
+        color: #365151;
+        font-size: 2.5em;
+        letter-spacing: 0.02em;
+        line-height: 36px;
+        margin-top: 4px;
+        margin-bottom: 20px;
+    }
+    
+    #player_credits_text {
+        top: -1px;
+    }
+    
+    #player_credits_voiceActor {
+        top: -2px;
     }
     
     #player_desc {
@@ -193,7 +273,7 @@ body {
         #playerSongName {
             color: white;
             font-size: 1.3em;
-            // font-weight: 700;
+            letter-spacing: 0.04em;
             margin: 16px 0;
         }
         
@@ -357,7 +437,6 @@ body {
         #playerLoadingIcon { display: none !important; }
         #songLock { display: block !important; }
     }
-    
     
 }
 

@@ -9,42 +9,49 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <meta name="author" content="Théâtre Catapulte">
     <!--meta name="keywords" content=""-->
     <meta name="description" content="">
-
-    <meta itemprop="name" content="Demain, j'étais ici.">
-    <meta itemprop="description" content="Écoutez bien, c’est demain qui vous parle.">
-    <meta itemprop="image" content="http://yourawesomeproject.com/image.jpg">
-
+    
+    <meta itemprop="name" content="Demain, j’étais ici : une ville en récits">
+    <meta itemprop="description" content="Une oeuvre audionumérique écrite et interprétée par des adolescents.">
+    <meta itemprop="image" content="https://demain.catapulte.ca/meta-facebook.jpg">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Demain, j'étais ici.">
-
+    <meta name="apple-mobile-web-app-title" content="Demain">
+    
     <meta property="og:url" content="https://demain.catapulte.ca/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Demain, j'étais ici.">
-    <meta property="og:image" content="http://yourawesomeproject.com/image.jpg">
-    <meta property="og:description" content="Écoutez bien, c’est demain qui vous parle.">
-    <meta property="og:site_name" content="Demain, j'étais ici.">
-
+    <meta property="og:title" content="Demain, j’étais ici : une ville en récits">
+    <meta property="og:image" content="https://demain.catapulte.ca/meta-facebook.jpg">
+    <meta property="og:description" content="Une oeuvre audionumérique écrite et interprétée par des adolescents.">
+    <meta property="og:site_name" content="Demain, j’étais ici">
+    
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@site_account">
-    <meta name="twitter:creator" content="@individual_account">
-    <meta name="twitter:url" content="http://yourawesomeproject.com">
-    <meta name="twitter:title" content="Project">
-    <meta name="twitter:description" content="Content description less than 200 characters">
-    <meta name="twitter:image" content="http://yourawesomeproject.com/image.jpg">
-
-    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-    <!-- Place favicon.ico in the root directory -->
+    <meta name="twitter:site" content="@LaCatapulte">
+    <!-- <meta name="twitter:creator" content="@individual_account"> -->
+    <meta name="twitter:url" content="https://demain.catapulte.ca/">
+    <meta name="twitter:title" content="Demain, j’étais ici : une ville en récits">
+    <meta name="twitter:description" content="Une oeuvre audionumérique écrite et interprétée par des adolescents.">
+    <meta name="twitter:image" content="https://demain.catapulte.ca/meta-twitter.jpg">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
     <link type="text/plain" rel="author" href="humans.txt">
-
+    
     <!-- Normalise.css -->
     <link rel="stylesheet" href="./assets/scss/app.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./assets/scss/theme.css?v=1">
+    <link rel="stylesheet" href="./assets/scss/theme.css?v=2">
 
 </head>
 
@@ -71,12 +78,15 @@
     </nav>
 
     <main class="container">
-
         <div class="inner">
             <h1>Zone orange</h1>
             <p class="text-theme-a text-locked">Dès le 15 sept. 2021</p>
         </div>
         <div class="playerizer"></div>
+        <div class="prev-next-wrapper">
+            <a href="./zone-rouge.html" class="prev-zone"><span>Passer à la zone précédente</span></a>
+            <a href="./zone-verte.html" class="next-zone">Passez à la zone suivante</a>
+        </div>
         
     </main>
 
@@ -93,227 +103,227 @@
         $('.playerizer').playerizer({
             
             // isLocked: true,
-            tracks: [
-                {
-                    id: 1,
-                    name: "Le trajet",
-                    name_part: "Partie 2: Mon sac et moi",
-                    audioUrl: "./assets/mp3/zone-orange/2-1.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
-                    credits_text: "Texte : Amel Amrouche",
-                    credits_voiceActor: "Voix : Sarah Komendat",
-                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
-                    videoUrl: "./assets/videos/zone-orange/2-1_VID.mp4"
-                },
-                {
-                    id: 2,
-                    name: "Le chemin du retour",
-                    name_part: "Partie 3: Fermer les yeux",
-                    audioUrl: "./assets/mp3/zone-orange/2-2.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
-                    credits_text: "Texte : Kamé Walker",
-                    credits_voiceActor: "Voix : Maxine Turcotte",
-                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-                    videoUrl: "./assets/videos/zone-orange/2-2_VID.mp4"
-                },
-                {
-                    id: 3,
-                    name: "Les fées et les fossoyeurs",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-orange/2-3.mp3",
-                    tracktime: "8 MIN",
-                    credits_place: "Lieu : Champs de la ferme expérimentale",
-                    credits_text: "Texte : Nico Charron-Groulx",
-                    credits_voiceActor: "Voix : Thomas Harrington",
-                    desc: "ICI, à la ferme expérimentale, il y a de l’espace. Ce qu’il faut d’espace pour projeter ce que l’imagination veut bien dessiner…  Car après tout, dans un champ vide et désert, l’imagination, les pensées, les histoires, constituent les plus loyaux compagnons.",
-                    videoUrl: "./assets/videos/zone-orange/2-3_VID.mp4"
-                },
-                {
-                    id: 4,
-                    name: "Le repos de la tempête",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-orange/2-4.mp3",
-                    tracktime: "8 MIN",
-                    credits_place: "Lieu : Centre communautaire de la Côte-de-Sable",
-                    credits_text: "Texte : André Lévesque-Kinder",
-                    credits_voiceActor: "Voix : Emmett Logue",
-                    desc: "ICI, on explore le territoire de la ville, celui du parc, et dans un monde changé et transformé par une pandémie mondiale, quelque chose subsiste: le pouvoir de l’imagination. Il est resté intact et donne à croire qu’entre les tempêtes, la paix est possible.",
-                    videoUrl: "./assets/videos/zone-orange/2-4_VID.mp4"
-                },
-                {
-                    id: 5,
-                    name: "La minuscule bête carnivore",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-orange/2-5.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : La rivière Rideau",
-                    credits_text: "Texte: Geneviève Gagné",
-                    credits_voiceActor: "Voix : Naomi Guindon",
-                    desc: "ICI, la rivière est un espace où venir se ressourcer, le canot sur les flots permet à l’esprit de voguer doucement, de trouver le calme… mais pour cela il faut espérer qu’il n’y ait pas de passager indésirable à bord.",
-                    videoUrl: "./assets/videos/zone-orange/2-5_VID.mp4"
-                },
-                {
-                    id: 6,
-                    name: "Le chemin du retour",
-                    name_part: "Partie 4 : Mémoire",
-                    audioUrl: "./assets/mp3/zone-orange/2-6.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
-                    credits_text: "Texte : Kamé Walker",
-                    credits_voiceActor: "Voix : Maxine Turcotte",
-                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents.On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap.Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-                    videoUrl: "./assets/videos/zone-orange/2-6_VID.mp4"
-                },
-                {
-                    id: 7,
-                    name: "Sauvez des vies",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-orange/2-7.mp3",
-                    tracktime: "X MIN",
-                    credits_place: "Lieu : Canal Rideau",
-                    credits_text: "Texte : Lily Mason",
-                    credits_voiceActor: "Voix : Mélodie Lorquet",
-                    desc: "ICI, sur le bord du canal Rideau, on navigue entre rêves et souvenirs et on se rend bien compte que de cette vie fragile, on ne se sortira pas complètement indemne. D’ici là, il faut tenter de préserver ce qui reste, à commencer par soi.",
-                    videoUrl: "./assets/videos/zone-orange/2-7_VID.mp4"
-                },
-                {
-                    id: 8,
-                    name: "Le trajet",
-                    name_part: "Partie 3 : Migraine",
-                    audioUrl: "./assets/mp3/zone-orange/2-8.mp3",
-                    tracktime: "10 MIN",
-                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
-                    credits_text: "Texte : Amel Amrouche",
-                    credits_voiceActor: "Voix : Sarah Komendat",
-                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
-                    videoUrl: "./assets/videos/zone-orange/2-8_VID.mp4"
-                },
-                {
-                    id: 9,
-                    name: "Les dortoirs",
-                    name_part: "",
-                    audioUrl: "./assets/mp3/zone-orange/2-9.mp3",
-                    tracktime: "2 MIN",
-                    credits_place: "Lieu : Maison Friel",
-                    credits_text: "Texte : Maddline Lishchynski",
-                    credits_voiceActor: "Voix : Naomi Guindon",
-                    desc: "ICI, on rêve à demain, à la fin d’une pandémie qui éreinte. On attend avec impatience cette nouvelle étape pleine de promesses et d’espoir. Parce que demain, tout ira mieux.",
-                    videoUrl: "./assets/videos/zone-orange/2-9_VID.mp4"
-                }
-            ]
-
             // tracks: [
             //     {
             //         id: 1,
             //         name: "Le trajet",
             //         name_part: "Partie 2: Mon sac et moi",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-1.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-1.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : O-Train, direction Tunney’s pasture",
             //         credits_text: "Texte : Amel Amrouche",
             //         credits_voiceActor: "Voix : Sarah Komendat",
             //         desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-1_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-1_VID.mp4"
             //     },
             //     {
             //         id: 2,
             //         name: "Le chemin du retour",
             //         name_part: "Partie 3: Fermer les yeux",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-2.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-2.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
             //         credits_text: "Texte : Kamé Walker",
             //         credits_voiceActor: "Voix : Maxine Turcotte",
             //         desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-2_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-2_VID.mp4"
             //     },
             //     {
             //         id: 3,
             //         name: "Les fées et les fossoyeurs",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-3.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-3.mp3",
             //         tracktime: "8 MIN",
-            //         credits_place: "Lieu : Champs de la ferme expérimentale",
+            //         credits_place: "Lieu : Champs de la Ferme expérimentale",
             //         credits_text: "Texte : Nico Charron-Groulx",
             //         credits_voiceActor: "Voix : Thomas Harrington",
-            //         desc: "ICI, à la ferme expérimentale, il y a de l’espace. Ce qu’il faut d’espace pour projeter ce que l’imagination veut bien dessiner…  Car après tout, dans un champ vide et désert, l’imagination, les pensées, les histoires, constituent les plus loyaux compagnons.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-3_VID.mp4"
+            //         desc: "ICI, à la Ferme expérimentale, il y a de l’espace. Ce qu’il faut d’espace pour projeter ce que l’imagination veut bien dessiner…  Car après tout, dans un champ vide et désert, l’imagination, les pensées, les histoires, constituent les plus loyaux compagnons.",
+            //         videoUrl: "./assets/videos/zone-orange/2-3_VID.mp4"
             //     },
             //     {
             //         id: 4,
             //         name: "Le repos de la tempête",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-4.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-4.mp3",
             //         tracktime: "8 MIN",
             //         credits_place: "Lieu : Centre communautaire de la Côte-de-Sable",
             //         credits_text: "Texte : André Lévesque-Kinder",
             //         credits_voiceActor: "Voix : Emmett Logue",
             //         desc: "ICI, on explore le territoire de la ville, celui du parc, et dans un monde changé et transformé par une pandémie mondiale, quelque chose subsiste: le pouvoir de l’imagination. Il est resté intact et donne à croire qu’entre les tempêtes, la paix est possible.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-4_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-4_VID.mp4"
             //     },
             //     {
             //         id: 5,
             //         name: "La minuscule bête carnivore",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-5.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-5.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : La rivière Rideau",
             //         credits_text: "Texte: Geneviève Gagné",
             //         credits_voiceActor: "Voix : Naomi Guindon",
             //         desc: "ICI, la rivière est un espace où venir se ressourcer, le canot sur les flots permet à l’esprit de voguer doucement, de trouver le calme… mais pour cela il faut espérer qu’il n’y ait pas de passager indésirable à bord.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-5_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-5_VID.mp4"
             //     },
             //     {
             //         id: 6,
             //         name: "Le chemin du retour",
             //         name_part: "Partie 4 : Mémoire",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-6.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-6.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
             //         credits_text: "Texte : Kamé Walker",
             //         credits_voiceActor: "Voix : Maxine Turcotte",
             //         desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents.On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap.Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-6_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-6_VID.mp4"
             //     },
             //     {
             //         id: 7,
             //         name: "Sauvez des vies",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-7.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-7.mp3",
             //         tracktime: "X MIN",
             //         credits_place: "Lieu : Canal Rideau",
             //         credits_text: "Texte : Lily Mason",
             //         credits_voiceActor: "Voix : Mélodie Lorquet",
             //         desc: "ICI, sur le bord du canal Rideau, on navigue entre rêves et souvenirs et on se rend bien compte que de cette vie fragile, on ne se sortira pas complètement indemne. D’ici là, il faut tenter de préserver ce qui reste, à commencer par soi.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-7_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-7_VID.mp4"
             //     },
             //     {
             //         id: 8,
             //         name: "Le trajet",
             //         name_part: "Partie 3 : Migraine",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-8.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-8.mp3",
             //         tracktime: "10 MIN",
             //         credits_place: "Lieu : O-Train, direction Tunney’s pasture",
             //         credits_text: "Texte : Amel Amrouche",
             //         credits_voiceActor: "Voix : Sarah Komendat",
             //         desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-8_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-8_VID.mp4"
             //     },
             //     {
             //         id: 9,
             //         name: "Les dortoirs",
             //         name_part: "",
-            //         audioUrl: "https://demain.b-cdn.net/audio/2-9.mp3",
+            //         audioUrl: "./assets/mp3/zone-orange/2-9.mp3",
             //         tracktime: "2 MIN",
             //         credits_place: "Lieu : Maison Friel",
             //         credits_text: "Texte : Maddline Lishchynski",
             //         credits_voiceActor: "Voix : Naomi Guindon",
             //         desc: "ICI, on rêve à demain, à la fin d’une pandémie qui éreinte. On attend avec impatience cette nouvelle étape pleine de promesses et d’espoir. Parce que demain, tout ira mieux.",
-            //         videoUrl: "https://demain.b-cdn.net/videos/2-9_VID.mp4"
+            //         videoUrl: "./assets/videos/zone-orange/2-9_VID.mp4"
             //     }
             // ]
+
+            tracks: [
+                {
+                    id: 1,
+                    name: "Le trajet",
+                    name_part: "Partie 2: Mon sac et moi",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-1.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
+                    credits_text: "Texte : Amel Amrouche",
+                    credits_voiceActor: "Voix : Sarah Komendat",
+                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-1_VID.mp4"
+                },
+                {
+                    id: 2,
+                    name: "Le chemin du retour",
+                    name_part: "Partie 3: Fermer les yeux",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-2.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+                    credits_text: "Texte : Kamé Walker",
+                    credits_voiceActor: "Voix : Maxine Turcotte",
+                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents. On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap. Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-2_VID.mp4"
+                },
+                {
+                    id: 3,
+                    name: "Les fées et les fossoyeurs",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-3.mp3",
+                    tracktime: "8 MIN",
+                    credits_place: "Lieu : Champs de la Ferme expérimentale",
+                    credits_text: "Texte : Nico Charron-Groulx",
+                    credits_voiceActor: "Voix : Thomas Harrington",
+                    desc: "ICI, à la Ferme expérimentale, il y a de l’espace. Ce qu’il faut d’espace pour projeter ce que l’imagination veut bien dessiner…  Car après tout, dans un champ vide et désert, l’imagination, les pensées, les histoires, constituent les plus loyaux compagnons.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-3_VID.mp4"
+                },
+                {
+                    id: 4,
+                    name: "Le repos de la tempête",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-4.mp3",
+                    tracktime: "8 MIN",
+                    credits_place: "Lieu : Centre communautaire de la Côte-de-Sable",
+                    credits_text: "Texte : André Lévesque-Kinder",
+                    credits_voiceActor: "Voix : Emmett Logue",
+                    desc: "ICI, on explore le territoire de la ville, celui du parc, et dans un monde changé et transformé par une pandémie mondiale, quelque chose subsiste: le pouvoir de l’imagination. Il est resté intact et donne à croire qu’entre les tempêtes, la paix est possible.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-4_VID.mp4"
+                },
+                {
+                    id: 5,
+                    name: "La minuscule bête carnivore",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-5.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : La rivière Rideau",
+                    credits_text: "Texte: Geneviève Gagné",
+                    credits_voiceActor: "Voix : Naomi Guindon",
+                    desc: "ICI, la rivière est un espace où venir se ressourcer, le canot sur les flots permet à l’esprit de voguer doucement, de trouver le calme… mais pour cela il faut espérer qu’il n’y ait pas de passager indésirable à bord.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-5_VID.mp4"
+                },
+                {
+                    id: 6,
+                    name: "Le chemin du retour",
+                    name_part: "Partie 4 : Mémoire",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-6.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Sur la route entre Wendover et Ottawa",
+                    credits_text: "Texte : Kamé Walker",
+                    credits_voiceActor: "Voix : Maxine Turcotte",
+                    desc: "ICI, on prend la route, celle qui relie deux maisons, deux parents.On prend la mesure de la mémoire qui fuit, des repères auxquels il faut s’accrocher pour garder le cap.Entre les souvenirs baignés de lumière et une pandémie qui jette une ombre au tableau, on se rend bien compte que l’important, c’est maintenant.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-6_VID.mp4"
+                },
+                {
+                    id: 7,
+                    name: "Sauvez des vies",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-7.mp3",
+                    tracktime: "X MIN",
+                    credits_place: "Lieu : Canal Rideau",
+                    credits_text: "Texte : Lily Mason",
+                    credits_voiceActor: "Voix : Mélodie Lorquet",
+                    desc: "ICI, sur le bord du canal Rideau, on navigue entre rêves et souvenirs et on se rend bien compte que de cette vie fragile, on ne se sortira pas complètement indemne. D’ici là, il faut tenter de préserver ce qui reste, à commencer par soi.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-7_VID.mp4"
+                },
+                {
+                    id: 8,
+                    name: "Le trajet",
+                    name_part: "Partie 3 : Migraine",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-8.mp3",
+                    tracktime: "10 MIN",
+                    credits_place: "Lieu : O-Train, direction Tunney’s pasture",
+                    credits_text: "Texte : Amel Amrouche",
+                    credits_voiceActor: "Voix : Sarah Komendat",
+                    desc: "ICI, on fait le trajet avec Lia de la maison au travail, on revisite ses rêves, ses ambitions et les mirages qui se faufilent parmi ceux-ci.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-8_VID.mp4"
+                },
+                {
+                    id: 9,
+                    name: "Les dortoirs",
+                    name_part: "",
+                    audioUrl: "https://demain.b-cdn.net/audio/2-9.mp3",
+                    tracktime: "2 MIN",
+                    credits_place: "Lieu : Maison Friel",
+                    credits_text: "Texte : Maddline Lishchynski",
+                    credits_voiceActor: "Voix : Naomi Guindon",
+                    desc: "ICI, on rêve à demain, à la fin d’une pandémie qui éreinte. On attend avec impatience cette nouvelle étape pleine de promesses et d’espoir. Parce que demain, tout ira mieux.",
+                    videoUrl: "https://demain.b-cdn.net/videos/2-9_VID.mp4"
+                }
+            ]
             
         });
 

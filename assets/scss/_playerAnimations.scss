@@ -14,6 +14,20 @@
     }
 }
 
+@-webkit-keyframes zoneRougeChangeBgcolor {
+    0% {
+        background-color: #fa748c;
+    }
+
+    50% {
+        background-color: #e59a70;
+    }
+
+    100% {
+        background-color: #fa748c;
+    }
+}
+
 @keyframes zoneRougeChangeBgcolor {
     0% {
         background-color: #fa748c;
@@ -28,19 +42,62 @@
     }
 }
 
-@-webkit-keyframes zoneRougeChangeBgcolor {
+@-webkit-keyframes zoneOrangeChangeBgcolor {
     0% {
-        background-color: #fa748c;
+        background-color: #ff7f57;
     }
 
     50% {
-        background-color: #e59a70;
+        background-color: #fae474;
     }
 
     100% {
-        background-color: #fa748c;
+        background-color: #ff7f57;
     }
 }
+
+@keyframes zoneOrangeChangeBgcolor {
+    0% {
+        background-color: #ff7f57;
+    }
+
+    50% {
+        background-color: #fae474;
+    }
+
+    100% {
+        background-color: #ff7f57;
+    }
+}
+
+@-webkit-keyframes zoneVerteChangeBgcolor {
+    0% {
+        background-color: #6EDC93;
+    }
+
+    50% {
+        background-color: #BFE574;
+    }
+
+    100% {
+        background-color: #6EDC93;
+    }
+}
+
+@keyframes zoneVerteChangeBgcolor {
+    0% {
+        background-color: #6EDC93;
+    }
+
+    50% {
+        background-color: #BFE574;
+    }
+
+    100% {
+        background-color: #6EDC93;
+    }
+}
+
 
 
 

@@ -112,10 +112,16 @@
 				})
 				.append($('<div/>', {class: 'inner'})
 				.append($('<h2/>'))
-				.append($('<p/>', { id: 'player_trackname_part', class: 'text-theme-a' }))
-				.append($('<p/>', { id: 'player_credits_place', class: 'text-theme-a' }))
-				.append($('<p/>', { id: 'player_credits_text', class: 'text-theme-a' }))
-				.append($('<p/>', { id: 'player_credits_voiceActor', class: 'text-theme-a' }))
+				.append($('<p/>', { id: 'player_trackname_part' }))
+				.append($('<p/>', { id: 'player_credits_place', class: 'text-theme-f' })
+					.append($('<span/>'))
+				)
+				.append($('<p/>', { id: 'player_credits_text', class: 'text-theme-f' })
+					.append($('<span/>'))
+				)
+				.append($('<p/>', { id: 'player_credits_voiceActor', class: 'text-theme-f' })
+					.append($('<span/>'))
+				)
 				.append($('<p/>', { id: 'player_desc', class: 'text-theme-b' }))
 				)
 			)
@@ -208,9 +214,9 @@
 			this.$_elements.player = $('#player');
 			this.$_elements.trackName = this.$_elements.player.find('h2');
 			this.$_elements.trackNamePart = this.$_elements.player.find('#player_trackname_part');
-			this.$_elements.trackCreditsPlace = this.$_elements.player.find('#player_credits_place');
-			this.$_elements.trackCreditsText = this.$_elements.player.find('#player_credits_text');
-			this.$_elements.trackCreditsVoiceActor = this.$_elements.player.find('#player_credits_voiceActor');
+			this.$_elements.trackCreditsPlace = this.$_elements.player.find('#player_credits_place span');
+			this.$_elements.trackCreditsText = this.$_elements.player.find('#player_credits_text span');
+			this.$_elements.trackCreditsVoiceActor = this.$_elements.player.find('#player_credits_voiceActor span');
 			this.$_elements.trackDesc = this.$_elements.player.find('#player_desc');
 			this.$_elements.trackDuration = this.$_elements.player.find('#player_duration');
 			
@@ -308,7 +314,6 @@
                     $('<li/>').append($('<a/>', {
 						href: value.audioUrl,
 						'data-track': key,
-						text: value.name,
 						click: function(e) {
                             e.preventDefault();
                             plugin._clickcount++;
@@ -319,10 +324,13 @@
                             }
 						}
 					})
+						.append($('<span/>', { class: 'songName text-theme-d', text: value.name }))
+						.append($('<span/>', { class: 'name_part text-theme-e', text: value.name_part }))
+						
                         .append($('<span/>', { class: 'dot-pulse-container' })
                             .append($('<span/>', { class: 'dot-pulse'}))
                         )
-						.append($('<span/>', { class: 'text-theme-a', text: value.name_part }))
+						
                     )
                 );
             });
