@@ -549,7 +549,6 @@ video {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     z-index: 10;
-    opacity: 0.4;
 
     &__line {
         position: absolute;
@@ -1187,4 +1186,6 @@ $main-width: 70px;
             font-size: 4.5em;
         }
     }
+
+    
 }

@@ -1236,6 +1236,15 @@ button {
   z-index: 2;
 }
 
+.show-zone #intro-text {
+  bottom: 0;
+  left: 0;
+  margin-top: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
 video {
   height: 100vh;
   width: 100%;
@@ -1382,6 +1391,7 @@ video {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   z-index: 10;
+  opacity: 0.4;
 }
 
 .scroll-indicator__line {
@@ -1524,6 +1534,11 @@ video {
   height: 106vh;
   position: relative;
   z-index: 3;
+}
+
+.show-zone #zones {
+  display: block;
+  margin-top: 200vh;
 }
 
 #zones .wrap-inner {

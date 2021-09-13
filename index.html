@@ -74,8 +74,8 @@
             Défilez vers le bas
         </span>
         <video muted loop playsinline preload id="video">
-            <!-- <source src="./assets/videos/intro.mp4" type="video/mp4"> -->
-            <source src="https://demain.b-cdn.net/videos/intro.mp4" type="video/mp4">
+            <source src="./assets/videos/intro.mp4" type="video/mp4">
+            <!-- <source src="https://demain.b-cdn.net/videos/intro.mp4" type="video/mp4"> -->
         </video>
     </div> <!-- end #intro-video -->
 
@@ -130,7 +130,7 @@
         </div>
     </div> <!-- end #zone -->
 
-    <nav id="side-menu">
+    <nav id="side-menu" aria-label="Menu principal">
         <ul>
             <li><a href="#" class="active">Accueil</a></li>
             <li><a href="./a-propos.html">À propos</a></li>
@@ -216,8 +216,8 @@
                 topDistance = window.pageYOffset;
                 movement = topDistance * 2;
 
-                fadeOut(scrollIndicator[0], topDistance, 150);
-                tweenHeight(scrollIndicatorLine[0], topDistance, 100, 25);
+                // fadeOut(scrollIndicator[0], topDistance, 150);
+                // tweenHeight(scrollIndicatorLine[0], topDistance, 100, 25);
 
                 elements.forEach(function (element) {
                     movement = -(topDistance * element.dataset.speed);
@@ -286,11 +286,16 @@
             } else {
                 _body.removeClass('ham-menu-alt');
             }
-            
+
             if ($(window).scrollTop() >= (_zones.offset().top - 100)) {
                 _body.addClass('reached-zones');
             }
+
         });
+        
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
             
     </script>
 
