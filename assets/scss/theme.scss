@@ -160,7 +160,7 @@ main {
         }
         
         .generic-page & {
-            padding-bottom: 100px;
+            padding-bottom: 120px;
         }
     }
     
@@ -1084,6 +1084,10 @@ $main-width: 70px;
     
     .zone-verte & {
         background-color: #6EDC93;
+    }
+    
+    .generic-page & {
+        background-color: #fdfff5;
     }
 }
 

@@ -1011,7 +1011,7 @@ main .inner {
 }
 
 .generic-page main .inner {
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 }
 
 button {
@@ -1966,6 +1966,10 @@ video {
 
 .zone-verte #loading_screen {
   background-color: #6EDC93;
+}
+
+.generic-page #loading_screen {
+  background-color: #fdfff5;
 }
 
 /*
