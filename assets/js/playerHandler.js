@@ -14,7 +14,8 @@
             
             tracks: [],
             parentContainer: $(this._element).parent(),
-			isLocked: false
+			isLocked: false,
+			cookieID: undefined
             
         }, this._defaults, options);
 		this._init();
@@ -36,14 +37,29 @@
             if (this._settings.tracks.length <= 0) {
                 console.log('NO TRACKS');
             }
+			
+			if (this._settings.localStorageID == undefined) {
+				console.log('NEED LOCALSTORAGE ID')
+			}
         },
         
 		// Cache DOM nodes for performance
 		_build: function () {
+			
 			this.$_element = $(this._element);
-            
+			
+			this.localStorageItem = 'songsListened' + plugin._settings.localStorageID;
+			
+			if (localStorage.getItem(plugin.localStorageItem) === null) {
+				this.storedSongs = [];
+			} else {
+				this.storedSongs = localStorage.getItem(plugin.localStorageItem).split(',')
+			}
+			
+			
             this._buildPlaylist();
             this._buildArtistPanel();
+			this._setPlaylistSongListened();
 
 			if (this._settings.isLocked == false) {
 				this._buildMediasElement();
@@ -279,12 +295,55 @@
 			});
 
         },
+		
+		_setPlaylistSongListened: function() {
+		
+			this.$_elements.ul_playlist.find('li').each(function(i) {
+				
+				var $this = $(this);
+				
+				if ($.inArray(JSON.stringify(i), plugin.storedSongs) != -1) {
+					
+					$this.addClass('listened');
+					
+				}
+				
+			});
+			
+			console.log(this.storedSongs);
+		},
         
         //
         _songListened: function(trackIndex) {
             
             this.$_elements.ul_playlist.find('li').eq(trackIndex).addClass('listened');
-            
+			
+			// Get the existing data
+			var existing = localStorage.getItem(plugin.localStorageItem);
+
+			// If no existing data, create an array
+			// Otherwise, convert the localStorage string to an array
+			existing = existing ? existing.split(',') : [];
+			
+			if($.inArray(JSON.stringify(trackIndex), existing) != -1) {
+				
+				console.log("is in array");
+				
+			} else {
+				
+				// Add new data to localStorage Array
+				existing.push(trackIndex);
+
+				// Save back to localStorage
+				localStorage.setItem(plugin.localStorageItem, existing.toString());
+				
+				this.storedSongs = localStorage.getItem(plugin.localStorageItem).split(',');
+
+				console.log(this.storedSongs);
+			} 
+
+			
+
         },
         
         _checkIfMediasAreReady: function() {
