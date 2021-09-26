@@ -51,7 +51,17 @@
     <!-- Normalise.css -->
     <link rel="stylesheet" href="./assets/scss/app.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./assets/scss/theme.css?v=2">
+    <link rel="stylesheet" href="./assets/scss/theme.css?v=3">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V7SZF9TRD8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V7SZF9TRD8');
+    </script>
 
 </head>
 
@@ -79,7 +89,7 @@
     <main class="container">
         <div class="inner">
             <h1>Zone verte</h1>
-            <p class="text-theme-a text-locked">Dès le 17 sept. 2021 à 14h</p>
+            <!-- <p class="text-theme-a text-locked">Dès le 17 sept. 2021 à 14h</p> -->
         </div>
         <div class="playerizer"></div>
         <div class="prev-next-wrapper">
@@ -98,7 +108,7 @@
 
         $('.playerizer').playerizer({
             
-            isLocked: true,
+            // isLocked: true,
             // tracks: [
             //     {
             //         id: 1,
@@ -142,7 +152,7 @@
             //         name_part: "",
             //         audioUrl: "./assets/mp3/zone-verte/3-4.mp3",
             //         tracktime: "4 MIN",
-            //         credits_place: "Lieu : Bibliothèque de l’école secondaire De La Salle",
+            //         credits_place: "Lieu : Bibliothèque de l'École secondaire publique De La Salle",
             //         credits_text: "Texte : Luna Berniqué",
             //         credits_voiceActor: "Voix : Alex Brisebois Clyne",
             //         desc: "ICI, on retrace les lectures marquantes d’un parcours de lectrice, ces lectures où on trouve des morceaux bien réels de son existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",
@@ -229,7 +239,7 @@
                     name_part: "",
                     audioUrl: "https://demain.b-cdn.net/audio/3-4.mp3",
                     tracktime: "4 MIN",
-                    credits_place: "Lieu : Bibliothèque de l’école secondaire De La Salle",
+                    credits_place: "Lieu : Bibliothèque de l'École secondaire publique De La Salle",
                     credits_text: "Texte : Luna Berniqué",
                     credits_voiceActor: "Voix : Alex Brisebois Clyne",
                     desc: "ICI, on retrace les lectures marquantes d’un parcours de lectrice, ces lectures où on trouve des morceaux bien réels de son existence comme un reflet de ce qu’on aime et qu’on a aimé. Ici, on dessine le fil qui lie les livres aux rencontres qui colorent la vie.",

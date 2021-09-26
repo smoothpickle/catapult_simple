@@ -9,6 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="expires" content="0">
     
     <meta name="author" content="Théâtre Catapulte">
     <!--meta name="keywords" content=""-->
@@ -51,7 +52,17 @@
     <!-- Normalise.css -->
     <link rel="stylesheet" href="./assets/scss/app.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./assets/scss/theme.css?v=2">
+    <link rel="stylesheet" href="./assets/scss/theme.css?v=3">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V7SZF9TRD8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V7SZF9TRD8');
+    </script>
 
 </head>
 
@@ -79,7 +90,6 @@
     <main class="container">
         <div class="inner">
             <h1>Zone rouge</h1>
-            <p class="text-theme-a text-locked">Dès le 13 sept. 2021 à 14h</p>
         </div>
         <div class="playerizer"></div>
         <div class="prev-next-wrapper flex-end">
@@ -100,7 +110,7 @@
         
         $('.playerizer').playerizer({
             
-            isLocked: true,
+            // isLocked: true,
             // tracks: [
             //     {
             //         id: 1,
@@ -134,7 +144,7 @@
             //         tracktime: "9 MIN",
             //         credits_place: "Lieu : Aréna Brian-Kilrae",
             //         credits_text: "Texte : Toby Guillemette",
-            //         credits_voiceActor: "Voix : Simon Lalande",
+            //         credits_voiceActor: "Voix : Simon L. Lalande",
             //         desc: "ICI, on visite l’aréna, là où le hockey est roi, là où le masculin l'emporte. Ici, Louis jette un regard sur l’époque où il jouait au hockey et observe la masculinité toxique qui régnait dans cet environnement. Mais surtout, il affirme son identité en toute franchise.",
             //         videoUrl: "./assets/videos/zone-rouge/1-3_VID.mp4"
             //     },
@@ -221,7 +231,7 @@
                     tracktime: "9 MIN",
                     credits_place: "Lieu : Aréna Brian-Kilrae",
                     credits_text: "Texte : Toby Guillemette",
-                    credits_voiceActor: "Voix : Simon Lalande",
+                    credits_voiceActor: "Voix : Simon L. Lalande",
                     desc: "ICI, on visite l’aréna, là où le hockey est roi, là où le masculin l'emporte. Ici, Louis jette un regard sur l’époque où il jouait au hockey et observe la masculinité toxique qui régnait dans cet environnement. Mais surtout, il affirme son identité en toute franchise.",
                     videoUrl: "https://demain.b-cdn.net/videos/1-3_VID.mp4"
                 },

@@ -1076,6 +1076,13 @@ button {
   width: 100%;
 }
 
+.list-theme-a.add-after::after {
+  content: "";
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 31%;
+          flex: 0 0 31%;
+}
+
 .list-theme-b {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1092,6 +1099,7 @@ button {
 }
 
 .list-theme-b li {
+  margin-bottom: 30px;
   text-align: center;
   width: 30%;
 }
@@ -1175,6 +1183,10 @@ button {
 
 #logos-list li:nth-child(3) img {
   max-width: 100px;
+}
+
+#logos-list li:nth-child(4) img {
+  max-width: 200px;
 }
 
 #intro-video {

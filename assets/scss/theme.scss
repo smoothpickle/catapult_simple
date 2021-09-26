@@ -219,6 +219,14 @@ button {
     img {
         width: 100%;
     }
+    
+    &.add-after {
+
+        &::after {
+            content: "";
+            flex: 0 0 31%;
+        }
+    }
 }
 
 .list-theme-b {
@@ -228,11 +236,16 @@ button {
     justify-content: space-between;
     margin: 30px 0;
     
-    li { 
+    li {
+        margin-bottom: 30px;
         text-align: center;
         width: 30%;
     }
+    
+    
 }
+
+
 
 .full-height {
     height: 100%;
@@ -302,6 +315,7 @@ button {
     li:nth-child(1) img { max-width: 200px; }
     li:nth-child(2) img { max-width: 200px; }
     li:nth-child(3) img { max-width: 100px; }
+    li:nth-child(4) img { max-width: 200px; }
 }
 
 #intro-video {
