@@ -1002,6 +1002,14 @@ p span.text-slanted {
   font-style: italic;
 }
 
+p a {
+  color: #365151;
+}
+
+p a:hover, p a:focus, p a:active {
+  text-decoration: none;
+}
+
 main .inner {
   padding: 80px 20px;
 }
@@ -1019,6 +1027,29 @@ button {
   border: 0;
 }
 
+.block {
+  display: block;
+}
+
+.bordered-content {
+  border: 1px solid #365151;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
 .text-align-right {
   text-align: right;
 }
@@ -1029,6 +1060,14 @@ button {
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.w-90 {
+  width: 90%;
 }
 
 .list-theme-a {
@@ -1104,6 +1143,15 @@ button {
   width: 30%;
 }
 
+.list-theme-c {
+  color: #365151;
+  font-size: 1.25em;
+}
+
+.list-theme-c li {
+  margin-bottom: 6px;
+}
+
 .full-height {
   height: 100%;
 }
@@ -1155,6 +1203,27 @@ button {
   border-radius: 20px;
   display: inline-block;
   padding: 7px 16px;
+}
+
+.text-theme-h {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.img-wrapper.double {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.img-wrapper.double img {
+  width: 49%;
 }
 
 .overflow-hidden {
@@ -1984,6 +2053,134 @@ video {
   background-color: #fdfff5;
 }
 
+/* 
+
+MEDIATION PAGE
+
+*/
+.content-table-nav {
+  max-width: 220px;
+  position: fixed;
+  left: 4%;
+  top: 100px;
+}
+
+.content-table-nav h2 {
+  font-size: 1em !important;
+  font-weight: bold !important;
+  margin: 1em 0 !important;
+}
+
+.content-table-nav nav {
+  font-size: 1em;
+}
+
+.content-table-nav nav a {
+  color: #365151;
+  text-decoration: none;
+}
+
+.content-table-nav nav a:hover, .content-table-nav nav a.hover {
+  text-decoration: underline;
+}
+
+.content-table-nav nav li {
+  margin: 5px 0;
+}
+
+.content-table-nav nav > ul > li {
+  margin-bottom: 20px;
+}
+
+.content-table-nav nav > ul > li > a:first-child {
+  font-weight: bold;
+}
+
+.mediation h2 {
+  font-weight: normal;
+  font-size: 2.5em;
+  margin: 1em 0 0.6em;
+}
+
+.mediation h3 {
+  color: #365151;
+  font-size: 1.45em;
+  font-weight: bold;
+  letter-spacing: 1;
+  margin: 1em 0;
+}
+
+.mediation h4, .mediation h5 {
+  color: #365151;
+  font-size: 1.40em;
+  font-weight: bold;
+  letter-spacing: 1;
+}
+
+.mediation h5 {
+  font-size: 1.25em;
+}
+
+.mediation dl {
+  color: #365151;
+  font-size: 1.25em;
+  letter-spacing: 0.02em;
+  line-height: 115%;
+}
+
+.mediation dl dt {
+  font-weight: bold;
+}
+
+.mediation dl dt, .mediation dl dd {
+  display: inline;
+}
+
+.mediation dl div {
+  margin: 1em 0;
+}
+
+.mediation figure {
+  margin: 1.5em 0 2em;
+}
+
+.mediation figure img {
+  width: 100%;
+}
+
+.mediation figure figcaption {
+  color: #365151;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+.mediation figure figcaption span {
+  display: block;
+}
+
+.mediation figure figcaption span.text-theme-c {
+  margin-top: 2px;
+}
+
+.authors-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.authors-list .col {
+  width: 48%;
+}
+
+.indent-left {
+  margin-left: 30px;
+}
+
 /*
  *******************
  *  MEDIA QUERIES  *
@@ -1996,6 +2193,9 @@ video {
 }
 
 @media (max-width: 376px) {
+  .generic-page h1 {
+    font-size: 2.4em;
+  }
   #intro-video .text-anim-wrapper span {
     font-size: 5em;
   }
@@ -2021,10 +2221,18 @@ video {
   }
 }
 
+@media (max-width: 1180px) {
+  .content-table-nav {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+}
+
 @media (min-width: 576px) {
   .container .inner {
     margin: 0 auto;
-    max-width: 764px;
+    max-width: 646px;
   }
 }
 
