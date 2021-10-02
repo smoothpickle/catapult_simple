@@ -1027,6 +1027,10 @@ button {
   border: 0;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .block {
   display: block;
 }
@@ -1222,7 +1226,8 @@ button {
           justify-content: space-between;
 }
 
-.img-wrapper.double img {
+.img-wrapper.double figure {
+  margin: 1em 0;
   width: 49%;
 }
 
@@ -2221,7 +2226,7 @@ MEDIATION PAGE
   }
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1180px), (max-height: 750px) {
   .content-table-nav {
     position: relative;
     left: 0;
