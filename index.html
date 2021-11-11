@@ -83,7 +83,7 @@
             <span class="scroll-indicator__line"></span>
             Défilez vers le bas
         </span>
-        <video muted loop playsinline preload id="video">
+        <video autoplay loop muted playsinline id="video">
             <!-- <source src="./assets/videos/intro.mp4" type="video/mp4"> -->
             <source src="https://demain.b-cdn.net/videos/intro.mp4" type="video/mp4">
         </video>
@@ -253,7 +253,7 @@
             setTimeout(function () {
                 $('body').removeClass('page-loading').addClass('page-loaded');
                 
-                videoElem.play();
+                //videoElem.play();
                 $('#loader').fadeOut(300, function () {
 
                 });

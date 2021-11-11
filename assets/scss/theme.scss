@@ -278,8 +278,13 @@ button {
     li {
         margin-bottom: 30px;
         text-align: center;
-        width: 30%;
+        // width: 30%;
     }
+    
+    // &::after {
+    //     content: "";
+    //     flex: auto;
+    // }
 }
 
 .list-theme-c {
@@ -374,12 +379,13 @@ button {
 
 #logos-list {
     
-    img { width: 100%; }
+    // img { width: 100%; }
     
     li:nth-child(1) img { max-width: 200px; }
     li:nth-child(2) img { max-width: 200px; }
     li:nth-child(3) img { max-width: 100px; }
     li:nth-child(4) img { max-width: 200px; }
+    li:nth-child(5) img { max-width: 200px; }
 }
 
 #intro-video {

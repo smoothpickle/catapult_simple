@@ -1144,7 +1144,6 @@ button {
 .list-theme-b li {
   margin-bottom: 30px;
   text-align: center;
-  width: 30%;
 }
 
 .list-theme-c {
@@ -1243,10 +1242,6 @@ button {
   min-height: 100%;
 }
 
-#logos-list img {
-  width: 100%;
-}
-
 #logos-list li:nth-child(1) img {
   max-width: 200px;
 }
@@ -1260,6 +1255,10 @@ button {
 }
 
 #logos-list li:nth-child(4) img {
+  max-width: 200px;
+}
+
+#logos-list li:nth-child(5) img {
   max-width: 200px;
 }
 
